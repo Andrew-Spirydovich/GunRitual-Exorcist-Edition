@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class PlayerStateMachine
+public class StateMachine
 {
     private PlayerState _currentState;
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vgxfnbklohai"]
+
+[ext_resource type="Script" uid="uid://d1ab2bowrjhwq" path="res://Scripts/CameraController.cs" id="1_2ji65"]
+
+[node name="Camera2D" type="Camera2D" node_paths=PackedStringArray("_target")]
+zoom = Vector2(6, 6)
+script = ExtResource("1_2ji65")
+_target = NodePath("")

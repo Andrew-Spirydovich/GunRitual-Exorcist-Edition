@@ -8,7 +8,7 @@ public partial class Player : Node2D
     [Export]
     private AnimatedSprite2D _sprite;
     
-    public PlayerStateMachine StateMachine { get; private set; }
+    public StateMachine StateMachine { get; private set; }
     public PlayerAnimation Animation { get; private set; }
     public PlayerMovement Movement { get; private set; }
     
@@ -18,7 +18,7 @@ public partial class Player : Node2D
     {
         Movement = new PlayerMovement(_collider);
         Animation = new PlayerAnimation(_sprite);
-        StateMachine = new PlayerStateMachine();
+        StateMachine = new StateMachine();
         StateMachine.ChangeState(new IdleState(this));
     }
 

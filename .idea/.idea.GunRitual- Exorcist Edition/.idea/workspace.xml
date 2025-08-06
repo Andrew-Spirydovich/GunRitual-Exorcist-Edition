@@ -6,9 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/test_scene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player Idle 48x48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player Idle 48x48.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/player run 48x48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/player run 48x48.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/IdleState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/IdleState.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerAnimation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerAnimation.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerMovement.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerState.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerStateMachine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlayerStateMachine.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/RunState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/RunState.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_scene.tscn" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1754436241290</updated>
       <workItem from="1754436243638" duration="1331000" />
-      <workItem from="1754494000833" duration="7120000" />
+      <workItem from="1754494000833" duration="16028000" />
     </task>
     <servers />
   </component>
