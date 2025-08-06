@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerMovement
+public class PlayerMovement
 {
     private const float _speed = 200f;
     private CollisionShape2D _collisionShape;
@@ -27,7 +27,7 @@ public partial class PlayerMovement
         }
     }
     
-    private Vector2 GetInputDirection()
+    public Vector2 GetInputDirection()
     {
         var x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
         var y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
