@@ -1,16 +1,16 @@
 using Godot;
 using System;
 
-public class PlayerAnimation
+public class PlayerAnimator
 {
     private AnimatedSprite2D _sprite;
 
-    public PlayerAnimation(AnimatedSprite2D sprite)
+    public PlayerAnimator(AnimatedSprite2D sprite)
     {
         _sprite = sprite;
     }
 
-    public void Play(string name)
+    public void SetAnimation(string name)
     {
         if (_sprite.Animation == name && _sprite.IsPlaying())
             return;

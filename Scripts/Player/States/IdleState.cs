@@ -12,7 +12,7 @@ public class IdleState : PlayerState
     
     public override void Enter()
     {
-        _player.Animation.Play("Idle");
+        _player.Animator.SetAnimation("Idle");
     }
 
     public override void Exit() { }

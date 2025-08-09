@@ -13,8 +13,6 @@ public partial class MainMenu : Control
     private Button _settingsButton;
     [Export]
     private Button _quitButton;
-    [Export]
-    private NetworkClient _client;
 
     public override void _Ready()
     {
@@ -26,12 +24,17 @@ public partial class MainMenu : Control
 
     private void OnPlayPressed()
     {
-        GetTree().ChangeSceneToFile("res://GameScene.tscn");
+        var connected = NetworkClient.Instance.ConnectToServer("ws://192.168.31.73:8080/ws");
+
+        if (connected)
+        {
+            NetworkClient.Instance?.SetLocalPlayerId("Andrew");
+            GetTree().ChangeSceneToFile("res://GameScene.tscn");
+        }
     }
 
     private void OnHostPressed()
     {
-        _client.SendMessage("Мы создали хост");
     }
 
     private void OnSettingsPressed()

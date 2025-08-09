@@ -12,7 +12,7 @@ public class RunState : PlayerState
     
     public override void Enter()
     {
-        _player.Animation.Play("Run");
+        _player.Animator.SetAnimation("Run");
     }
 
     public override void Exit() { }

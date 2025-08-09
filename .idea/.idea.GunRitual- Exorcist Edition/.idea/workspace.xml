@@ -6,26 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player Idle 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player Idle 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/player run 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/player run 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/IdleState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/IdleState.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerAnimation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerAnimation.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerMovement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerMovement.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerState.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerStateMachine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlayerStateMachine.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/RunState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/RunState.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/GameScene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player/Player.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/UI/NetworkClient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/UI/NetworkClient.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/NetworkManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/NetworkManager.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimation.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_scene.tscn" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +33,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/SourceGeneratedDocuments/FB82D9610D3D9A844C3EC4E2/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/NetworkClient_ScriptSignals.generated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/45/a3958e39/DelegateUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/76/687d6f39/CSharpInstanceBridge.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/690e9f2148b5749d9ec30f3c8ddd8d46743c2d5d7fcd6b9b61279423f2cdb0/NativeCalls.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/86db9cd834346aad02d74c1b66dd9c64d6ef3147435dd9c9c9477b48f7/Node2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/88aafc465021fb91d3494a7fcbdafbef31a5dc4/Player_ScriptMethods.generated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ef7fcc0a17ae82dc3bdd08c20e6b2f5c283ab99/Godot.NativeInterop.NativeFuncs.generated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df73a4db74df89d59655c5fb6326406f47fbfa9af1fa81518fe0a07c49d34133/Node.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ef7b819b226fab796d1dfe66d415dd7510bcac87675020ddb8f03a828e763/CanvasItem.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
@@ -47,22 +53,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Executable.Player.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.build.godotPlugin&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Executable.Player.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "XThreadsFramesViewSplitterKey": "1.1465201",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "debugger.stepping",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Executable.Player">
     <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory" show_console_on_std_err="false" show_console_on_std_out="false" port="6006">
       <option name="address" value="127.0.0.1" />
@@ -120,6 +127,9 @@
       <updated>1754436241290</updated>
       <workItem from="1754436243638" duration="1331000" />
       <workItem from="1754494000833" duration="16028000" />
+      <workItem from="1754587085534" duration="10520000" />
+      <workItem from="1754655761553" duration="3439000" />
+      <workItem from="1754668526702" duration="18674000" />
     </task>
     <servers />
   </component>
