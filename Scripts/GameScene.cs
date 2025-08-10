@@ -14,7 +14,7 @@ public partial class GameScene : Node2D
 
     private void OnNetConnected()
     {
-        _playerManager.SpawnLocalPlayer(NetworkClient.Instance?.GetLocalPlayerId(), new Vector2(0, 0));
+        _playerManager.SpawnLocalPlayer(NetworkClient.Instance?.GetLocalUserId(), new Vector2(0, 0));
     }
 
 }

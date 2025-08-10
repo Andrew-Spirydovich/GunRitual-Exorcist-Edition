@@ -10,14 +10,15 @@ public partial class NetworkClient : Node
     public delegate void ConnectedEventHandler();
     public static NetworkClient Instance { get; private set; }
     
-    private string _localPlayerId;
+    private string _localUserId;
     
     private WebSocketPeer _webSocket = new WebSocketPeer();
     private PlayerManager _playerManager;   
     
     public bool IsOpen => _webSocket?.GetReadyState() == WebSocketPeer.State.Open; // вот это надо убрать
-    public void SetLocalPlayerId(string localPlayerId) => _localPlayerId = localPlayerId;
-    public string GetLocalPlayerId() => _localPlayerId;
+    
+    public void SetLocalUserId(string localUserId) => _localUserId = localUserId;
+    public string GetLocalUserId() => _localUserId;
     
     public override void _Ready()
     {
@@ -29,15 +30,17 @@ public partial class NetworkClient : Node
     {
         _webSocket.Poll();
         
-        if (IsOpen)
+        if (!IsOpen)
+            return;
+        
+        EmitSignal(SignalName.Connected); // вот это надо убрать
+        
+        while (_webSocket.GetAvailablePacketCount() > 0)
         {
-            EmitSignal(SignalName.Connected); // вот это надо убрать
-            while (_webSocket.GetAvailablePacketCount() > 0)
-            {
-                var msg = _webSocket.GetPacket().GetStringFromUtf8();
-                HandleServerMessage(msg);
-            }
+            var msg = _webSocket.GetPacket().GetStringFromUtf8();
+            HandleServerMessage(msg);
         }
+        
     }
 
     public bool ConnectToServer(string url)
@@ -63,12 +66,13 @@ public partial class NetworkClient : Node
         {
             {"type", "JOIN"},
             {"playerId", playerId},
+            {"roomId", "room1"},
             {"x", position.X.ToString(CultureInfo.InvariantCulture)},
             {"y", position.Y.ToString(CultureInfo.InvariantCulture)}
         };
         
         var json = Json.Stringify(payload);
-        GD.Print("SEND:", json);
+        GD.Print("Попытка отправки JOIN:", json);
         _webSocket.SendText(json);
     }
 
@@ -78,22 +82,28 @@ public partial class NetworkClient : Node
         {
             {"type", "MOVE"},
             {"playerId", playerId},
+            {"roomId", "room1"},
             {"x", position.X},
             {"y", position.Y}
         };
         
-        _webSocket.SendText(Json.Stringify(payload));
+        var json = Json.Stringify(payload);
+        GD.Print("Попытка отправки MOVE:", json);
+        _webSocket.SendText(json);
     }
 
     public void SendLeave(string playerId)
     {
         var payload = new Godot.Collections.Dictionary<string, Variant>
         {
-            { "type", "LEAVE" },
+            {"type", "LEAVE" },
+            {"roomId", "room1"},
             { "playerId", playerId }
         };
         
-        _webSocket.SendText(Json.Stringify(payload));
+        var json = Json.Stringify(payload);
+        GD.Print("Попытка отправки LEAVE:", json);
+        _webSocket.SendText(json);
     }
 
     public void HandleServerMessage(string json)
@@ -113,6 +123,7 @@ public partial class NetworkClient : Node
         switch (type)
         {
             case "JOIN":
+                GD.Print("JOIN:", json);
                 _playerManager?.OnPlayerJoined(playerId, pos);
                 break;
             case "MOVE":

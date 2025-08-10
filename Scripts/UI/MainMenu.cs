@@ -28,7 +28,7 @@ public partial class MainMenu : Control
 
         if (connected)
         {
-            NetworkClient.Instance?.SetLocalPlayerId("Andrew");
+            NetworkClient.Instance?.SetLocalUserId("Andrew");
             GetTree().ChangeSceneToFile("res://GameScene.tscn");
         }
     }

@@ -28,5 +28,6 @@ public class RunState : PlayerState
     public override void PhysicsUpdate(double delta)
     {
         _player.Movement.Move(_player, delta);
+        NetworkClient.Instance.SendMove("andrew", _player.GlobalPosition);
     }
 }

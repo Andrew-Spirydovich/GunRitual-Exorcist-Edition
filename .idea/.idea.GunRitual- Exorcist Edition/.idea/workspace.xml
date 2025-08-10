@@ -6,21 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/GameScene.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player/Player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.cs.uid" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/UI/NetworkClient.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/UI/NetworkClient.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/NetworkManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/NetworkManager.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimation.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs.uid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GameScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/NetworkClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +45,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Executable.Player (1).executor": "Run",
     ".NET Executable.Player.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -70,7 +61,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Executable.Player">
+  <component name="RunManager" selected="Compound.2 Players">
+    <configuration name="2 Players" type="CompoundRunConfigurationType">
+      <toRun name="Player" type="RunExe" />
+      <toRun name="Player (1)" type="RunExe" />
+      <method v="2" />
+    </configuration>
     <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory" show_console_on_std_err="false" show_console_on_std_out="false" port="6006">
       <option name="address" value="127.0.0.1" />
       <option name="allowRunningInParallel" value="false" />
@@ -99,10 +95,10 @@
         <option name="Build Solution" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+    <configuration name="Player (1)" type="RunExe" factoryName=".NET Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
-      <option name="WORKING_DIRECTORY" value="D:\GodotProject\gunritual--exorcist-edition" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
@@ -117,6 +113,31 @@
         <option name="Build Solution" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue=".NET Executable.Editor" />
+      <item itemvalue=".NET Executable.Player" />
+      <item itemvalue=".NET Executable.Player (1)" />
+      <item itemvalue="Compound.2 Players" />
+      <item itemvalue="GdScript Start and Debug.Player GDScript" />
+    </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -130,6 +151,7 @@
       <workItem from="1754587085534" duration="10520000" />
       <workItem from="1754655761553" duration="3439000" />
       <workItem from="1754668526702" duration="18674000" />
+      <workItem from="1754834966660" duration="18442000" />
     </task>
     <servers />
   </component>
