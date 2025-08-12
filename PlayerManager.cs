@@ -19,7 +19,6 @@ public partial class PlayerManager : Node
         AddChild(localPlayer);
         _players.Add(playerId, localPlayer);
         
-        NetworkClient.Instance?.SendJoin(playerId, position);
         return localPlayer;
     }
     

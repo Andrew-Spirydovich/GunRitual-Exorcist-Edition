@@ -2,19 +2,19 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Range = Godot.Range;
 
 
 public partial class NetworkClient : Node
 {
-    [Signal]
-    public delegate void ConnectedEventHandler();
     public static NetworkClient Instance { get; private set; }
     
     private string _localUserId;
     
     private WebSocketPeer _webSocket = new WebSocketPeer();
     private PlayerManager _playerManager;   
-    
+    public event Action<string> Connected;
+    private bool _wasOpen;
     public bool IsOpen => _webSocket?.GetReadyState() == WebSocketPeer.State.Open; // вот это надо убрать
     
     public void SetLocalUserId(string localUserId) => _localUserId = localUserId;
@@ -29,11 +29,12 @@ public partial class NetworkClient : Node
     public override void _Process(double delta)
     {
         _webSocket.Poll();
-        
-        if (!IsOpen)
-            return;
-        
-        EmitSignal(SignalName.Connected); // вот это надо убрать
+
+        if (IsOpen && !_wasOpen)
+        {
+            _wasOpen = true;
+            Connected?.Invoke("andrew" + Random.Shared.Next());
+        }
         
         while (_webSocket.GetAvailablePacketCount() > 0)
         {
@@ -54,29 +55,25 @@ public partial class NetworkClient : Node
         return true;
     }
 
-    public void SendJoin(string playerId, Vector2 position)
+    public void SendJoinRequest(string displayName)
     {
         if (!IsOpen)
         {
             GD.Print("Send skipped: SenJoin");
             return;
         }
-
-        var payload = new Godot.Collections.Dictionary<string, Variant>
+        
+        var payload = new Godot.Collections.Dictionary<string,Variant>
         {
-            {"type", "JOIN"},
-            {"playerId", playerId},
-            {"roomId", "room1"},
-            {"x", position.X.ToString(CultureInfo.InvariantCulture)},
-            {"y", position.Y.ToString(CultureInfo.InvariantCulture)}
+            { "type", "JOIN" },
+            { "roomId", "room1" },
+            { "displayName", displayName }
         };
         
-        var json = Json.Stringify(payload);
-        GD.Print("Попытка отправки JOIN:", json);
-        _webSocket.SendText(json);
+        _webSocket.SendText(Json.Stringify(payload));
     }
 
-    public void SendMove(string playerId, Vector2 position)
+    public void SendMoveRequest(string playerId, Vector2 position)
     {
         var payload = new Godot.Collections.Dictionary<string, Variant>
         {
@@ -92,7 +89,7 @@ public partial class NetworkClient : Node
         _webSocket.SendText(json);
     }
 
-    public void SendLeave(string playerId)
+    public void SendLeaveRequest(string playerId)
     {
         var payload = new Godot.Collections.Dictionary<string, Variant>
         {
@@ -122,6 +119,29 @@ public partial class NetworkClient : Node
 
         switch (type)
         {
+            case "JOIN_ACK":
+                GD.Print("JOIN_ACK:", json);
+                playerId = msg["playerId"].AsString();
+                x = (float)msg["x"].AsDouble();
+                y = (float)msg["y"].AsDouble();
+                pos = new Vector2(x, y);
+
+                _localUserId = playerId;
+                _playerManager.SpawnLocalPlayer(playerId, pos);
+
+                if (msg.ContainsKey("existingPlayers"))
+                {
+                    var existing = (Godot.Collections.Array)msg["existingPlayers"];
+                    foreach (Godot.Variant entry in existing)
+                    {
+                        var dict = entry.AsGodotDictionary();
+                        var otherId = dict["playerId"].AsString();
+                        var ox = (float)dict["x"].AsDouble();
+                        var oy = (float)dict["y"].AsDouble();
+                        _playerManager.OnPlayerJoined(otherId, new Vector2(ox, oy));
+                    }
+                }
+                break;
             case "JOIN":
                 GD.Print("JOIN:", json);
                 _playerManager?.OnPlayerJoined(playerId, pos);

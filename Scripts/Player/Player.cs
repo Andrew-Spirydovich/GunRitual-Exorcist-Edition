@@ -20,26 +20,25 @@ public partial class Player : Node2D
     
     public override void _Ready()
     {
-        if (!IsLocal)
-            return;
-        
-        _camera.Enabled = true;
-        Movement = new PlayerMovement(_collider);
+        Movement = new PlayerMovement(_collider, this);
         Animator = new PlayerAnimator(_sprite);
         StateMachine = new StateMachine();
         StateMachine.ChangeState(new IdleState(this));
         SetProcess(true);
         
+        if (!IsLocal)
+            return;
+        _camera.Enabled = true;
     }
 
     public override void _Process(double delta)
     {
-        StateMachine.Update(delta);
-        Animator.UpdateDirection(InputVector);
+        StateMachine?.Update(delta);
+        Animator?.UpdateDirection(InputVector);
     }
     
     public override void _PhysicsProcess(double delta)
     {
-        StateMachine.PhysicsUpdate(delta);
+        StateMachine?.PhysicsUpdate(delta);
     }
 }

@@ -9,12 +9,10 @@ public partial class GameScene : Node2D
     {
         var net = NetworkClient.Instance;
         net.SetPlayerManager(_playerManager);
-        net.Connected += OnNetConnected;
-    }
 
-    private void OnNetConnected()
-    {
-        _playerManager.SpawnLocalPlayer(NetworkClient.Instance?.GetLocalUserId(), new Vector2(0, 0));
+        net.Connected += net.SendJoinRequest;
+        
+        if(net.IsOpen)
+            net.SendJoinRequest("andrew");
     }
-
 }

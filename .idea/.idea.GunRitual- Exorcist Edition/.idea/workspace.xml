@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GameScene.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/NetworkClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +117,7 @@
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="D:\GodotProject\gunritual--exorcist-edition" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
@@ -152,6 +153,8 @@
       <workItem from="1754655761553" duration="3439000" />
       <workItem from="1754668526702" duration="18674000" />
       <workItem from="1754834966660" duration="18442000" />
+      <workItem from="1754946819362" duration="3038000" />
+      <workItem from="1755032985327" duration="7877000" />
     </task>
     <servers />
   </component>
