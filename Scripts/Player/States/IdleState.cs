@@ -25,5 +25,9 @@ public class IdleState : PlayerState
         }
     }
 
-    public override void PhysicsUpdate(double delta) { }
+    public override void PhysicsUpdate(double delta)
+    {
+        var network = NetworkClient.Instance;
+        network.SendMoveRequest(network.GetLocalUserId(), _player.GlobalPosition, Vector2.Zero);
+    }
 }

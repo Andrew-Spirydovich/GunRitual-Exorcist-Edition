@@ -13,7 +13,7 @@ public class RunState : PlayerState
     public override void Enter()
     {
         _player.Animator.SetAnimation("Run");
-    }
+    }   
 
     public override void Exit() { }
 
@@ -29,6 +29,6 @@ public class RunState : PlayerState
     {
         var network = NetworkClient.Instance;
         _player.Movement.Move(_player, delta);
-        network.SendMoveRequest(network.GetLocalUserId(), _player.GlobalPosition);
+        network.SendMoveRequest(network.GetLocalUserId(), _player.GlobalPosition, _player.InputVector);
     }
 }

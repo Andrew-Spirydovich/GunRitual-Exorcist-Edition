@@ -73,7 +73,7 @@ public partial class NetworkClient : Node
         _webSocket.SendText(Json.Stringify(payload));
     }
 
-    public void SendMoveRequest(string playerId, Vector2 position)
+    public void SendMoveRequest(string playerId, Vector2 position, Vector2 direction)
     {
         var payload = new Godot.Collections.Dictionary<string, Variant>
         {
@@ -81,7 +81,9 @@ public partial class NetworkClient : Node
             {"playerId", playerId},
             {"roomId", "room1"},
             {"x", position.X},
-            {"y", position.Y}
+            {"y", position.Y},
+            {"dirX", direction.X},
+            {"dirY", direction.Y}
         };
         
         var json = Json.Stringify(payload);
@@ -116,7 +118,10 @@ public partial class NetworkClient : Node
         var x = (float)msg.GetValueOrDefault("x", 0).AsDouble();
         var y = (float)msg.GetValueOrDefault("y", 0).AsDouble();
         var pos = new Vector2(x, y);
-
+        var dirX = (float)msg.GetValueOrDefault("dirX", 0).AsDouble();
+        var dirY = (float)msg.GetValueOrDefault("dirY", 0).AsDouble();
+        var dir = new Vector2(dirX, dirY);
+        
         switch (type)
         {
             case "JOIN_ACK":
@@ -147,7 +152,7 @@ public partial class NetworkClient : Node
                 _playerManager?.OnPlayerJoined(playerId, pos);
                 break;
             case "MOVE":
-                _playerManager?.OnPlayerMoved(playerId, pos);
+                _playerManager?.OnPlayerMoved(playerId, pos, dir);
                 break;
             case "LEAVE":
                 _playerManager?.OnPlayerLeave(playerId);

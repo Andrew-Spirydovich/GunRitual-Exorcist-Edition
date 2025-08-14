@@ -15,8 +15,7 @@ public partial class Player : Node2D
     public StateMachine StateMachine { get; private set; }
     public PlayerAnimator Animator { get; private set; }
     public PlayerMovement Movement { get; private set; }
-    
-    public Vector2 InputVector => Movement.GetInputDirection();
+    public Vector2 InputVector { get; private set; }
     
     public override void _Ready()
     {
@@ -26,19 +25,28 @@ public partial class Player : Node2D
         StateMachine.ChangeState(new IdleState(this));
         SetProcess(true);
         
-        if (!IsLocal)
-            return;
-        _camera.Enabled = true;
-    }
+        if (IsLocal)
+            _camera.Enabled = true;
+    }   
 
     public override void _Process(double delta)
     {
+        if (IsLocal)
+            InputVector = Movement.GetInputDirection();
+        
         StateMachine?.Update(delta);
         Animator?.UpdateDirection(InputVector);
     }
     
     public override void _PhysicsProcess(double delta)
     {
-        StateMachine?.PhysicsUpdate(delta);
+        if (IsLocal)
+            StateMachine?.PhysicsUpdate(delta);
+    }
+
+    public void SetRemoteInput(Vector2 dir, Vector2 pos)
+    {
+        InputVector = dir;
+        Position = pos;
     }
 }

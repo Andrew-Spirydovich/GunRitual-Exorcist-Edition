@@ -3,7 +3,7 @@ using System;
 
 public class PlayerMovement
 {
-    private const float _speed = 200f;
+    private const float SPEED = 200f;
     private CollisionShape2D _collisionShape;
     private Player _player;
     public PlayerMovement(CollisionShape2D collisionShape, Player player)
@@ -14,8 +14,8 @@ public class PlayerMovement
 
     public void Move(Node2D target, double delta)
     {
-        var direction = GetInputDirection();
-        var velocity = direction * _speed;
+        var direction = _player.InputVector;
+        var velocity = direction * SPEED;
 
         if (target is CharacterBody2D character)
         {
@@ -30,9 +30,6 @@ public class PlayerMovement
     
     public Vector2 GetInputDirection()
     {
-        if (!_player.IsLocal)
-            return Vector2.Zero;
-        
         var x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
         var y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
         var dir = new Vector2(x, y);

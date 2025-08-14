@@ -14,7 +14,7 @@ public partial class PlayerManager : Node
 
         var localPlayer = _playerScene.Instantiate<Player>();
         localPlayer.Name = $"Player_{playerId}";
-        localPlayer.Position = Vector2.Zero;
+        localPlayer.Position = position;
         localPlayer.IsLocal = true;
         AddChild(localPlayer);
         _players.Add(playerId, localPlayer);
@@ -35,10 +35,12 @@ public partial class PlayerManager : Node
         _players[playerId] = playerInstance;
     }
 
-    public void OnPlayerMoved(string playerId, Vector2 position)
+    public void OnPlayerMoved(string playerId, Vector2 position, Vector2 dir)
     {
-        if (_players.TryGetValue(playerId, out var player))
-            player.Position = position;
+        if (!_players.TryGetValue(playerId, out var player)) 
+            return;
+
+        player.SetRemoteInput(dir, position);
     }
 
     public void OnPlayerLeave(string playerId)

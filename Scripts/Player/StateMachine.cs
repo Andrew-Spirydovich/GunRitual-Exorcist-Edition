@@ -3,22 +3,22 @@ using System;
 
 public class StateMachine
 {
-    private PlayerState _currentState;
-
+    public PlayerState CurrentState { get; private set; }
+    
     public void ChangeState(PlayerState newState)
     {
-        _currentState?.Exit();
-        _currentState = newState;
-        _currentState.Enter();
+        CurrentState?.Exit();
+        CurrentState = newState;
+        CurrentState.Enter();
     }
 
     public void Update(double delta)
     {
-        _currentState?.Update(delta);
+        CurrentState?.Update(delta);
     }
 
     public void PhysicsUpdate(double delta)
     {
-        _currentState?.PhysicsUpdate(delta);
+        CurrentState?.PhysicsUpdate(delta);
     }
 }
