@@ -1,11 +1,11 @@
 using Godot;
-using System;
 
 public class PlayerMovement
 {
     private const float SPEED = 200f;
-    private CollisionShape2D _collisionShape;
-    private Player _player;
+    private readonly CollisionShape2D _collisionShape;
+    private readonly Player _player;
+            
     public PlayerMovement(CollisionShape2D collisionShape, Player player)
     {
         _collisionShape = collisionShape;
@@ -14,8 +14,7 @@ public class PlayerMovement
 
     public void Move(Node2D target, double delta)
     {
-        var direction = _player.InputVector;
-        var velocity = direction * SPEED;
+        var velocity = _player.InputVector * SPEED;
 
         if (target is CharacterBody2D character)
         {
@@ -32,8 +31,8 @@ public class PlayerMovement
     {
         var x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
         var y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-        var dir = new Vector2(x, y);
+        var direction = new Vector2(x, y);
         
-        return dir.Length() > 1 ? dir.Normalized() : dir;
+        return direction.Length() > 1 ? direction.Normalized() : direction;
     }
 }

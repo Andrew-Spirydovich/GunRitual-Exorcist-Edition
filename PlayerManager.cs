@@ -3,23 +3,29 @@ using Godot.Collections;
 
 public partial class PlayerManager : Node
 {
-    [Export] 
-    private PackedScene _playerScene;
-    private Dictionary<string, Player> _players = new Dictionary<string,Player>();
+    [Export] private PackedScene _playerScene;
+    private Dictionary<string, Player> _players = new();    
     
     public Player SpawnLocalPlayer(string playerId, Vector2 position)
     {
         if(_players.TryGetValue(playerId, out var existingPlayer))
             return existingPlayer;
 
-        var localPlayer = _playerScene.Instantiate<Player>();
-        localPlayer.Name = $"Player_{playerId}";
-        localPlayer.Position = position;
-        localPlayer.IsLocal = true;
-        AddChild(localPlayer);
-        _players.Add(playerId, localPlayer);
+        var player = CreatePlayerInstance(playerId, position, isLocal: true);
+        _players.Add(playerId, player);
         
-        return localPlayer;
+        return player;
+    }
+    
+    private Player CreatePlayerInstance(string playerId, Vector2 position, bool isLocal)
+    {
+        var player = _playerScene.Instantiate<Player>();
+        player.Name = $"Player_{playerId}";
+        player.Position = position;
+        player.IsLocal = isLocal;
+        AddChild(player);
+        
+        return player;
     }
     
     public void OnPlayerJoined(string playerId, Vector2 position)
@@ -45,10 +51,10 @@ public partial class PlayerManager : Node
 
     public void OnPlayerLeave(string playerId)
     {
-        if (_players.TryGetValue(playerId, out var player))
-        {
-            player.QueueFree();
-            _players.Remove(playerId);
-        }
+        if (!_players.TryGetValue(playerId, out var player))
+            return;
+        
+        player.QueueFree();
+        _players.Remove(playerId);
     }
 }

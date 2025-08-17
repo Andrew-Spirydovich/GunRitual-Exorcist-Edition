@@ -7,12 +7,12 @@
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player/Player.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/NetworkClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +49,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Executable.Player (1).executor": "Run",
+    ".NET Executable.Player (2).executor": "Run",
+    ".NET Executable.Player 1.executor": "Run",
+    ".NET Executable.Player 2.executor": "Run",
+    ".NET Executable.Player 3.executor": "Run",
     ".NET Executable.Player.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -64,10 +68,21 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Compound.2 Players">
+  <component name="RunManager" selected="Compound.3 Players">
+    <configuration name="1 Player" type="CompoundRunConfigurationType">
+      <toRun name="Player" type="RunExe" />
+      <toRun name="Player (1)" type="RunExe" />
+      <method v="2" />
+    </configuration>
     <configuration name="2 Players" type="CompoundRunConfigurationType">
       <toRun name="Player" type="RunExe" />
       <toRun name="Player (1)" type="RunExe" />
+      <method v="2" />
+    </configuration>
+    <configuration name="3 Players" type="CompoundRunConfigurationType">
+      <toRun name="Player 1" type="RunExe" />
+      <toRun name="Player (1)" type="RunExe" />
+      <toRun name="Player (2)" type="RunExe" />
       <method v="2" />
     </configuration>
     <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory" show_console_on_std_err="false" show_console_on_std_out="false" port="6006">
@@ -98,7 +113,7 @@
         <option name="Build Solution" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Player (1)" type="RunExe" factoryName=".NET Executable">
+    <configuration name="Player 1" type="RunExe" factoryName=".NET Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -116,10 +131,28 @@
         <option name="Build Solution" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+    <configuration name="Player 2" type="RunExe" factoryName=".NET Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
-      <option name="WORKING_DIRECTORY" value="D:\GodotProject\gunritual--exorcist-edition" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Player 3" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
@@ -136,9 +169,12 @@
     </configuration>
     <list>
       <item itemvalue=".NET Executable.Editor" />
-      <item itemvalue=".NET Executable.Player" />
-      <item itemvalue=".NET Executable.Player (1)" />
+      <item itemvalue=".NET Executable.Player 1" />
+      <item itemvalue=".NET Executable.Player 2" />
+      <item itemvalue=".NET Executable.Player 3" />
+      <item itemvalue="Compound.3 Players" />
       <item itemvalue="Compound.2 Players" />
+      <item itemvalue="Compound.1 Player" />
       <item itemvalue="GdScript Start and Debug.Player GDScript" />
     </list>
   </component>
@@ -158,7 +194,10 @@
       <workItem from="1754946819362" duration="3038000" />
       <workItem from="1755032985327" duration="7877000" />
       <workItem from="1755102007305" duration="5307000" />
-      <workItem from="1755194308342" duration="8613000" />
+      <workItem from="1755194308342" duration="11067000" />
+      <workItem from="1755349244422" duration="3913000" />
+      <workItem from="1755434760140" duration="5572000" />
+      <workItem from="1755450031738" duration="11981000" />
     </task>
     <servers />
   </component>

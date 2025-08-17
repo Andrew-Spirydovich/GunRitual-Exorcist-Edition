@@ -1,9 +1,8 @@
 using Godot;
-using System;
 
 public class PlayerAnimator
 {
-    private AnimatedSprite2D _sprite;
+    private readonly AnimatedSprite2D _sprite;
 
     public PlayerAnimator(AnimatedSprite2D sprite)
     {

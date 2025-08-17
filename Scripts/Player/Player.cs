@@ -1,15 +1,11 @@
 using Godot;
-using System;
-using System.Globalization;
 
 public partial class Player : Node2D
 {
-    [Export]
-    private CollisionShape2D _collider;
-    [Export]
-    private AnimatedSprite2D _sprite;
-    [Export]
-    private Camera2D _camera;
+    [Export] private CollisionShape2D _collider;
+    [Export] private AnimatedSprite2D _sprite;
+    [Export] private Camera2D _camera;
+    [Export] private Material _material;
     
     public bool IsLocal { get; set; }
     public StateMachine StateMachine { get; private set; }
@@ -24,9 +20,12 @@ public partial class Player : Node2D
         StateMachine = new StateMachine();
         StateMachine.ChangeState(new IdleState(this));
         SetProcess(true);
-        
+
         if (IsLocal)
+        {
+            _sprite.Material = _material;
             _camera.Enabled = true;
+        }
     }   
 
     public override void _Process(double delta)
@@ -44,9 +43,9 @@ public partial class Player : Node2D
             StateMachine?.PhysicsUpdate(delta);
     }
 
-    public void SetRemoteInput(Vector2 dir, Vector2 pos)
+    public void SetRemoteInput(Vector2 direction, Vector2 position)
     {
-        InputVector = dir;
-        Position = pos;
+        InputVector = direction;
+        Position = position;
     }
 }
