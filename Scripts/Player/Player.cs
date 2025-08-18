@@ -33,8 +33,9 @@ public partial class Player : CharacterBody2D
         if (IsLocal)
             InputVector = Movement.GetInputDirection();
         
+        Movement.UpdateDirection(InputVector);
         StateMachine?.Update(delta);
-        Animator?.UpdateDirection(InputVector);
+        Animator?.UpdateDirection(Movement.FacingRight);
     }
     
     public override void _PhysicsProcess(double delta)

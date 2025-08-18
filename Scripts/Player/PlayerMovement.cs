@@ -4,6 +4,7 @@ public class PlayerMovement
 {
     private const float SPEED = 200f;
     private const float GRAVITY = 800f;
+    public bool FacingRight { get; private set; } = true;
     
     private Vector2 _velocity = Vector2.Zero;
     
@@ -41,5 +42,13 @@ public class PlayerMovement
         var direction = new Vector2(x, y);
         
         return direction.Length() > 1 ? direction.Normalized() : direction;
+    }
+    
+    public void UpdateDirection(Vector2 input)
+    {
+        if (Mathf.Abs(input.X) > 0.01f)
+        {
+            FacingRight = input.X > 0;
+        }
     }
 }

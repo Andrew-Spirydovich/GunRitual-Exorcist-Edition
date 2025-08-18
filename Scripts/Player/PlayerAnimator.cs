@@ -35,9 +35,8 @@ public class PlayerAnimator
         }
     }
     
-    public void UpdateDirection(Vector2 input)
+    public void UpdateDirection(bool facingRight)
     {
-        if (Mathf.Abs(input.X) > 0.01f)
-            _sprite.FlipH = input.X < 0;
+        _sprite.FlipH = !facingRight;
     }
 }

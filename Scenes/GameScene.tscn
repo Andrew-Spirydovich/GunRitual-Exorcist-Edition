@@ -40,3 +40,27 @@ texture = ExtResource("7_x6js8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3.8147e-05, 4)
 shape = SubResource("RectangleShape2D_lg2j6")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-232, 118)
+scale = Vector2(1.04, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+scale = Vector2(25, 1)
+texture = ExtResource("7_x6js8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(3.8147e-05, 4)
+shape = SubResource("RectangleShape2D_lg2j6")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(344, 118)
+scale = Vector2(1.04, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+scale = Vector2(25, 1)
+texture = ExtResource("7_x6js8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(3.8147e-05, 4)
+shape = SubResource("RectangleShape2D_lg2j6")

@@ -5,31 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/RollState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player Idle 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player Idle 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/player run 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/player run 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameScene.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.gdshader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.gdshader.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.material" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlayerManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlayerManager.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/GameScene.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player/Player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GameScene.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GameScene.cs.uid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs.uid" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,18 +77,18 @@
 }]]></component>
   <component name="RunManager" selected="Compound.2 Players">
     <configuration name="1 Player" type="CompoundRunConfigurationType">
-      <toRun name="Player 1" type="RunExe" />
+      <toRun name="Player" type="RunExe" />
       <method v="2" />
     </configuration>
     <configuration name="2 Players" type="CompoundRunConfigurationType">
       <toRun name="Player" type="RunExe" />
-      <toRun name="Player (1)" type="RunExe" />
+      <toRun name="Player 2" type="RunExe" />
       <method v="2" />
     </configuration>
     <configuration name="3 Players" type="CompoundRunConfigurationType">
       <toRun name="Player 1" type="RunExe" />
-      <toRun name="Player (1)" type="RunExe" />
-      <toRun name="Player (2)" type="RunExe" />
+      <toRun name="Player 2" type="RunExe" />
+      <toRun name="Player 3" type="RunExe" />
       <method v="2" />
     </configuration>
     <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory" show_console_on_std_err="false" show_console_on_std_out="false" port="6006">
@@ -185,7 +173,26 @@
         <option name="Build Solution" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
+      <option name="WORKING_DIRECTORY" value="D:\GodotProject\gunritual--exorcist-edition" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue=".NET Executable.Player" />
       <item itemvalue=".NET Executable.Editor" />
       <item itemvalue=".NET Executable.Player 1" />
       <item itemvalue=".NET Executable.Player 2" />
@@ -216,6 +223,8 @@
       <workItem from="1755349244422" duration="3913000" />
       <workItem from="1755434760140" duration="5572000" />
       <workItem from="1755450031738" duration="22941000" />
+      <workItem from="1755520871998" duration="266000" />
+      <workItem from="1755532734282" duration="6249000" />
     </task>
     <servers />
   </component>

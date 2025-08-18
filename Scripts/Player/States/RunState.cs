@@ -28,6 +28,28 @@ public class RunState : PlayerState
         {
             _player.StateMachine.ChangeState(new JumpState(_player));
         }
+        
+        if (Input.IsActionJustPressed("input_roll"))
+        {
+            _player.StateMachine.ChangeState(new RollState(_player));
+        }
+        
+        if (_player.Velocity.Y > 0)
+        {
+            _player.StateMachine.ChangeState(new FallState(_player));
+        }
+        
+        if (WantsToSlide() && _player.Movement.IsOnFloor())
+        {
+            _player.StateMachine.ChangeState(new SlideState(_player));
+        }
+    }
+    
+    public bool WantsToSlide()
+    {
+        return Input.IsActionPressed("input_down") &&
+               (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
+               Input.IsActionJustPressed("input_down"); // триггер по дауну
     }
 
     public override void PhysicsUpdate(double delta)

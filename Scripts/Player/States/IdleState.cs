@@ -28,6 +28,16 @@ public class IdleState : PlayerState
         {
             _player.StateMachine.ChangeState(new JumpState(_player));
         }
+        
+        if (Input.IsActionJustPressed("input_roll"))
+        {
+            _player.StateMachine.ChangeState(new RollState(_player));
+        }
+        
+        if (_player.Velocity.Y > 0)
+        {
+            _player.StateMachine.ChangeState(new FallState(_player));
+        }
     }
 
     public override void PhysicsUpdate(double delta)

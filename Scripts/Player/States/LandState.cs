@@ -13,8 +13,6 @@ public class LandState : PlayerState
     public override void Enter()
     {
         _player.Animator.SetAnimation("Land");
-        
-        // Когда анимация закончится → смена стейта
         _player.Animator.ConnectAnimationFinished(OnAnimationFinished); 
     }
 
@@ -29,6 +27,17 @@ public class LandState : PlayerState
         {
             _player.StateMachine.ChangeState(new RunState(_player));
         }
+        
+        if (Input.IsActionJustPressed("input_roll"))
+        {
+            _player.StateMachine.ChangeState(new RollState(_player));
+        }
+        
+        if (WantsToSlide() && _player.Movement.IsOnFloor())
+        {
+            _player.StateMachine.ChangeState(new SlideState(_player));
+        }
+        
     }
 
     public override void PhysicsUpdate(double delta)
@@ -36,6 +45,13 @@ public class LandState : PlayerState
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
         network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector);
+    }
+    
+    public bool WantsToSlide()
+    {
+        return Input.IsActionPressed("input_down") &&
+               (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
+               Input.IsActionJustPressed("input_down");
     }
     
     private void OnAnimationFinished()

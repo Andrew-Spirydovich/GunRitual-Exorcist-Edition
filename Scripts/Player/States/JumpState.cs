@@ -24,7 +24,7 @@ public class JumpState : PlayerState
 
     public override void Update(double delta)
     {
-        if (_player.Velocity.Y > 0) // Начал падать
+        if (_player.Velocity.Y > 0)
         {
             _player.StateMachine.ChangeState(new FallState(_player));
         }

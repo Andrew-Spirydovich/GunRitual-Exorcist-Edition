@@ -4,7 +4,6 @@ using System;
 public class FallState : PlayerState
 {
     private Player _player;
-    private const float JUMP_FORCE = 400f;
 
     public FallState(Player player)
     {
