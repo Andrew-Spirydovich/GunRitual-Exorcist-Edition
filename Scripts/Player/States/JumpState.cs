@@ -1,32 +1,32 @@
 using Godot;
 using System;
 
-public class RunState : PlayerState
+public class JumpState : PlayerState
 {
     private Player _player;
+    private const float JUMP_FORCE = 400f;
 
-    public RunState(Player player)
+    public JumpState(Player player)
     {
         _player = player;
     }
     
     public override void Enter()
     {
-        _player.Animator.SetAnimation("Run");
+        var vel = _player.Velocity;
+        vel.Y = -JUMP_FORCE;
+        _player.Velocity = vel;
+        
+        _player.Animator.SetAnimation("Jump");
     }   
 
     public override void Exit() { }
 
     public override void Update(double delta)
     {
-        if (_player.InputVector == Vector2.Zero)
+        if (_player.Velocity.Y > 0) // Начал падать
         {
-            _player.StateMachine.ChangeState(new IdleState(_player));
-        }
-
-        if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
-        {
-            _player.StateMachine.ChangeState(new JumpState(_player));
+            _player.StateMachine.ChangeState(new FallState(_player));
         }
     }
 

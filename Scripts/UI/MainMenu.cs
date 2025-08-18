@@ -3,16 +3,11 @@ using System;
 
 public partial class MainMenu : Control
 {
-    [Export]
-    private Button _playButton;
-    [Export]
-    private Button _hostButton;
-    [Export]
-    private Button _connectButton;
-    [Export]
-    private Button _settingsButton;
-    [Export]
-    private Button _quitButton;
+    [Export] private Button _playButton;
+    [Export] private Button _hostButton;
+    [Export] private Button _connectButton;
+    [Export] private Button _settingsButton;
+    [Export] private Button _quitButton;
 
     public override void _Ready()
     {
@@ -28,8 +23,7 @@ public partial class MainMenu : Control
 
         if (connected)
         {
-            NetworkClient.Instance?.SetLocalUserId("Andrew");
-            GetTree().ChangeSceneToFile("res://GameScene.tscn");
+            GetTree().ChangeSceneToFile("res://Scenes/GameScene.tscn");
         }
     }
 

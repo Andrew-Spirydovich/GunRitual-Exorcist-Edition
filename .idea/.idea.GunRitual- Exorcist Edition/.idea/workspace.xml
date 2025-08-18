@@ -5,13 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player Idle 48x48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player Idle 48x48.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/player run 48x48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/player run 48x48.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameScene.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player.gdshader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player.gdshader.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player.material" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerManager.cs.uid" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player/Player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/NetworkClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GameScene.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GameScene.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/NetworkClient.cs.uid" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +53,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ef7fcc0a17ae82dc3bdd08c20e6b2f5c283ab99/Godot.NativeInterop.NativeFuncs.generated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df73a4db74df89d59655c5fb6326406f47fbfa9af1fa81518fe0a07c49d34133/Node.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ef7b819b226fab796d1dfe66d415dd7510bcac87675020ddb8f03a828e763/CanvasItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/GodotProject/gunritual--exorcist-edition/Scripts/Player/States/RunState.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -68,10 +87,9 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Compound.3 Players">
+  <component name="RunManager" selected="Compound.2 Players">
     <configuration name="1 Player" type="CompoundRunConfigurationType">
-      <toRun name="Player" type="RunExe" />
-      <toRun name="Player (1)" type="RunExe" />
+      <toRun name="Player 1" type="RunExe" />
       <method v="2" />
     </configuration>
     <configuration name="2 Players" type="CompoundRunConfigurationType">
@@ -197,7 +215,7 @@
       <workItem from="1755194308342" duration="11067000" />
       <workItem from="1755349244422" duration="3913000" />
       <workItem from="1755434760140" duration="5572000" />
-      <workItem from="1755450031738" duration="11981000" />
+      <workItem from="1755450031738" duration="22941000" />
     </task>
     <servers />
   </component>

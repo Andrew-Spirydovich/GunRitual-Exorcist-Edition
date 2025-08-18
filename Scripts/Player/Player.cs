@@ -1,12 +1,12 @@
 using Godot;
 
-public partial class Player : Node2D
+public partial class Player : CharacterBody2D
 {
     [Export] private CollisionShape2D _collider;
     [Export] private AnimatedSprite2D _sprite;
     [Export] private Camera2D _camera;
     [Export] private Material _material;
-    
+    [Export] private Label _playerLabel;
     public bool IsLocal { get; set; }
     public StateMachine StateMachine { get; private set; }
     public PlayerAnimator Animator { get; private set; }
@@ -41,6 +41,11 @@ public partial class Player : Node2D
     {
         if (IsLocal)
             StateMachine?.PhysicsUpdate(delta);
+    }
+
+    public void SetDisplayName(string name)
+    {
+        _playerLabel.Text = name;
     }
 
     public void SetRemoteInput(Vector2 direction, Vector2 position)

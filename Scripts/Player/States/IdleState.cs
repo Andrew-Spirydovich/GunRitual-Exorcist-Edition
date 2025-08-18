@@ -23,11 +23,18 @@ public class IdleState : PlayerState
         {
             _player.StateMachine.ChangeState(new RunState(_player));
         }
+        
+        if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
+        {
+            _player.StateMachine.ChangeState(new JumpState(_player));
+        }
     }
 
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;
-        network.SendMoveRequest(network.GetLocalUserId(), _player.GlobalPosition, Vector2.Zero);
+        _player.Movement.ApplyGravity(delta);
+        _player.Movement.HandleHorizontalMovement(delta);
+        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, Vector2.Zero);
     }
 }

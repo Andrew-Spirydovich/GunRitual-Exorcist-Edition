@@ -6,7 +6,7 @@ public partial class NetworkClient : Node
 {
     public static NetworkClient Instance { get; private set; }
     
-    private string _localUserId;
+    public string LocalUserID { get; private set; }
     private WebSocketPeer _webSocket = new WebSocketPeer();
     private PlayerManager _playerManager;   
     
@@ -21,8 +21,7 @@ public partial class NetworkClient : Node
         Instance = this;
     }
     
-    public void SetLocalUserId(string localUserId) => _localUserId = localUserId;
-    public string GetLocalUserId() => _localUserId;
+    public void SetLocalUserId(string localUserId) => LocalUserID = localUserId;
 
     public override void _Process(double delta)
     {
@@ -42,7 +41,6 @@ public partial class NetworkClient : Node
         
     }
     
-        
     public void SetPlayerManager(PlayerManager playerManager)
     {
         _playerManager = playerManager;
@@ -136,9 +134,9 @@ public partial class NetworkClient : Node
     
     private void HandleJoinAck(Godot.Collections.Dictionary msg)
     {
-        _localUserId = msg["playerId"].AsString();
+        LocalUserID = msg["playerId"].AsString();
         var pos = new Vector2((float)msg["x"].AsDouble(), (float)msg["y"].AsDouble());
-        _playerManager.SpawnLocalPlayer(_localUserId, pos);
+        _playerManager.SpawnLocalPlayer(LocalUserID, pos);
 
         if (!msg.ContainsKey("existingPlayers")) 
             return;

@@ -19,13 +19,14 @@ public partial class PlayerManager : Node
     
     private Player CreatePlayerInstance(string playerId, Vector2 position, bool isLocal)
     {
-        var player = _playerScene.Instantiate<Player>();
-        player.Name = $"Player_{playerId}";
-        player.Position = position;
-        player.IsLocal = isLocal;
-        AddChild(player);
+        var localPlayer = _playerScene.Instantiate<Player>();
+        localPlayer.Name = $"Player_{playerId}";
+        localPlayer.Position = position;
+        localPlayer.IsLocal = isLocal;
+        localPlayer.SetDisplayName(playerId);
+        AddChild(localPlayer);
         
-        return player;
+        return localPlayer;
     }
     
     public void OnPlayerJoined(string playerId, Vector2 position)
@@ -33,12 +34,13 @@ public partial class PlayerManager : Node
         if (_players.ContainsKey(playerId))
             return;
         
-        var playerInstance = _playerScene.Instantiate<Player>();
-        playerInstance.Name = $"Player_{playerId}";
-        playerInstance.Position = position;
-        playerInstance.IsLocal = false;
-        AddChild(playerInstance);
-        _players[playerId] = playerInstance;
+        var joinedPlayer = _playerScene.Instantiate<Player>();
+        joinedPlayer.Name = $"Player_{playerId}";
+        joinedPlayer.Position = position;
+        joinedPlayer.IsLocal = false;
+        joinedPlayer.SetDisplayName(playerId);
+        AddChild(joinedPlayer);
+        _players[playerId] = joinedPlayer;
     }
 
     public void OnPlayerMoved(string playerId, Vector2 position, Vector2 dir)

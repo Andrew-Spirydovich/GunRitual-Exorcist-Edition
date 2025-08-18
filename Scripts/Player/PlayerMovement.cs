@@ -3,6 +3,10 @@ using Godot;
 public class PlayerMovement
 {
     private const float SPEED = 200f;
+    private const float GRAVITY = 800f;
+    
+    private Vector2 _velocity = Vector2.Zero;
+    
     private readonly CollisionShape2D _collisionShape;
     private readonly Player _player;
             
@@ -11,25 +15,28 @@ public class PlayerMovement
         _collisionShape = collisionShape;
         _player = player;
     }
-
-    public void Move(Node2D target, double delta)
+    
+    public bool IsOnFloor() => _player.IsOnFloor();
+    
+    public void HandleHorizontalMovement(double delta)
     {
-        var velocity = _player.InputVector * SPEED;
-
-        if (target is CharacterBody2D character)
-        {
-            character.Velocity = velocity;
-            character.MoveAndSlide();
-        }
-        else
-        {
-            target.Position += velocity * (float)delta;
-        }
+        var input = GetInputDirection();
+        var velocity = _player.Velocity;
+        velocity.X = input.X * SPEED;
+        _player.Velocity = velocity;
+        _player.MoveAndSlide();
+    }
+    
+    public void ApplyGravity(double delta)
+    {
+        var vel = _player.Velocity;
+        vel.Y += 900f * (float)delta;
+        _player.Velocity = vel;
     }
     
     public Vector2 GetInputDirection()
     {
-        var x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+        var x = Input.GetActionStrength("input_right") - Input.GetActionStrength("input_left");
         var y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
         var direction = new Vector2(x, y);
         
