@@ -18,8 +18,7 @@ public class PlayerAnimator
 
         _sprite.Play(name);
     }
-
-    // В PlayerAnimator добавь метод для подписки на сигнал
+    
     public void ConnectAnimationFinished(Action callback)
     {
         _animationFinishedCallback = callback;

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class IdleState : PlayerState
 {
@@ -19,32 +20,37 @@ public class IdleState : PlayerState
 
     public override void Update(double delta)
     {
-        if (_player.InputVector != Vector2.Zero)
+        if (_player.IsLocal) // локальный игрок — проверяем input
         {
-            _player.StateMachine.ChangeState(new RunState(_player));
-        }
-        
-        if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
-        {
-            _player.StateMachine.ChangeState(new JumpState(_player));
-        }
-        
-        if (Input.IsActionJustPressed("input_roll"))
-        {
-            _player.StateMachine.ChangeState(new RollState(_player));
-        }
-        
-        if (_player.Velocity.Y > 0)
-        {
-            _player.StateMachine.ChangeState(new FallState(_player));
+            if (_player.InputVector != Vector2.Zero)
+                _player.StateMachine.ChangeState(PlayerStateType.Run);
+
+            if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
+                _player.StateMachine.ChangeState(PlayerStateType.Jump);
+
+            if (Input.IsActionJustPressed("input_roll"))
+                _player.StateMachine.ChangeState(PlayerStateType.Roll);
+
+            if (_player.Velocity.Y > 0)
+                _player.StateMachine.ChangeState(PlayerStateType.Fall);
+
+            if (WantsToSlide() && _player.Movement.IsOnFloor())
+                _player.StateMachine.ChangeState(PlayerStateType.Slide);
         }
     }
 
+    public bool WantsToSlide()
+    {
+        return Input.IsActionPressed("input_down") &&
+               (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
+               Input.IsActionJustPressed("input_down");
+    }
+    
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
         _player.Movement.HandleHorizontalMovement(delta);
-        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, Vector2.Zero);
+        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, Vector2.Zero, Vector2.Zero);
     }
 }

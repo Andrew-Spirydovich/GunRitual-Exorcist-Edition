@@ -69,33 +69,44 @@ public partial class NetworkClient : Node
     }
     
     public void SendJoinRequest(string displayName) 
-        => SendMessage(new Godot.Collections.Dictionary<string, Variant>
-    {
-        { "type", "JOIN" },
-        { "roomId", "room1" },
-        { "displayName", displayName }
-    });
+        => SendMessage(new Godot.Collections.Dictionary<string, Variant> 
+        { 
+            { "type", "JOIN" }, 
+            { "roomId", "room1" }, 
+            { "displayName", displayName } 
+        });
     
 
-    public void SendMoveRequest(string playerId, Vector2 position, Vector2 direction) 
-        => SendMessage(new Godot.Collections.Dictionary<string, Variant>
-    {
+    public void SendMoveRequest(string playerId, Vector2 position, Vector2 direction, Vector2 velocity) 
+        => SendMessage(new Godot.Collections.Dictionary<string, Variant> 
+        {
             { "type", "MOVE" },
             { "playerId", playerId },
             { "roomId", "room1" },
             { "x", position.X },
             { "y", position.Y },
             { "dirX", direction.X },
-            { "dirY", direction.Y }
-    });
+            { "dirY", direction.Y },
+            { "velX", velocity.X},
+            { "velY", velocity.Y } 
+        });
+
+    public void SendStateRequest(string playerId, string currentState)
+        => SendMessage(new Godot.Collections.Dictionary<string, Variant> 
+        {
+            { "type", "STATE-CHANGED" },
+            { "roomId", "room1" },
+            { "playerId", playerId },
+            { "currentState", currentState }
+        });
     
     public void SendLeaveRequest(string playerId) 
-        => SendMessage(new Godot.Collections.Dictionary<string, Variant>
-    {
-        { "type", "LEAVE" },
-        { "roomId", "room1" },
-        { "playerId", playerId }
-    });
+        => SendMessage(new Godot.Collections.Dictionary<string, Variant> 
+        { 
+            { "type", "LEAVE" }, 
+            { "roomId", "room1" }, 
+            { "playerId", playerId } 
+        });
 
     public void HandleServerMessage(string json)
     {
@@ -112,6 +123,9 @@ public partial class NetworkClient : Node
         
         var direction = new Vector2((float)message.GetValueOrDefault("dirX", 0).AsDouble(),
             (float)message.GetValueOrDefault("dirY", 0).AsDouble());
+        var velocity = new Vector2((float)message.GetValueOrDefault("velX", 0).AsDouble(),
+            (float)message.GetValueOrDefault("velY", 0).AsDouble());
+        var state = message.GetValueOrDefault("currentState", "Idle").AsStringName().ToString();
         
         switch (type)
         {
@@ -123,11 +137,14 @@ public partial class NetworkClient : Node
                 _playerManager?.OnPlayerJoined(playerId, position);
                 break;
             case "MOVE":
-                _playerManager?.OnPlayerMoved(playerId, position, direction);
+                _playerManager?.OnPlayerMoved(playerId, position, direction, velocity);
                 break;
             case "LEAVE":
                 GD.Print("Пакет LEAVE:", json);
                 _playerManager?.OnPlayerLeave(playerId);
+                break;
+            case "STATE-CHANGED":
+                _playerManager?.OnPlayerStateChanged(playerId, state);
                 break;
         }
     }

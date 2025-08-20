@@ -1,4 +1,5 @@
 using Godot;
+using GunRitualExorcistEdition.Scripts.Player.States;
 
 public partial class Player : CharacterBody2D
 {
@@ -15,10 +16,10 @@ public partial class Player : CharacterBody2D
     
     public override void _Ready()
     {
-        Movement = new PlayerMovement(_collider, this);
+        Movement = new PlayerMovement(this);
         Animator = new PlayerAnimator(_sprite);
-        StateMachine = new StateMachine();
-        StateMachine.ChangeState(new IdleState(this));
+        StateMachine = new StateMachine(this);
+        StateMachine.ChangeState(PlayerStateType.Idle);
         SetProcess(true);
 
         if (IsLocal)
@@ -31,17 +32,19 @@ public partial class Player : CharacterBody2D
     public override void _Process(double delta)
     {
         if (IsLocal)
+        {
             InputVector = Movement.GetInputDirection();
+            StateMachine.Update(delta);
+        }
         
         Movement.UpdateDirection(InputVector);
-        StateMachine?.Update(delta);
-        Animator?.UpdateDirection(Movement.FacingRight);
+        Animator.UpdateDirection(Movement.FacingRight);
     }
     
     public override void _PhysicsProcess(double delta)
     {
         if (IsLocal)
-            StateMachine?.PhysicsUpdate(delta);
+            StateMachine.PhysicsUpdate(delta);
     }
 
     public void SetDisplayName(string name)
@@ -49,9 +52,10 @@ public partial class Player : CharacterBody2D
         _playerLabel.Text = name;
     }
 
-    public void SetRemoteInput(Vector2 direction, Vector2 position)
+    public void SetRemoteInput(Vector2 direction, Vector2 position, Vector2 velocity)
     {
         InputVector = direction;
         Position = position;
+        Velocity = velocity;
     }
 }

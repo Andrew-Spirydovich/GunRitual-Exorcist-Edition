@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class SlideState : PlayerState
 {
@@ -32,14 +33,17 @@ public class SlideState : PlayerState
 
     public override void Update(double delta)
     {
-        if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
+        if (_player.IsLocal)
         {
-            _player.StateMachine.ChangeState(new JumpState(_player));
-        }
+            if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
+            {
+                _player.StateMachine.ChangeState(PlayerStateType.Jump);
+            }
         
-        if (_player.Velocity.Y > 0)
-        {
-            _player.StateMachine.ChangeState(new FallState(_player));
+            if (_player.Velocity.Y > 0)
+            {
+                _player.StateMachine.ChangeState(PlayerStateType.Fall);
+            }
         }
     }
 
@@ -54,9 +58,12 @@ public class SlideState : PlayerState
         if (_timer <= 0)
         {
             if (_player.InputVector.X != 0)
-                _player.StateMachine.ChangeState(new RunState(_player));
+                _player.StateMachine.ChangeState(PlayerStateType.Run);
             else
-                _player.StateMachine.ChangeState(new IdleState(_player));
+                _player.StateMachine.ChangeState(PlayerStateType.Idle);
         }
+        
+        var network = NetworkClient.Instance;
+        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
 }

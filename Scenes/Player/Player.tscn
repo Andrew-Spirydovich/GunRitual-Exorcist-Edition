@@ -401,6 +401,7 @@ sprite_frames = SubResource("SpriteFrames_hiucn")
 animation = &"Slide"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -12.0
 offset_top = -24.0
 offset_right = 13.0
@@ -418,3 +419,4 @@ shape = SubResource("RectangleShape2D_sasra")
 [node name="Camera2D" parent="." instance=ExtResource("4_ude3g")]
 enabled = false
 position_smoothing_enabled = true
+position_smoothing_speed = 4.0

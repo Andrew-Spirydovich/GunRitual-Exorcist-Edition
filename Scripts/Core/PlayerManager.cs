@@ -1,10 +1,12 @@
+using System;
+using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
+using GunRitualExorcistEdition.Scripts.Player.States;
 
 public partial class PlayerManager : Node
 {
     [Export] private PackedScene _playerScene;
-    private Dictionary<string, Player> _players = new();    
+    private Godot.Collections.Dictionary<string, Player> _players = new();    
     
     public Player SpawnLocalPlayer(string playerId, Vector2 position)
     {
@@ -43,12 +45,21 @@ public partial class PlayerManager : Node
         _players[playerId] = joinedPlayer;
     }
 
-    public void OnPlayerMoved(string playerId, Vector2 position, Vector2 dir)
+    public void OnPlayerMoved(string playerId, Vector2 position, Vector2 dir, Vector2 velocity)
     {
         if (!_players.TryGetValue(playerId, out var player)) 
             return;
 
-        player.SetRemoteInput(dir, position);
+        player.SetRemoteInput(dir, position, velocity);
+    }
+
+    public void OnPlayerStateChanged(string playerId, string state)
+    {
+        if (!_players.TryGetValue(playerId, out var player)) 
+            return;
+
+        if (Enum.TryParse<PlayerStateType>(state, out var parsedState))
+            player.StateMachine.ChangeState(parsedState);
     }
 
     public void OnPlayerLeave(string playerId)

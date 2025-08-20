@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class JumpState : PlayerState
 {
@@ -24,9 +25,12 @@ public class JumpState : PlayerState
 
     public override void Update(double delta)
     {
-        if (_player.Velocity.Y > 0)
+        if (_player.IsLocal)
         {
-            _player.StateMachine.ChangeState(new FallState(_player));
+            if (_player.Velocity.Y > 0)
+            {
+                _player.StateMachine.ChangeState(PlayerStateType.Fall);
+            }
         }
     }
 
@@ -35,6 +39,6 @@ public class JumpState : PlayerState
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
         _player.Movement.HandleHorizontalMovement(delta);
-        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector);
+        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
 }

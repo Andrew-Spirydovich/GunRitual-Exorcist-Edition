@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class LandState : PlayerState
 {
@@ -23,28 +24,30 @@ public class LandState : PlayerState
 
     public override void Update(double delta)
     {
-        if (_player.InputVector != Vector2.Zero)
+        if (_player.IsLocal)
         {
-            _player.StateMachine.ChangeState(new RunState(_player));
+            if (_player.InputVector != Vector2.Zero)
+            {
+                _player.StateMachine.ChangeState(PlayerStateType.Run);
+            }
+            
+            if (Input.IsActionJustPressed("input_roll"))
+            {
+                _player.StateMachine.ChangeState(PlayerStateType.Roll);
+            }
+            
+            if (WantsToSlide() && _player.Movement.IsOnFloor())
+            {
+                _player.StateMachine.ChangeState(PlayerStateType.Slide);
+            }
         }
-        
-        if (Input.IsActionJustPressed("input_roll"))
-        {
-            _player.StateMachine.ChangeState(new RollState(_player));
-        }
-        
-        if (WantsToSlide() && _player.Movement.IsOnFloor())
-        {
-            _player.StateMachine.ChangeState(new SlideState(_player));
-        }
-        
     }
 
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
-        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector);
+        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
     
     public bool WantsToSlide()
@@ -57,8 +60,8 @@ public class LandState : PlayerState
     private void OnAnimationFinished()
     {
         if (_player.InputVector != Vector2.Zero)
-            _player.StateMachine.ChangeState(new RunState(_player));
+            _player.StateMachine.ChangeState(PlayerStateType.Run);
         else
-            _player.StateMachine.ChangeState(new IdleState(_player));
+            _player.StateMachine.ChangeState(PlayerStateType.Idle);
     }
 }

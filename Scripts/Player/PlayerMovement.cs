@@ -6,14 +6,10 @@ public class PlayerMovement
     private const float GRAVITY = 800f;
     public bool FacingRight { get; private set; } = true;
     
-    private Vector2 _velocity = Vector2.Zero;
-    
-    private readonly CollisionShape2D _collisionShape;
     private readonly Player _player;
             
-    public PlayerMovement(CollisionShape2D collisionShape, Player player)
+    public PlayerMovement(Player player)
     {
-        _collisionShape = collisionShape;
         _player = player;
     }
     

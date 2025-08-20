@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class RollState : PlayerState
 {
@@ -30,9 +31,12 @@ public class RollState : PlayerState
 
     public override void Update(double delta)
     {
-        if (_player.Velocity.Y > 0)
+        if (_player.IsLocal)
         {
-            _player.StateMachine.ChangeState(new FallState(_player));
+            if (_player.Velocity.Y > 0)
+            {
+                _player.StateMachine.ChangeState(PlayerStateType.Fall);
+            }
         }
     }
 
@@ -46,14 +50,14 @@ public class RollState : PlayerState
         _player.MoveAndSlide();
         
         var network = NetworkClient.Instance;
-        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _rollDirection);
+        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
     
     private void OnAnimationFinished()
     {
         if (_player.InputVector != Vector2.Zero)
-            _player.StateMachine.ChangeState(new RunState(_player));
+            _player.StateMachine.ChangeState(PlayerStateType.Run);
         else
-            _player.StateMachine.ChangeState(new IdleState(_player));
+            _player.StateMachine.ChangeState(PlayerStateType.Idle);
     }
 }
