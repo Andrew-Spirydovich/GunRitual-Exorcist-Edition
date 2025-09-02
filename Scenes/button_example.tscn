@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://4e70hhrg6gg5"]
+
+[ext_resource type="Theme" uid="uid://f6epcktwphj7" path="res://Assets/Themes/MainMenu.tres" id="1_cnyv2"]
+[ext_resource type="Script" uid="uid://b036oijh2vvnx" path="res://Scripts/UI/ButtonBase.cs" id="2_mmmnu"]
+[ext_resource type="AudioStream" uid="uid://dpc6r5qfmmy32" path="res://Assets/Audio/No_Ammo_Sound_Effect.mp3" id="3_gel6n"]
+[ext_resource type="AudioStream" uid="uid://bcw3tnp1p6m8f" path="res://Assets/Audio/lee enfield fire.mp3" id="4_khhip"]
+
+[node name="Button Example" type="Button"]
+theme = ExtResource("1_cnyv2")
+text = "Button Example"
+alignment = 0
+script = ExtResource("2_mmmnu")
+_hoverSound = ExtResource("3_gel6n")
+_clickSound = ExtResource("4_khhip")

@@ -1,23 +1,24 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Core;
 
 public partial class MainMenu : Control
 {
-    [Export] private Button _playButton;
-    [Export] private Button _hostButton;
     [Export] private Button _connectButton;
     [Export] private Button _settingsButton;
-    [Export] private Button _quitButton;
+    [Export] private Button _exitButton;
 
     public override void _Ready()
     {
-        _playButton.Pressed += OnPlayPressed;
+        _connectButton.Pressed += OnConnectPressed;
         _settingsButton.Pressed += OnSettingsPressed;
-        _hostButton.Pressed += OnHostPressed;
-        _quitButton.Pressed += OnQuitPressed;
+        _exitButton.Pressed += OnExitPressed;
+
+        var mainMenuMusic = GD.Load<AudioStream>("res://Assets/Audio/main_menu.mp3");
+        AudioManager.Instance.PlayMusic(mainMenuMusic, 0);
     }
 
-    private void OnPlayPressed()
+    private void OnConnectPressed()
     {
         var connected = NetworkClient.Instance.ConnectToServer("ws://192.168.31.73:8080/ws");
 
@@ -27,16 +28,12 @@ public partial class MainMenu : Control
         }
     }
 
-    private void OnHostPressed()
-    {
-    }
-
     private void OnSettingsPressed()
     {
         GD.Print("Settings");
     }
 
-    private void OnQuitPressed()
+    private void OnExitPressed()
     {
         GetTree().Quit();
     }

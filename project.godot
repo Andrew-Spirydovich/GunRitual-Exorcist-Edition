@@ -21,10 +21,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 NetworkClient="*res://Scripts/Core/NetworkClient.cs"
-
-[debug]
-
-settings/stdout/print_fps=true
+AudioManager="*res://Scenes/audio_manager.tscn"
 
 [display]
 

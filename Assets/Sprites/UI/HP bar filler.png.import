@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw5ch7j5u3joy"
-path="res://.godot/imported/Sprite-0001.png-c353511c7cb3748a01bedffca2ac37ba.ctex"
+uid="uid://c6yiys3gq8yrk"
+path="res://.godot/imported/HP bar filler.png-414c48c55e6017dc8c93410e5027cc09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-c353511c7cb3748a01bedffca2ac37ba.ctex"]
+source_file="res://Assets/Sprites/UI/HP bar filler.png"
+dest_files=["res://.godot/imported/HP bar filler.png-414c48c55e6017dc8c93410e5027cc09.ctex"]
 
 [params]
 

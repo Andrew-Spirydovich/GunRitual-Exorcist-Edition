@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://f6epcktwphj7"]
+
+[ext_resource type="FontFile" uid="uid://boj4povremt4p" path="res://Assets/Fonts/Greenscr.ttf" id="1_ev3hj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ev3hj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixgl2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g18y6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6vo4"]
+
+[resource]
+Button/colors/font_hover_color = Color(0.560476, 0.0993732, 0.0282129, 1)
+Button/colors/font_pressed_color = Color(0.78052, 0.79, 0.2212, 1)
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_ev3hj")
+Button/styles/focus = SubResource("StyleBoxEmpty_ev3hj")
+Button/styles/hover = SubResource("StyleBoxEmpty_ixgl2")
+Button/styles/normal = SubResource("StyleBoxEmpty_g18y6")
+Button/styles/pressed = SubResource("StyleBoxEmpty_x6vo4")

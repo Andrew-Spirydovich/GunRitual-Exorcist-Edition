@@ -1,12 +1,12 @@
 [gd_scene load_steps=60 format=3 uid="uid://bd1l65gh4acp6"]
 
 [ext_resource type="Script" uid="uid://buewks1srp3qn" path="res://Scripts/Player/Player.cs" id="1_h54ih"]
-[ext_resource type="Material" uid="uid://cfp4nk1b8eri0" path="res://Assets/Materials/Player.material" id="2_jmcll"]
+[ext_resource type="Material" uid="uid://cfp4nk1b8eri0" path="res://Assets/Materials & Shaders/Player.material" id="2_jmcll"]
 [ext_resource type="Texture2D" uid="uid://busucs8fywxni" path="res://Assets/Sprites/Player/Player Idle 48x48.png" id="2_ude3g"]
 [ext_resource type="Texture2D" uid="uid://c5ixc3tjio6da" path="res://Assets/Sprites/Player/player run 48x48.png" id="3_jmcll"]
 [ext_resource type="Texture2D" uid="uid://855vxqquqnu4" path="res://Assets/Sprites/Player/player land 48x48.png" id="3_t26db"]
 [ext_resource type="Texture2D" uid="uid://cebgfaco57vbt" path="res://Assets/Sprites/Player/player new jump 48x48.png" id="4_4wape"]
-[ext_resource type="PackedScene" uid="uid://vgxfnbklohai" path="res://Scenes/Camera/Camera2D.tscn" id="4_ude3g"]
+[ext_resource type="PackedScene" uid="uid://vgxfnbklohai" path="res://Scenes/Camera2D.tscn" id="4_ude3g"]
 [ext_resource type="Texture2D" uid="uid://bos0ubjkasumj" path="res://Assets/Sprites/Player/Player Roll 48x48.png" id="6_fk5o5"]
 [ext_resource type="Texture2D" uid="uid://dfd0hxtrjxvg2" path="res://Assets/Sprites/Player/Player Slide 48x48.png" id="8_825xp"]
 
@@ -398,10 +398,9 @@ _playerLabel = NodePath("Label")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_hiucn")
-animation = &"Slide"
+animation = &"Land"
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -12.0
 offset_top = -24.0
 offset_right = 13.0

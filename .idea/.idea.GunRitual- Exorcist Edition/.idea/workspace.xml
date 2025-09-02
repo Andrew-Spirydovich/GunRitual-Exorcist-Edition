@@ -5,23 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/PlayerStateType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/AudioManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player/Player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RollState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RollState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Camera/Camera2D.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/GameScene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/spr_DO_floor_top.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/spr_DO_floor_top.png.import" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +32,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/45/a3958e39/DelegateUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/76/687d6f39/CSharpInstanceBridge.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/69e3acf0074a4ef8afaea275d4055b96522800/f0/33983929/Vector2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4ef0bac6437b6a9567d44f62ae567d854fa7b8513ef7139ef349b49768bc9df/GD_constants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/690e9f2148b5749d9ec30f3c8ddd8d46743c2d5d7fcd6b9b61279423f2cdb0/NativeCalls.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85155171ed851aab2b5bbf9399118942486bff3372208adc42483145b2ef7/GD_extensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/86db9cd834346aad02d74c1b66dd9c64d6ef3147435dd9c9c9477b48f7/Node2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/88aafc465021fb91d3494a7fcbdafbef31a5dc4/Player_ScriptMethods.generated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ef7fcc0a17ae82dc3bdd08c20e6b2f5c283ab99/Godot.NativeInterop.NativeFuncs.generated.cs" root0="FORCE_HIGHLIGHTING" />
@@ -57,29 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Executable.Player (1).executor": "Run",
-    ".NET Executable.Player (2).executor": "Run",
-    ".NET Executable.Player 1.executor": "Run",
-    ".NET Executable.Player 2.executor": "Run",
-    ".NET Executable.Player 3.executor": "Run",
-    ".NET Executable.Player.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "1.1465201",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "debugger.stepping",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Executable.Player (1).executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player (2).executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 1.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 2.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 3.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;1.1465201&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;debugger.stepping&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Compound.3 Players">
+}</component>
+  <component name="RunManager" selected="Compound.1 Player">
     <configuration name="1 Player" type="CompoundRunConfigurationType">
       <toRun name="Player" type="RunExe" />
       <method v="2" />
@@ -230,7 +225,13 @@
       <workItem from="1755520871998" duration="266000" />
       <workItem from="1755532734282" duration="6463000" />
       <workItem from="1755621758556" duration="14307000" />
-      <workItem from="1755694402019" duration="22599000" />
+      <workItem from="1755694402019" duration="26091000" />
+      <workItem from="1755781849550" duration="6982000" />
+      <workItem from="1755888258731" duration="426000" />
+      <workItem from="1756426901642" duration="1745000" />
+      <workItem from="1756639979291" duration="14956000" />
+      <workItem from="1756736090281" duration="9355000" />
+      <workItem from="1756762136082" duration="6470000" />
     </task>
     <task id="LOCAL-00001" summary="Added Movement States">
       <option name="closed" value="true" />

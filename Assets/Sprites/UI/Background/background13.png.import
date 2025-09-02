@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgfr8fwnqfq"
-path="res://.godot/imported/spr_DO_floor_top.png-ace3e96ef772138dbf40e32e5c2e4dc9.ctex"
+uid="uid://cmi4xfhdv8163"
+path="res://.godot/imported/background13.png-f24b4de72a48e1a815c10ca005c7e630.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scripts/spr_DO_floor_top.png"
-dest_files=["res://.godot/imported/spr_DO_floor_top.png-ace3e96ef772138dbf40e32e5c2e4dc9.ctex"]
+source_file="res://Assets/Sprites/UI/Background/background13.png"
+dest_files=["res://.godot/imported/background13.png-f24b4de72a48e1a815c10ca005c7e630.ctex"]
 
 [params]
 
