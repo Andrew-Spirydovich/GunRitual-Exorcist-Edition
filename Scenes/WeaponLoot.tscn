@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv0wp0thopwbg"]
+
+[ext_resource type="Script" uid="uid://cfd3rkmlvr7fw" path="res://Scripts/Items/Wepons/WeaponLoot.cs" id="1_44mhq"]
+[ext_resource type="Texture2D" uid="uid://pnrgi3j6hvle" path="res://Assets/Sprites/Items/revolver.png" id="2_hao8v"]
+[ext_resource type="AudioStream" uid="uid://jrgm3mxvy34e" path="res://Assets/Audio/item pick up.mp3" id="2_t2f5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44mhq"]
+size = Vector2(32, 16)
+
+[node name="WeaponLoot" type="Area2D" node_paths=PackedStringArray("_sprite")]
+script = ExtResource("1_44mhq")
+_sprite = NodePath("Sprite2D")
+_pickupSound = ExtResource("2_t2f5g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_hao8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_44mhq")

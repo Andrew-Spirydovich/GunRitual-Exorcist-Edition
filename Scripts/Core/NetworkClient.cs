@@ -14,6 +14,8 @@ public partial class NetworkClient : Node
     
     private bool _wasOpen;
     public bool IsOpen => _webSocket?.GetReadyState() == WebSocketPeer.State.Open;
+    public void SetLocalUserId(string localUserId) => LocalUserID = localUserId;
+    public bool OfflineMode { get; private set; } = false;
     
     public override void _Ready()
     {
@@ -21,8 +23,12 @@ public partial class NetworkClient : Node
         Instance = this;
     }
     
-    public void SetLocalUserId(string localUserId) => LocalUserID = localUserId;
-
+    public void EnableOfflineMode()
+    {
+        OfflineMode = true;
+        LocalUserID = "local_player";
+    }
+    
     public override void _Process(double delta)
     {
         _webSocket.Poll();
@@ -44,10 +50,22 @@ public partial class NetworkClient : Node
     public void SetPlayerManager(PlayerManager playerManager)
     {
         _playerManager = playerManager;
+        
+        if (OfflineMode && _playerManager != null)
+        {
+            // Сразу создаём локального игрока без сервера
+            _playerManager.SpawnLocalPlayer(LocalUserID, new Vector2(100, 100));
+        }
     }
 
     public bool ConnectToServer(string url)
     {
+        if (OfflineMode)
+        {
+            GD.Print("Игра запущена в оффлайн-режиме.");
+            return true;
+        }
+        
         var err = _webSocket.ConnectToUrl(url);
         if (err != Error.Ok)
         {
@@ -60,6 +78,9 @@ public partial class NetworkClient : Node
 
     private void SendMessage(Godot.Collections.Dictionary<string, Variant> payload)
     {
+        if (OfflineMode)
+            return;
+        
         if (!IsOpen)
         {
             GD.Print($"Send skipped: {payload["type"]}");

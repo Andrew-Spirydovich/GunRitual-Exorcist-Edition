@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Core/AudioManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Weapon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponLoot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Camera/Camera2D.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/GameScene.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Player/Player.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/UI/MainMenu.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/PlayerUI.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/PlayerUI.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/spr_DO_floor_top.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/spr_DO_floor_top.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,28 +53,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Executable.Player (1).executor&quot;: &quot;Run&quot;,
-    &quot;.NET Executable.Player (2).executor&quot;: &quot;Run&quot;,
-    &quot;.NET Executable.Player 1.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Executable.Player 2.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Executable.Player 3.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Executable.Player.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;1.1465201&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;debugger.stepping&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Executable.Player (1).executor": "Run",
+    ".NET Executable.Player (2).executor": "Run",
+    ".NET Executable.Player 1.executor": "Run",
+    ".NET Executable.Player 2.executor": "Run",
+    ".NET Executable.Player 3.executor": "Run",
+    ".NET Executable.Player.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "XThreadsFramesViewSplitterKey": "1.1465201",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "debugger.stepping",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Compound.1 Player">
     <configuration name="1 Player" type="CompoundRunConfigurationType">
       <toRun name="Player" type="RunExe" />
@@ -232,6 +233,9 @@
       <workItem from="1756639979291" duration="14956000" />
       <workItem from="1756736090281" duration="9355000" />
       <workItem from="1756762136082" duration="6470000" />
+      <workItem from="1756847397774" duration="4913000" />
+      <workItem from="1756918983313" duration="7432000" />
+      <workItem from="1757003083757" duration="14851000" />
     </task>
     <task id="LOCAL-00001" summary="Added Movement States">
       <option name="closed" value="true" />
@@ -249,6 +253,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added Movement States" />

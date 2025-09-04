@@ -14,6 +14,8 @@ public partial class Player : CharacterBody2D
     public PlayerMovement Movement { get; private set; }
     public Vector2 InputVector { get; private set; }
     
+    [Signal] public delegate void HealthChangedEventHandler(float current, float max);
+    
     public override void _Ready()
     {
         Movement = new PlayerMovement(this);

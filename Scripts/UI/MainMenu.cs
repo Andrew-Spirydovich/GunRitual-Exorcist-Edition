@@ -5,17 +5,20 @@ using GunRitualExorcistEdition.Scripts.Core;
 public partial class MainMenu : Control
 {
     [Export] private Button _connectButton;
+    [Export] private Button _localButton;
     [Export] private Button _settingsButton;
     [Export] private Button _exitButton;
-
+    
+    [Export] private AudioStream _mainMenuMusic;
+    
     public override void _Ready()
     {
         _connectButton.Pressed += OnConnectPressed;
+        _localButton.Pressed += OnLocalConnectPressed;
         _settingsButton.Pressed += OnSettingsPressed;
         _exitButton.Pressed += OnExitPressed;
-
-        var mainMenuMusic = GD.Load<AudioStream>("res://Assets/Audio/main_menu.mp3");
-        AudioManager.Instance.PlayMusic(mainMenuMusic, 0);
+        
+        AudioManager.Instance.PlayMusic(_mainMenuMusic, 0);
     }
 
     private void OnConnectPressed()
@@ -26,6 +29,14 @@ public partial class MainMenu : Control
         {
             GetTree().ChangeSceneToFile("res://Scenes/GameScene.tscn");
         }
+        AudioManager.Instance.StopMusic();
+    }
+
+    private void OnLocalConnectPressed()
+    {
+        NetworkClient.Instance.EnableOfflineMode();
+        GetTree().ChangeSceneToFile("res://Scenes/GameScene.tscn");
+        AudioManager.Instance.StopMusic();
     }
 
     private void OnSettingsPressed()
