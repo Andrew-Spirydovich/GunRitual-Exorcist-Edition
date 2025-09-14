@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://dvvorevsmwuic"]
+[gd_scene load_steps=13 format=4 uid="uid://dvvorevsmwuic"]
 
 [ext_resource type="Script" uid="uid://dw6ioke5vryij" path="res://Scripts/Core/GameScene.cs" id="1_kilg5"]
 [ext_resource type="Texture2D" uid="uid://c6glx4jyjyp54" path="res://Assets/Sprites/Environment/tileWall.png" id="2_kilg5"]
 [ext_resource type="Script" uid="uid://buyuyvxjyh3i6" path="res://Scripts/Core/PlayerManager.cs" id="3_lg2j6"]
+[ext_resource type="Texture2D" uid="uid://b0v5sr55a0gdd" path="res://Assets/Sprites/UI/revolver UI.png" id="4_lg2j6"]
+[ext_resource type="Texture2D" uid="uid://dliosjp3jbgi8" path="res://Assets/Sprites/UI/Ithaca 37UI.png" id="5_y30xb"]
 [ext_resource type="PackedScene" uid="uid://bd1l65gh4acp6" path="res://Scenes/Player.tscn" id="6_6vvcf"]
 [ext_resource type="PackedScene" uid="uid://dcq1b0bo1mdh7" path="res://Scenes/PlayerUI.tscn" id="6_kilg5"]
 [ext_resource type="Texture2D" uid="uid://b4edloperxpe7" path="res://Assets/Sprites/Environment/tileFloor.png" id="6_x6js8"]
@@ -31,6 +33,10 @@ tile_map_data = PackedByteArray("AAD7/wIAAAAAAAAAAAD8/wIAAAABAAAAAAD9/wIAAAAAAAA
 tile_set = SubResource("TileSet_2nij2")
 
 [node name="PlayerUI" parent="." instance=ExtResource("6_kilg5")]
+_weaponSprites = Dictionary[int, CompressedTexture2D]({
+1: ExtResource("4_lg2j6"),
+2: ExtResource("5_y30xb")
+})
 
 [node name="PlayerManager" type="Node" parent="."]
 script = ExtResource("3_lg2j6")
@@ -121,6 +127,7 @@ shape = SubResource("RectangleShape2D_lg2j6")
 
 [node name="WeaponLoot" parent="." instance=ExtResource("7_x6js8")]
 position = Vector2(-48, 79)
+_weaponType = 2
 
 [node name="WeaponLoot2" parent="." instance=ExtResource("7_x6js8")]
 position = Vector2(-128, 80)

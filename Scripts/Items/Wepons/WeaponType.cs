@@ -2,6 +2,7 @@
 
 public enum WeaponType
 {
+    Unarmed,
     Revolver,
     Ithaca37
 }

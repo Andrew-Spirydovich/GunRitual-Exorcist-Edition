@@ -13,11 +13,11 @@ public class StateMachine
         _player = player;
     }
     
-    public void ChangeState(PlayerStateType StateType)
+    public void ChangeState(PlayerStateType stateType)
     {
         CurrentState?.Exit();
         
-        CurrentState = StateType switch
+        CurrentState = stateType switch
         {
             PlayerStateType.Idle => new IdleState(_player),
             PlayerStateType.Run => new RunState(_player),
@@ -40,7 +40,7 @@ public class StateMachine
                 return;
             
             var network = NetworkClient.Instance;
-            network.SendStateRequest(network.LocalUserID, StateType.ToString());
+            network.SendStateRequest(network.LocalUserID, stateType.ToString());
         }
     }
 

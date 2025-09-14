@@ -1,9 +1,9 @@
 ﻿using Godot;
 using GunRitualExorcistEdition.Scripts.Items.Wepons;
 
-public partial class Revolver : Weapon
+public partial class Ithaca37 : Weapon
 {
-    public Revolver() : base(WeaponType.Revolver, 10, 0.5f, 20f) { }
+    public Ithaca37() : base(WeaponType.Ithaca37, 5, 2f, 30f) { }
 
     public override void Attack(Player player)
     {

@@ -12,7 +12,7 @@ public partial class WeaponLoot() : Area2D
     public override void _Ready()
     {
         UpdateSprite();
-        BodyEntered += OnBodyEntered;
+        BodyEntered += OnBodyEntered;   
     }
     
     private void OnBodyEntered(Node2D body)
@@ -20,8 +20,9 @@ public partial class WeaponLoot() : Area2D
         if (body is Player player)
         {
             AudioManager.Instance.PlaySFX(_pickupSound);
-            // Weapon weapon = WeaponFactory.Create(WeaponType);
-            // player.PickUpWeapon(weapon);
+            
+            var weapon = WeaponFactory.Create(_weaponType);
+            player.PickUpWeapon(weapon);
             
             QueueFree();
         }

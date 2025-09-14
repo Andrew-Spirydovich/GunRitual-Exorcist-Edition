@@ -1,15 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcq1b0bo1mdh7"]
+[gd_scene load_steps=8 format=3 uid="uid://dcq1b0bo1mdh7"]
 
 [ext_resource type="Texture2D" uid="uid://s7sh8wksbt4q" path="res://Assets/Sprites/UI/HP bar ramka.png" id="1_an405"]
 [ext_resource type="Script" uid="uid://birhd7ncu6gp5" path="res://Scripts/Core/PlayerUi.cs" id="1_kioar"]
+[ext_resource type="Texture2D" uid="uid://b0v5sr55a0gdd" path="res://Assets/Sprites/UI/revolver UI.png" id="2_a5jvy"]
 [ext_resource type="Texture2D" uid="uid://c6yiys3gq8yrk" path="res://Assets/Sprites/UI/HP bar filler.png" id="2_avra4"]
 [ext_resource type="Texture2D" uid="uid://dliosjp3jbgi8" path="res://Assets/Sprites/UI/Ithaca 37UI.png" id="3_jrycd"]
 [ext_resource type="Material" uid="uid://cfp4nk1b8eri0" path="res://Assets/Materials & Shaders/Player.material" id="3_qv4fw"]
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("_healthBar", "_weapon")]
+[sub_resource type="Theme" id="Theme_a5jvy"]
+Label/font_sizes/font_size = 40
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("_healthBar", "_weaponSprite", "_weaponAmmo", "_weaponName")]
 script = ExtResource("1_kioar")
 _healthBar = NodePath("Control/HealthBar")
-_weapon = NodePath("Control/Weapon")
+_weaponSprite = NodePath("Control/WeaponSprite")
+_weaponAmmo = NodePath("Control/WeaponAmmo")
+_weaponName = NodePath("Control/WeaponName")
+_weaponSprites = Dictionary[int, CompressedTexture2D]({
+0: ExtResource("2_a5jvy")
+})
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -31,8 +40,7 @@ texture_over = ExtResource("1_an405")
 texture_progress = ExtResource("2_avra4")
 texture_progress_offset = Vector2(40, 17)
 
-[node name="Weapon" type="TextureRect" parent="Control"]
-visible = false
+[node name="WeaponSprite" type="TextureRect" parent="Control"]
 material = ExtResource("3_qv4fw")
 layout_mode = 1
 anchors_preset = 3
@@ -40,10 +48,43 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -340.0
-offset_top = -500.0
-offset_right = 160.0
+offset_left = -528.0
+offset_top = -816.0
+offset_right = -28.0
+offset_bottom = -316.0
 grow_horizontal = 0
 grow_vertical = 0
+rotation = -1.5708
 pivot_offset = Vector2(500, 500)
 texture = ExtResource("3_jrycd")
+
+[node name="WeaponAmmo" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -54.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_a5jvy")
+text = "0/0"
+horizontal_alignment = 2
+
+[node name="WeaponName" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -64.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Ithaca37"
+horizontal_alignment = 2

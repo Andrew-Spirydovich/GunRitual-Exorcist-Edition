@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Player.States;
 
 public partial class Player : CharacterBody2D
@@ -8,19 +10,20 @@ public partial class Player : CharacterBody2D
     [Export] private Camera2D _camera;
     [Export] private Material _material;
     [Export] private Label _playerLabel;
+    
     public bool IsLocal { get; set; }
     public StateMachine StateMachine { get; private set; }
     public PlayerAnimator Animator { get; private set; }
     public PlayerMovement Movement { get; private set; }
+    public InventoryManager Inventory { get; private set; }
     public Vector2 InputVector { get; private set; }
-    
-    [Signal] public delegate void HealthChangedEventHandler(float current, float max);
     
     public override void _Ready()
     {
         Movement = new PlayerMovement(this);
         Animator = new PlayerAnimator(_sprite);
         StateMachine = new StateMachine(this);
+        Inventory = new InventoryManager();
         StateMachine.ChangeState(PlayerStateType.Idle);
         SetProcess(true);
 
@@ -28,6 +31,9 @@ public partial class Player : CharacterBody2D
         {
             _sprite.Material = _material;
             _camera.Enabled = true;
+            
+            var ui = GetTree().Root.GetNode<PlayerUi>("GameScene/PlayerUI"); // поправь путь
+            ui.ConnectToPlayer(this);
         }
     }   
 
@@ -59,5 +65,10 @@ public partial class Player : CharacterBody2D
         InputVector = direction;
         Position = position;
         Velocity = velocity;
+    }
+    
+    public void PickUpWeapon(Weapon weapon)
+    {
+        Inventory.AddWeapon(weapon);
     }
 }

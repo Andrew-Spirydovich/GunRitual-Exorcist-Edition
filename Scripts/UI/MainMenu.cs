@@ -18,7 +18,7 @@ public partial class MainMenu : Control
         _settingsButton.Pressed += OnSettingsPressed;
         _exitButton.Pressed += OnExitPressed;
         
-        AudioManager.Instance.PlayMusic(_mainMenuMusic, 0);
+        //AudioManager.Instance.PlayMusic(_mainMenuMusic, 0);
     }
 
     private void OnConnectPressed()

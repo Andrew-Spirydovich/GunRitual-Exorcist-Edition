@@ -5,17 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Weapon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponLoot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/InventoryManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Unarmed.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/GameScene.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/PlayerUI.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/PlayerUI.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerUi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerUi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponLoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponLoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +34,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/SourceGeneratedDocuments/FB82D9610D3D9A844C3EC4E2/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/PlayerUi_ScriptMethods.generated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/45/a3958e39/DelegateUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/76/687d6f39/CSharpInstanceBridge.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/69e3acf0074a4ef8afaea275d4055b96522800/f0/33983929/Vector2.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,6 +47,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1c946eaa6d8ddaaea1b63e936ca8ed2791d9316c5b025a41d445891e8a59ecd/DefaultInterpolatedStringHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df73a4db74df89d59655c5fb6326406f47fbfa9af1fa81518fe0a07c49d34133/Node.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ef7b819b226fab796d1dfe66d415dd7510bcac87675020ddb8f03a828e763/CanvasItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/GodotProject/gunritual--exorcist-edition/Scripts/Items/Wepons/Revolver.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -60,7 +66,7 @@
     ".NET Executable.Player 1.executor": "Run",
     ".NET Executable.Player 2.executor": "Run",
     ".NET Executable.Player 3.executor": "Run",
-    ".NET Executable.Player.executor": "Debug",
+    ".NET Executable.Player.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -236,6 +242,10 @@
       <workItem from="1756847397774" duration="4913000" />
       <workItem from="1756918983313" duration="7432000" />
       <workItem from="1757003083757" duration="14851000" />
+      <workItem from="1757112355954" duration="3557000" />
+      <workItem from="1757274839488" duration="1300000" />
+      <workItem from="1757337656834" duration="2259000" />
+      <workItem from="1757852918150" duration="8172000" />
     </task>
     <task id="LOCAL-00001" summary="Added Movement States">
       <option name="closed" value="true" />
