@@ -10,6 +10,7 @@ public partial class Player : CharacterBody2D
     [Export] private Camera2D _camera;
     [Export] private Material _material;
     [Export] private Label _playerLabel;
+    [Export] private Marker2D _weaponMarker;
     
     public bool IsLocal { get; set; }
     public StateMachine StateMachine { get; private set; }
@@ -17,13 +18,14 @@ public partial class Player : CharacterBody2D
     public PlayerMovement Movement { get; private set; }
     public InventoryManager Inventory { get; private set; }
     public Vector2 InputVector { get; private set; }
+    public event Action<int, int> OnAmmoChanged;
     
     public override void _Ready()
     {
         Movement = new PlayerMovement(this);
         Animator = new PlayerAnimator(_sprite);
         StateMachine = new StateMachine(this);
-        Inventory = new InventoryManager();
+        Inventory = new InventoryManager(_weaponMarker);
         StateMachine.ChangeState(PlayerStateType.Idle);
         SetProcess(true);
 
@@ -44,6 +46,8 @@ public partial class Player : CharacterBody2D
             InputVector = Movement.GetInputDirection();
             StateMachine.Update(delta);
         }
+        
+        //GD.Print($"{StateMachine.CurrentState}");
         
         Movement.UpdateDirection(InputVector);
         Animator.UpdateDirection(Movement.FacingRight);
@@ -70,5 +74,18 @@ public partial class Player : CharacterBody2D
     public void PickUpWeapon(Weapon weapon)
     {
         Inventory.AddWeapon(weapon);
+        
+        weapon.AmmoChanged += (current, max) =>
+        {
+            OnAmmoChanged?.Invoke(current, max);
+        };
+
+        OnAmmoChanged?.Invoke(weapon.CurrentAmmo, weapon.MaxAmmo);
+    }
+
+    public void Attack()
+    {
+        var factingDirection = Movement.FacingRight ? Vector2.Right : Vector2.Left;
+        Inventory.CurrentWeapon?.Attack(GetTree().CurrentScene, _weaponMarker.GlobalPosition, factingDirection);
     }
 }

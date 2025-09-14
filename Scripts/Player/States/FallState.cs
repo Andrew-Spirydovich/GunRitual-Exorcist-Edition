@@ -23,9 +23,10 @@ public class FallState : PlayerState
         if (_player.IsLocal)
         {
             if (_player.IsOnFloor())
-            {
                 _player.StateMachine.ChangeState(PlayerStateType.Land);
-            }
+            
+            if (Input.IsActionJustPressed("input_fire"))
+                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
         }
     }
 

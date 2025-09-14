@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c47onjn5e7xj"]
+[gd_scene load_steps=4 format=3 uid="uid://c47onjn5e7xj"]
 
-[ext_resource type="Texture2D" uid="uid://go30m2rbbvlw" path="res://Assets/Sprites/Items/bullet.png" id="1_xjght"]
+[ext_resource type="Script" uid="uid://buklqb3b7wuxn" path="res://Scripts/Items/Wepons/Bullet.cs" id="1_14k46"]
+[ext_resource type="Texture2D" uid="uid://go30m2rbbvlw" path="res://Assets/Sprites/Items/bullet.png" id="2_qvus8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oduel"]
 size = Vector2(4, 2)
 
 [node name="Bullet" type="Area2D"]
+script = ExtResource("1_14k46")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xjght")
+texture = ExtResource("2_qvus8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.76, 0.48)

@@ -11,7 +11,7 @@ public partial class PlayerUi : CanvasLayer
 
     public override void _Ready()
     {
-        ChangeWeaponUi(new Unarmed());
+        UpdateWeapon(new Unarmed());
     }
     
     public void ConnectToPlayer(Player player)
@@ -19,11 +19,18 @@ public partial class PlayerUi : CanvasLayer
         var inventory = player.Inventory;
         if (inventory != null)
         {
-            inventory.OnWeaponChanged += ChangeWeaponUi;
+            inventory.OnWeaponChanged += UpdateWeapon;
+            player.OnAmmoChanged += UpdateAmmo;
         }
     }
+
+    public void UpdateHealth(float health)
+    {
+        var tween = CreateTween();
+        tween.TweenProperty(_healthBar, "value", health, 0.3f);
+    }
     
-    public void ChangeWeaponUi(Weapon weapon)
+    public void UpdateWeapon(Weapon weapon)
     {
         if (weapon.Type == WeaponType.Unarmed)
         {
@@ -40,5 +47,10 @@ public partial class PlayerUi : CanvasLayer
             _weaponAmmo.Text = $"{weapon.CurrentAmmo}/{weapon.MaxAmmo}";
             _weaponName.Text = $"{weapon.Type}";
         }
+    }
+    
+    public void UpdateAmmo(int currentAmmo, int maxAmmo)
+    {
+        _weaponAmmo.Text = $"{currentAmmo}/{maxAmmo}";
     }
 }

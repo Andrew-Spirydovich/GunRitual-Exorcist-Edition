@@ -27,19 +27,16 @@ public class LandState : PlayerState
         if (_player.IsLocal)
         {
             if (_player.InputVector != Vector2.Zero)
-            {
                 _player.StateMachine.ChangeState(PlayerStateType.Run);
-            }
             
             if (Input.IsActionJustPressed("input_roll"))
-            {
                 _player.StateMachine.ChangeState(PlayerStateType.Roll);
-            }
             
             if (WantsToSlide() && _player.Movement.IsOnFloor())
-            {
                 _player.StateMachine.ChangeState(PlayerStateType.Slide);
-            }
+            
+            if (Input.IsActionJustPressed("input_fire"))
+                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
         }
     }
 

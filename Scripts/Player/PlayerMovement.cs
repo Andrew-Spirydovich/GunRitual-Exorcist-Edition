@@ -3,7 +3,7 @@ using Godot;
 public class PlayerMovement
 {
     private const float SPEED = 200f;
-    private const float GRAVITY = 800f;
+    private const float GRAVITY = 900f;
     public bool FacingRight { get; private set; } = true;
     
     private readonly Player _player;
@@ -27,7 +27,7 @@ public class PlayerMovement
     public void ApplyGravity(double delta)
     {
         var vel = _player.Velocity;
-        vel.Y += 900f * (float)delta;
+        vel.Y += GRAVITY * (float)delta;
         _player.Velocity = vel;
     }
     

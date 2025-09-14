@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bd1l65gh4acp6"]
+[gd_scene load_steps=71 format=3 uid="uid://bd1l65gh4acp6"]
 
 [ext_resource type="Script" uid="uid://buewks1srp3qn" path="res://Scripts/Player/Player.cs" id="1_h54ih"]
 [ext_resource type="Material" uid="uid://cfp4nk1b8eri0" path="res://Assets/Materials & Shaders/Player.material" id="2_jmcll"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cebgfaco57vbt" path="res://Assets/Sprites/Player/player new jump 48x48.png" id="4_4wape"]
 [ext_resource type="PackedScene" uid="uid://vgxfnbklohai" path="res://Scenes/Camera2D.tscn" id="4_ude3g"]
 [ext_resource type="Texture2D" uid="uid://bos0ubjkasumj" path="res://Assets/Sprites/Player/Player Roll 48x48.png" id="6_fk5o5"]
+[ext_resource type="Texture2D" uid="uid://dscc370dmbved" path="res://Assets/Sprites/Player/player shoot 2H 48x48.png" id="6_yoq75"]
 [ext_resource type="Texture2D" uid="uid://dfd0hxtrjxvg2" path="res://Assets/Sprites/Player/Player Slide 48x48.png" id="8_825xp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wape"]
@@ -169,6 +170,46 @@ region = Rect2(288, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6m80x"]
 atlas = ExtResource("3_jmcll")
 region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksbbd"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glx4g"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miouo"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3h8g"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e7my"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arntx"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lslt6"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulo2v"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iu4k"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0x7a"]
+atlas = ExtResource("6_yoq75")
+region = Rect2(432, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwmao"]
 atlas = ExtResource("8_825xp")
@@ -356,6 +397,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ksbbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glx4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miouo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3h8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e7my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arntx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lslt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulo2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1iu4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0x7a")
+}],
+"loop": false,
+"name": &"ShootPistol",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wwmao")
 }, {
 "duration": 1.0,
@@ -387,18 +463,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sasra"]
 size = Vector2(16, 26)
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("_collider", "_sprite", "_camera", "_playerLabel")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("_collider", "_sprite", "_camera", "_playerLabel", "_weaponMarker")]
 script = ExtResource("1_h54ih")
 _collider = NodePath("CollisionShape2D")
 _sprite = NodePath("AnimatedSprite2D")
 _camera = NodePath("Camera2D")
 _material = ExtResource("2_jmcll")
 _playerLabel = NodePath("Label")
+_weaponMarker = NodePath("Marker2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_hiucn")
-animation = &"Land"
+animation = &"ShootPistol"
+frame = 9
+frame_progress = 1.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = -12.0
@@ -419,3 +497,6 @@ shape = SubResource("RectangleShape2D_sasra")
 enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 2.0

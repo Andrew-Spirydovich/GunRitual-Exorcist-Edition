@@ -36,14 +36,13 @@ public class SlideState : PlayerState
         if (_player.IsLocal)
         {
             if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
-            {
                 _player.StateMachine.ChangeState(PlayerStateType.Jump);
-            }
         
             if (_player.Velocity.Y > 0)
-            {
                 _player.StateMachine.ChangeState(PlayerStateType.Fall);
-            }
+            
+            if (Input.IsActionJustPressed("input_fire"))
+                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
         }
     }
 

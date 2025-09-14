@@ -28,9 +28,10 @@ public class JumpState : PlayerState
         if (_player.IsLocal)
         {
             if (_player.Velocity.Y > 0)
-            {
                 _player.StateMachine.ChangeState(PlayerStateType.Fall);
-            }
+            
+            if (Input.IsActionJustPressed("input_fire"))
+                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
         }
     }
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8335cqgqbap"
+path="res://.godot/imported/Mauser C96 fire.mp3-028f01e17fcb7055d4c2352040cb1aac.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Mauser C96 fire.mp3"
+dest_files=["res://.godot/imported/Mauser C96 fire.mp3-028f01e17fcb7055d4c2352040cb1aac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

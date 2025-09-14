@@ -26,6 +26,7 @@ public class StateMachine
             PlayerStateType.Roll => new RollState(_player),
             PlayerStateType.Slide => new SlideState(_player),
             PlayerStateType.Land => new LandState(_player),
+            PlayerStateType.Shoot => new ShootState(_player),
             _ => CurrentState
         };
 

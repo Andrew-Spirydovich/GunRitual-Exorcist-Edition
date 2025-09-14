@@ -5,22 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Core/InventoryManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Unarmed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Bullet.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Player/States/ShootState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/GameScene.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/PlayerUI.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/PlayerUI.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/bullet.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/bullet.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/InventoryManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerUi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerUi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Unarmed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Unarmed.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponLoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponLoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/WeaponType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/PlayerStateType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/PlayerStateType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RollState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RollState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +45,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Temp/SourceGeneratedDocuments/FB82D9610D3D9A844C3EC4E2/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/PlayerUi_ScriptMethods.generated.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/174cdfd56bcd471abff8d95d61867f0ec90938/08/6be985f8/Action`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/45/a3958e39/DelegateUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/76/687d6f39/CSharpInstanceBridge.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/69e3acf0074a4ef8afaea275d4055b96522800/f0/33983929/Vector2.cs" root0="FORCE_HIGHLIGHTING" />
@@ -245,7 +256,7 @@
       <workItem from="1757112355954" duration="3557000" />
       <workItem from="1757274839488" duration="1300000" />
       <workItem from="1757337656834" duration="2259000" />
-      <workItem from="1757852918150" duration="8172000" />
+      <workItem from="1757852918150" duration="19871000" />
     </task>
     <task id="LOCAL-00001" summary="Added Movement States">
       <option name="closed" value="true" />

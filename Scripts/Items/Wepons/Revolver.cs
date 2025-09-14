@@ -1,18 +1,25 @@
 ﻿using Godot;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Items.Wepons;
 
 public partial class Revolver : Weapon
 {
-    public Revolver() : base(WeaponType.Revolver, 10, 0.5f, 20f) { }
-
-    public override void Attack(Player player)
+    public Revolver() : base(WeaponType.Revolver, 10, 0.2f, 20f)
     {
-        if (CurrentAmmo <= 0) return;
+        ShootSound = GD.Load<AudioStreamMP3>("res://Assets/Audio/Mauser C96 fire.mp3");
+    }
 
-        CurrentAmmo--;
-        GD.Print($"{Type} fired! Ammo left: {CurrentAmmo}");
+    public override void Attack(Node world, Vector2 position, Vector2 direction)
+    {
+        if (CurrentAmmo <= 0) 
+            return;
 
-        // тут можно спавнить пулю в мире через Player
-        // например player.SpawnBullet()
+        UseAmmo();
+
+        var bullet = BulletScene.Instantiate<Bullet>();
+        bullet.GlobalPosition = position;
+        bullet.Direction = direction.Normalized();
+        AudioManager.Instance.PlaySFX(ShootSound);
+        world.AddChild(bullet);
     }
 }

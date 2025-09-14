@@ -48,13 +48,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -528.0
-offset_top = -816.0
-offset_right = -28.0
-offset_bottom = -316.0
+offset_left = -368.0
+offset_top = -464.0
+offset_right = 132.0
+offset_bottom = 36.0
 grow_horizontal = 0
 grow_vertical = 0
-rotation = -1.5708
 pivot_offset = Vector2(500, 500)
 texture = ExtResource("3_jrycd")
 

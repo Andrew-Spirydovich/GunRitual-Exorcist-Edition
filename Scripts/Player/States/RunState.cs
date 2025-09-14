@@ -36,6 +36,9 @@ public class RunState : PlayerState
 
             if (WantsToSlide() && _player.Movement.IsOnFloor())
                 _player.StateMachine.ChangeState(PlayerStateType.Slide);
+            
+            if (Input.IsActionJustPressed("input_fire"))
+                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
         }
     }
     

@@ -8,5 +8,6 @@ public enum PlayerStateType
     Fall,
     Land,
     Slide,
-    Roll
+    Roll,
+    Shoot
 }

@@ -125,6 +125,17 @@ texture = ExtResource("6_x6js8")
 position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_lg2j6")
 
+[node name="FloorTile9" type="StaticBody2D" parent="Floor"]
+position = Vector2(206, -41)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor/FloorTile9"]
+texture = ExtResource("6_x6js8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/FloorTile9"]
+position = Vector2(0, -28)
+scale = Vector2(1, 13.9417)
+shape = SubResource("RectangleShape2D_lg2j6")
+
 [node name="WeaponLoot" parent="." instance=ExtResource("7_x6js8")]
 position = Vector2(-48, 79)
 _weaponType = 2

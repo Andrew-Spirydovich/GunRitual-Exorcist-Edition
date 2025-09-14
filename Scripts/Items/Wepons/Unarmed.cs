@@ -5,8 +5,8 @@ public partial class Unarmed : Weapon
 {
     public Unarmed() : base(WeaponType.Unarmed, 0, 0, 0f) { }
 
-    public override void Attack(Player player)
+    public override void Attack(Node world, Vector2 position, Vector2 direction)
     {
-        GD.Print($"{Type} fired! Ammo left: {CurrentAmmo}");
+        throw new System.NotImplementedException();
     }
 }
