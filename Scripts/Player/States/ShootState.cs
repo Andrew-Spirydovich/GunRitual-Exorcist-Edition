@@ -4,27 +4,33 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class ShootState : PlayerState
 {
-    private Player _player;
     private double _shootCooldown;
-    
-    public ShootState(Player player)
-    {
-        _player = player;
-    }
+    private bool _animationFinished;
+
+    protected override string AnimationName { get; }
+
+    public ShootState(Player player) : base(player) => AnimationName = "Shoot";
     
     public override void Enter()
     {
-        _player.Animator.SetAnimation("ShootPistol");
-        var weapon = _player.Inventory.CurrentWeapon;
-        
-        _player.Attack();
-        
-        _shootCooldown = weapon.FireRate;
+        PlayShootAnimation();
     }
 
-    public override void Exit()
+    private void PlayShootAnimation()
     {
-        _player.Velocity = Vector2.Zero;
+        _player.Animator.SetAnimation(AnimationName + "Pistol");
+        _player.Animator.ConnectAnimationFinished(OnShootAnimationFinished);
+
+        var weapon = _player.Inventory.CurrentWeapon;
+        _player.Attack();
+
+        _shootCooldown = weapon.FireRate;
+        _animationFinished = false;
+    }
+
+    private void OnShootAnimationFinished()
+    {
+        _animationFinished = true;
     }
 
     public override void Update(double delta)
@@ -32,42 +38,45 @@ public class ShootState : PlayerState
         if (_shootCooldown > 0)
         {
             _shootCooldown -= delta;
-            return; // ещё нельзя менять стейт
+            return; // ещё нельзя выходить или перезапускать анимацию
         }
-        
-        if (_player.IsLocal) // локальный игрок — проверяем input
+
+        // ждём окончания анимации
+        if (!_animationFinished)
+            return;
+
+        if (_player.IsLocal)
         {
+            // Если игрок снова нажал fire — перезапускаем стрельбу
+            if (Input.IsActionJustPressed("input_fire"))
+            {
+                var weapon = _player.Inventory.CurrentWeapon;
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                {
+                    _player.Animator.DisconnectAnimationFinished(OnShootAnimationFinished);
+                    PlayShootAnimation();
+                    return;
+                }
+            }
+
+            // Иначе выходим в нужный стейт
             if (_player.InputVector == Vector2.Zero)
                 _player.StateMachine.ChangeState(PlayerStateType.Idle);
-            
-            if (_player.InputVector != Vector2.Zero)
+            else
                 _player.StateMachine.ChangeState(PlayerStateType.Run);
-
-            if (Input.IsActionJustPressed("input_jump") && _player.IsOnFloor())
-                _player.StateMachine.ChangeState(PlayerStateType.Jump);
-
-            if (Input.IsActionJustPressed("input_roll"))
-                _player.StateMachine.ChangeState(PlayerStateType.Roll);
-
-            if (_player.Velocity.Y > 0)
-                _player.StateMachine.ChangeState(PlayerStateType.Fall);
-
-            if (WantsToSlide() && _player.Movement.IsOnFloor())
-                _player.StateMachine.ChangeState(PlayerStateType.Slide);
         }
     }
-    
-    public bool WantsToSlide()
+
+    public override void Exit()
     {
-        return Input.IsActionPressed("input_down") &&
-               (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
-               Input.IsActionJustPressed("input_down");
+        _player.Animator.DisconnectAnimationFinished(OnShootAnimationFinished);
     }
-    
+
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
+        _player.MoveAndSlide();
         network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
 }

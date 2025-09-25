@@ -4,18 +4,15 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class RollState : PlayerState
 {
-    private Player _player;
     private Vector2 _rollDirection;
     private float _rollSpeed = 300f;
-    
-    public RollState(Player player)
-    {
-        _player = player;
-    }
-    
+    protected override string AnimationName { get; }
+
+    public RollState(Player player) : base(player) => AnimationName = "Roll";
+
     public override void Enter()
     {
-        _player.Animator.SetAnimation("Roll");
+        _player.Animator.SetAnimation(AnimationName);
         
         _rollDirection = _player.InputVector != Vector2.Zero 
             ? _player.InputVector.Normalized()
@@ -35,9 +32,6 @@ public class RollState : PlayerState
         {
             if (_player.Velocity.Y > 0)
                 _player.StateMachine.ChangeState(PlayerStateType.Fall);
-            
-            if (Input.IsActionJustPressed("input_fire"))
-                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
         }
     }
 

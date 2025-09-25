@@ -4,16 +4,12 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class IdleState : PlayerState
 {
-    private Player _player;
-
-    public IdleState(Player player)
-    {
-        _player = player;
-    }
+    protected override string AnimationName { get; }
+    public IdleState(Player player) : base(player) => AnimationName = "Idle";
     
     public override void Enter()
     {
-        _player.Animator.SetAnimation("Idle");
+        _player.Animator.SetAnimation(AnimationName);
     }
 
     public override void Exit() { }
@@ -38,17 +34,14 @@ public class IdleState : PlayerState
                 _player.StateMachine.ChangeState(PlayerStateType.Slide);
             
             if (Input.IsActionJustPressed("input_fire"))
-                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            {
+                var weapon = _player.Inventory.CurrentWeapon;
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                    _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            }
         }
     }
 
-    public bool WantsToSlide()
-    {
-        return Input.IsActionPressed("input_down") &&
-               (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
-               Input.IsActionJustPressed("input_down");
-    }
-    
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;

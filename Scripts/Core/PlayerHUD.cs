@@ -1,7 +1,7 @@
 using Godot;
 using GunRitualExorcistEdition.Scripts.Items.Wepons;
 
-public partial class PlayerUi : CanvasLayer
+public partial class PlayerHUD : CanvasLayer
 {
     [Export] private TextureProgressBar _healthBar;
     [Export] private TextureRect _weaponSprite;

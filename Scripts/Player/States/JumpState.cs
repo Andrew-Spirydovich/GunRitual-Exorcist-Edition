@@ -4,21 +4,18 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class JumpState : PlayerState
 {
-    private Player _player;
     private const float JUMP_FORCE = 400f;
+    protected override string AnimationName { get; }
 
-    public JumpState(Player player)
-    {
-        _player = player;
-    }
-    
+    public JumpState(Player player) : base(player) => AnimationName = "Jump";
+
     public override void Enter()
     {
         var vel = _player.Velocity;
         vel.Y = -JUMP_FORCE;
         _player.Velocity = vel;
         
-        _player.Animator.SetAnimation("Jump");
+        _player.Animator.SetAnimation(AnimationName);
     }   
 
     public override void Exit() { }
@@ -31,7 +28,11 @@ public class JumpState : PlayerState
                 _player.StateMachine.ChangeState(PlayerStateType.Fall);
             
             if (Input.IsActionJustPressed("input_fire"))
-                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            {
+                var weapon = _player.Inventory.CurrentWeapon;
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                    _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            }
         }
     }
 

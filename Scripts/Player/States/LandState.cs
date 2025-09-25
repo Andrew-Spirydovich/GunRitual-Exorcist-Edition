@@ -4,16 +4,13 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class LandState : PlayerState
 {
-    private Player _player;
+    protected override string AnimationName { get; }
 
-    public LandState(Player player)
-    {
-        _player = player;
-    }
-    
+    public LandState(Player player) : base(player) => AnimationName = "Land";
+
     public override void Enter()
     {
-        _player.Animator.SetAnimation("Land");
+        _player.Animator.SetAnimation(AnimationName);
         _player.Animator.ConnectAnimationFinished(OnAnimationFinished); 
     }
 
@@ -36,7 +33,11 @@ public class LandState : PlayerState
                 _player.StateMachine.ChangeState(PlayerStateType.Slide);
             
             if (Input.IsActionJustPressed("input_fire"))
-                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            {
+                var weapon = _player.Inventory.CurrentWeapon;
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                    _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            }
         }
     }
 

@@ -34,7 +34,7 @@ public partial class Player : CharacterBody2D
             _sprite.Material = _material;
             _camera.Enabled = true;
             
-            var ui = GetTree().Root.GetNode<PlayerUi>("GameScene/PlayerUI"); // поправь путь
+            var ui = GetTree().Root.GetNode<PlayerHUD>("GameScene/PlayerUI");
             ui.ConnectToPlayer(this);
         }
     }   
@@ -47,7 +47,7 @@ public partial class Player : CharacterBody2D
             StateMachine.Update(delta);
         }
         
-        //GD.Print($"{StateMachine.CurrentState}");
+        GD.Print($"{StateMachine.CurrentState}");
         
         Movement.UpdateDirection(InputVector);
         Animator.UpdateDirection(Movement.FacingRight);

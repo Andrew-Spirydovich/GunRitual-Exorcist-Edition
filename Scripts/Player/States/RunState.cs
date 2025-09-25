@@ -4,16 +4,13 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class RunState : PlayerState
 {
-    private Player _player;
+    protected override string AnimationName { get; }
 
-    public RunState(Player player)
-    {
-        _player = player;
-    }
+    public RunState(Player player) : base(player) => AnimationName = "Run";
     
     public override void Enter()
     {
-        _player.Animator.SetAnimation("Run");
+        _player.Animator.SetAnimation(AnimationName);
     }   
 
     public override void Exit() { }
@@ -38,7 +35,11 @@ public class RunState : PlayerState
                 _player.StateMachine.ChangeState(PlayerStateType.Slide);
             
             if (Input.IsActionJustPressed("input_fire"))
-                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            {
+                var weapon = _player.Inventory.CurrentWeapon;
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                    _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            }
         }
     }
     

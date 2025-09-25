@@ -19,6 +19,20 @@ public class PlayerAnimator
         _sprite.Play(name);
     }
     
+    public void SetAnimation(string name, bool hasWeapon)
+    {
+        string animName = name;
+
+        // Добавляем суффикс "_Weapon", если у игрока в руках оружие
+        if (hasWeapon)
+            animName = $"{name}Pistol";
+
+        if (_sprite.Animation == animName && _sprite.IsPlaying())
+            return;
+
+        _sprite.Play(animName);
+    }
+    
     public void ConnectAnimationFinished(Action callback)
     {
         _animationFinishedCallback = callback;

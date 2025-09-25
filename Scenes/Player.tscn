@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bd1l65gh4acp6"]
+[gd_scene load_steps=80 format=3 uid="uid://bd1l65gh4acp6"]
 
 [ext_resource type="Script" uid="uid://buewks1srp3qn" path="res://Scripts/Player/Player.cs" id="1_h54ih"]
 [ext_resource type="Material" uid="uid://cfp4nk1b8eri0" path="res://Assets/Materials & Shaders/Player.material" id="2_jmcll"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bos0ubjkasumj" path="res://Assets/Sprites/Player/Player Roll 48x48.png" id="6_fk5o5"]
 [ext_resource type="Texture2D" uid="uid://dscc370dmbved" path="res://Assets/Sprites/Player/player shoot 2H 48x48.png" id="6_yoq75"]
 [ext_resource type="Texture2D" uid="uid://dfd0hxtrjxvg2" path="res://Assets/Sprites/Player/Player Slide 48x48.png" id="8_825xp"]
+[ext_resource type="Texture2D" uid="uid://c562vlnrghhyr" path="res://Assets/Sprites/Player/Player Running Aiming 48x48.png" id="8_ksbbd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wape"]
 atlas = ExtResource("4_4wape")
@@ -169,6 +170,38 @@ region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6m80x"]
 atlas = ExtResource("3_jmcll")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v66d"]
+atlas = ExtResource("8_ksbbd")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x63xi"]
+atlas = ExtResource("8_ksbbd")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2e8t"]
+atlas = ExtResource("8_ksbbd")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qidb7"]
+atlas = ExtResource("8_ksbbd")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70hv0"]
+atlas = ExtResource("8_ksbbd")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8flut"]
+atlas = ExtResource("8_ksbbd")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7x0b"]
+atlas = ExtResource("8_ksbbd")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utwlt"]
+atlas = ExtResource("8_ksbbd")
 region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ksbbd"]
@@ -393,6 +426,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v66d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x63xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2e8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qidb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70hv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8flut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7x0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utwlt")
+}],
+"loop": true,
+"name": &"RunPistol",
 "speed": 13.0
 }, {
 "frames": [{

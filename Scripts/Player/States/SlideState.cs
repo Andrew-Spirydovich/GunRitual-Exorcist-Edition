@@ -4,25 +4,21 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class SlideState : PlayerState
 {
-    private Player _player;
     private Vector2 _slideDirection;
     private double _slideDuration = 0.5;
     private double _timer;
     private float _slideSpeed = 400f;
     
-    public SlideState(Player player)
-    {
-        _player = player;
-    }
-    
+    protected override string AnimationName { get; }
+
+    public SlideState(Player player) : base(player) => AnimationName = "Slide";
+
     public override void Enter()
     {
         _slideDirection = new Vector2(_player.Movement.FacingRight ? 1 : -1, 0);
-
         _timer = _slideDuration;
-
-        _player.Animator.SetAnimation("Slide");
         
+        _player.Animator.SetAnimation(AnimationName);
         _player.Velocity = _slideDirection * _slideSpeed;
     }
 
@@ -42,7 +38,12 @@ public class SlideState : PlayerState
                 _player.StateMachine.ChangeState(PlayerStateType.Fall);
             
             if (Input.IsActionJustPressed("input_fire"))
-                _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            {
+                var weapon = _player.Inventory.CurrentWeapon;
+                
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                    _player.StateMachine.ChangeState(PlayerStateType.Shoot);
+            }
         }
     }
 

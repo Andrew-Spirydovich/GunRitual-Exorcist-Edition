@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b0v5sr55a0gdd" path="res://Assets/Sprites/UI/revolver UI.png" id="4_lg2j6"]
 [ext_resource type="Texture2D" uid="uid://dliosjp3jbgi8" path="res://Assets/Sprites/UI/Ithaca 37UI.png" id="5_y30xb"]
 [ext_resource type="PackedScene" uid="uid://bd1l65gh4acp6" path="res://Scenes/Player.tscn" id="6_6vvcf"]
-[ext_resource type="PackedScene" uid="uid://dcq1b0bo1mdh7" path="res://Scenes/PlayerUI.tscn" id="6_kilg5"]
+[ext_resource type="PackedScene" uid="uid://dcq1b0bo1mdh7" path="res://Scenes/HUD.tscn" id="6_kilg5"]
 [ext_resource type="Texture2D" uid="uid://b4edloperxpe7" path="res://Assets/Sprites/Environment/tileFloor.png" id="6_x6js8"]
 [ext_resource type="PackedScene" uid="uid://dv0wp0thopwbg" path="res://Scenes/WeaponLoot.tscn" id="7_x6js8"]
 
@@ -137,9 +137,9 @@ scale = Vector2(1, 13.9417)
 shape = SubResource("RectangleShape2D_lg2j6")
 
 [node name="WeaponLoot" parent="." instance=ExtResource("7_x6js8")]
-position = Vector2(-48, 79)
+position = Vector2(-128, 79)
 _weaponType = 2
 
 [node name="WeaponLoot2" parent="." instance=ExtResource("7_x6js8")]
-position = Vector2(-128, 80)
+position = Vector2(-69, 79)
 _weaponType = 1
