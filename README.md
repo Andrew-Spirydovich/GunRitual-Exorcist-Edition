@@ -1,0 +1,1 @@
+A Godot 4.4 client game written in C#, designed to connect with the Spring Boot backend server. This client handles rendering, input, UI, and real-time communication with the server for multiplayer gameplay.
