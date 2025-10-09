@@ -48,8 +48,9 @@ public class PlayerAnimator
         }
     }
     
-    public void UpdateDirection(bool facingRight)
+    public void UpdateSpriteDirection(Vector2 playerDirection)
     {
-        _sprite.FlipH = !facingRight;
+        var flipLeft = playerDirection != Vector2.Right;
+        _sprite.FlipH = flipLeft;
     }
 }

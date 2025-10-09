@@ -4,19 +4,11 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class RollState : PlayerState
 {
-    private Vector2 _rollDirection;
-    private float _rollSpeed = 300f;
-    protected override string AnimationName { get; }
-
     public RollState(Player player) : base(player) => AnimationName = "Roll";
 
     public override void Enter()
     {
         _player.Animator.SetAnimation(AnimationName);
-        
-        _rollDirection = _player.InputVector != Vector2.Zero 
-            ? _player.InputVector.Normalized()
-            : new Vector2(_player.Movement.FacingRight ? 1 : -1, 0);
         
         _player.Animator.ConnectAnimationFinished(OnAnimationFinished);
     }
@@ -36,23 +28,15 @@ public class RollState : PlayerState
     }
 
     public override void PhysicsUpdate(double delta)
-    { 
+    {
         _player.Movement.ApplyGravity(delta);
 
-        Vector2 velocity = _rollDirection * _rollSpeed;
-        _player.Velocity = new Vector2(velocity.X, _player.Velocity.Y);
+        _player.Movement.HandleRoll();
 
         _player.MoveAndSlide();
-        
+
         var network = NetworkClient.Instance;
         network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
-    
-    private void OnAnimationFinished()
-    {
-        if (_player.InputVector != Vector2.Zero)
-            _player.StateMachine.ChangeState(PlayerStateType.Run);
-        else
-            _player.StateMachine.ChangeState(PlayerStateType.Idle);
-    }
+
 }

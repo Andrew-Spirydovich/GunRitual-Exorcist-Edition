@@ -1,8 +1,6 @@
 ﻿namespace GunRitualExorcistEdition.Scripts.Core;
 
-public enum InputContext
+public interface InputContext
 {
-    Gameplay,
-    Inventory,
-    Menu
+    
 }

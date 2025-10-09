@@ -1,6 +1,8 @@
-﻿namespace GunRitualExorcistEdition.Scripts.Core;
+﻿using Godot;
 
-public class InventoryInput
+namespace GunRitualExorcistEdition.Scripts.Core;
+
+public class InventoryInput : InputContext
 {
     
 }

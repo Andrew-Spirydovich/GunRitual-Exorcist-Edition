@@ -2,9 +2,12 @@ using Godot;
 
 public class PlayerMovement
 {
-    private const float SPEED = 200f;
+    private const float RUN_SPEED = 200f;
     private const float GRAVITY = 900f;
-    public bool FacingRight { get; private set; } = true;
+    private const float ROLL_SPEED = 300f;
+    private const float SLIDE_SPEED = 400f;
+    
+    public Vector2 FacingDirection { get; private set; } = Vector2.Right;
     
     private readonly Player _player;
             
@@ -15,13 +18,25 @@ public class PlayerMovement
     
     public bool IsOnFloor() => _player.IsOnFloor();
     
-    public void HandleHorizontalMovement(double delta)
+    public void HandleHorizontalMovement()
     {
         var input = GetInputDirection();
         var velocity = _player.Velocity;
-        velocity.X = input.X * SPEED;
+        velocity.X = input.X * RUN_SPEED;
+        
         _player.Velocity = velocity;
         _player.MoveAndSlide();
+    }
+
+    public void HandleRoll()
+    {
+        var velocity = FacingDirection * ROLL_SPEED;
+        _player.Velocity = new Vector2(velocity.X, _player.Velocity.Y);
+    }
+
+    public void HandeSlide()
+    {
+        _player.Velocity = FacingDirection * SLIDE_SPEED;
     }
     
     public void ApplyGravity(double delta)
@@ -42,9 +57,7 @@ public class PlayerMovement
     
     public void UpdateDirection(Vector2 input)
     {
-        if (Mathf.Abs(input.X) > 0.01f)
-        {
-            FacingRight = input.X > 0;
-        }
+        if (input.Length() > 0.01f)
+            FacingDirection = input.Normalized();
     }
 }

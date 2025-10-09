@@ -7,8 +7,6 @@ public class ShootState : PlayerState
     private double _shootCooldown;
     private bool _animationFinished;
 
-    protected override string AnimationName { get; }
-
     public ShootState(Player player) : base(player) => AnimationName = "Shoot";
     
     public override void Enter()

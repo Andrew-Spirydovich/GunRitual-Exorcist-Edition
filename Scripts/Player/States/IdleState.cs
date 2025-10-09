@@ -4,7 +4,6 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class IdleState : PlayerState
 {
-    protected override string AnimationName { get; }
     public IdleState(Player player) : base(player) => AnimationName = "Idle";
     
     public override void Enter()
@@ -46,7 +45,7 @@ public class IdleState : PlayerState
     {
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
-        _player.Movement.HandleHorizontalMovement(delta);
+        _player.Movement.HandleHorizontalMovement();
         network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, Vector2.Zero, Vector2.Zero);
     }
 }

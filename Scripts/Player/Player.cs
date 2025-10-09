@@ -50,7 +50,7 @@ public partial class Player : CharacterBody2D
         GD.Print($"{StateMachine.CurrentState}");
         
         Movement.UpdateDirection(InputVector);
-        Animator.UpdateDirection(Movement.FacingRight);
+        Animator.UpdateSpriteDirection(Movement.FacingDirection);
     }
     
     public override void _PhysicsProcess(double delta)
@@ -85,7 +85,6 @@ public partial class Player : CharacterBody2D
 
     public void Attack()
     {
-        var factingDirection = Movement.FacingRight ? Vector2.Right : Vector2.Left;
-        Inventory.CurrentWeapon?.Attack(GetTree().CurrentScene, _weaponMarker.GlobalPosition, factingDirection);
+        Inventory.CurrentWeapon?.Attack(GetTree().CurrentScene, _weaponMarker.GlobalPosition, Movement.FacingDirection);
     }
 }

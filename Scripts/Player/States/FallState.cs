@@ -4,8 +4,6 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class FallState : PlayerState
 {
-    protected override string AnimationName { get; }
-    
     public FallState(Player player) : base(player) => AnimationName = "Fall";
     
     public override void Enter()
@@ -35,7 +33,7 @@ public class FallState : PlayerState
     {
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
-        _player.Movement.HandleHorizontalMovement(delta);
+        _player.Movement.HandleHorizontalMovement();
         network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
 }

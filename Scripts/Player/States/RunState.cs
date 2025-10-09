@@ -4,8 +4,6 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class RunState : PlayerState
 {
-    protected override string AnimationName { get; }
-
     public RunState(Player player) : base(player) => AnimationName = "Run";
     
     public override void Enter()
@@ -17,7 +15,7 @@ public class RunState : PlayerState
 
     public override void Update(double delta)
     {
-        if (_player.IsLocal) // локальный игрок — проверяем input
+        if (_player.IsLocal)
         {
             if (_player.InputVector == Vector2.Zero)
                 _player.StateMachine.ChangeState(PlayerStateType.Idle);
@@ -42,19 +40,13 @@ public class RunState : PlayerState
             }
         }
     }
-    
-    public bool WantsToSlide()
-    {
-        return Input.IsActionPressed("input_down") &&
-               (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
-               Input.IsActionJustPressed("input_down");
-    }
 
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;
         _player.Movement.ApplyGravity(delta);
-        _player.Movement.HandleHorizontalMovement(delta);
+        _player.Movement.HandleHorizontalMovement();
+        
         network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
     }
 }

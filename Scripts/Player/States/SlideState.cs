@@ -4,22 +4,13 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class SlideState : PlayerState
 {
-    private Vector2 _slideDirection;
-    private double _slideDuration = 0.5;
-    private double _timer;
-    private float _slideSpeed = 400f;
-    
-    protected override string AnimationName { get; }
-
+    private double _timer = 0.5;
     public SlideState(Player player) : base(player) => AnimationName = "Slide";
-
+    
     public override void Enter()
     {
-        _slideDirection = new Vector2(_player.Movement.FacingRight ? 1 : -1, 0);
-        _timer = _slideDuration;
-        
-        _player.Animator.SetAnimation(AnimationName);
-        _player.Velocity = _slideDirection * _slideSpeed;
+        _player.Animator.SetAnimation(AnimationName); 
+        _player.Movement.HandeSlide();
     }
 
     public override void Exit()
