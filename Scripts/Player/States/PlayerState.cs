@@ -1,35 +1,46 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Player.States;
 
 public abstract class PlayerState
 {
-    protected readonly Player _player;
-    protected string AnimationName { get; set; }
+    protected readonly Player Player;
+    protected string AnimationName;
+    protected bool WaitsForAnimationEnd;
+    private bool _animationFinished;
     
     protected PlayerState(Player player)
     {
-        _player = player;
+        Player = player;
     }
 
-    public abstract void Enter();
-    public abstract void Exit();
+    public virtual void Enter()
+    {
+        Player.Animator.SetAnimation(AnimationName);
+
+        if (WaitsForAnimationEnd)
+        {
+            _animationFinished = false;
+            Player.Animator.ConnectAnimationFinished(OnAnimationFinished);
+        }
+    }
+
+
     public abstract void Update(double delta);
     public abstract void PhysicsUpdate(double delta);
+    public abstract PlayerState CheckTransitions(ControlContext controlContext);
 
-    protected bool WantsToSlide()
+    private void OnAnimationFinished()
     {
-        return Input.IsActionPressed("input_down") &&
-               (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
-               Input.IsActionJustPressed("input_down");
+        _animationFinished = true;
     }
-
-    protected void OnAnimationFinished()
+    
+    protected bool IsAnimationDone() => _animationFinished;
+    public virtual void Exit()
     {
-        if (_player.InputVector != Vector2.Zero)
-            _player.StateMachine.ChangeState(PlayerStateType.Run);
-        else
-            _player.StateMachine.ChangeState(PlayerStateType.Idle);
+        if (WaitsForAnimationEnd)
+            Player.Animator.DisconnectAnimationFinished(OnAnimationFinished);
     }
-
+    
 }

@@ -13,7 +13,7 @@ public partial class Player : CharacterBody2D
     [Export] private Marker2D _weaponMarker;
     
     public bool IsLocal { get; set; }
-    public StateMachine StateMachine { get; private set; }
+    private StateMachine StateMachine { get; set; }
     public PlayerAnimator Animator { get; private set; }
     public PlayerMovement Movement { get; private set; }
     public InventoryManager Inventory { get; private set; }
@@ -26,7 +26,7 @@ public partial class Player : CharacterBody2D
         Animator = new PlayerAnimator(_sprite);
         StateMachine = new StateMachine(this);
         Inventory = new InventoryManager(_weaponMarker);
-        StateMachine.ChangeState(PlayerStateType.Idle);
+        StateMachine.ChangeState(new IdleState(this));
         SetProcess(true);
 
         if (IsLocal)
@@ -47,8 +47,7 @@ public partial class Player : CharacterBody2D
             StateMachine.Update(delta);
         }
         
-        GD.Print($"{StateMachine.CurrentState}");
-        
+        GD.Print($"{StateMachine.CurrentState}, {Velocity.Y}");
         Movement.UpdateDirection(InputVector);
         Animator.UpdateSpriteDirection(Movement.FacingDirection);
     }

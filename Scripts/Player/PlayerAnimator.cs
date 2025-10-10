@@ -1,11 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using Godot;
 
 public class PlayerAnimator
 {
     private readonly AnimatedSprite2D _sprite;
-    private Action _animationFinishedCallback;
-    
     public PlayerAnimator(AnimatedSprite2D sprite)
     {
         _sprite = sprite;
@@ -15,37 +14,31 @@ public class PlayerAnimator
     {
         if (_sprite.Animation == name && _sprite.IsPlaying())
             return;
-
+        
         _sprite.Play(name);
     }
-    
-    public void SetAnimation(string name, bool hasWeapon)
-    {
-        string animName = name;
 
-        // Добавляем суффикс "_Weapon", если у игрока в руках оружие
-        if (hasWeapon)
-            animName = $"{name}Pistol";
-
-        if (_sprite.Animation == animName && _sprite.IsPlaying())
-            return;
-
-        _sprite.Play(animName);
-    }
+    // public double GetAnimationLength(string animationName)
+    // {
+    //     var frames = _sprite.SpriteFrames;
+    //     var frameCount = frames.GetFrameCount(animationName);
+    //
+    //     var totalDuration = 0.0;
+    //     
+    //     for(var i = 0; i < frameCount; i++)
+    //         totalDuration += frames.GetFrameDuration(animationName, i);
+    //
+    //     return totalDuration / _sprite.SpeedScale;
+    // }
     
     public void ConnectAnimationFinished(Action callback)
     {
-        _animationFinishedCallback = callback;
-        _sprite.AnimationFinished += _animationFinishedCallback;
+        _sprite.AnimationFinished += callback;
     }
     
     public void DisconnectAnimationFinished(Action callback)
     {
-        if (_animationFinishedCallback != null)
-        {
-            _sprite.AnimationFinished -= _animationFinishedCallback;
-            _animationFinishedCallback = null;
-        }
+        _sprite.AnimationFinished -= callback;
     }
     
     public void UpdateSpriteDirection(Vector2 playerDirection)

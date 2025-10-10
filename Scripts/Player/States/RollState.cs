@@ -1,42 +1,50 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class RollState : PlayerState
 {
-    public RollState(Player player) : base(player) => AnimationName = "Roll";
-
-    public override void Enter()
+    public RollState(Player player) : base(player)
     {
-        _player.Animator.SetAnimation(AnimationName);
-        
-        _player.Animator.ConnectAnimationFinished(OnAnimationFinished);
+        AnimationName = "Roll";
+        WaitsForAnimationEnd = true;
     }
+    
 
     public override void Exit()
     {
-        _player.Animator.DisconnectAnimationFinished(OnAnimationFinished);
+        
     }
 
     public override void Update(double delta)
     {
-        if (_player.IsLocal)
-        {
-            if (_player.Velocity.Y > 0)
-                _player.StateMachine.ChangeState(PlayerStateType.Fall);
-        }
+        GD.Print(IsAnimationDone());
     }
 
     public override void PhysicsUpdate(double delta)
     {
-        _player.Movement.ApplyGravity(delta);
+        Player.Movement.ApplyGravity(delta);
+        Player.Movement.HandleRoll();
 
-        _player.Movement.HandleRoll();
-
-        _player.MoveAndSlide();
+        Player.MoveAndSlide();
 
         var network = NetworkClient.Instance;
-        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
+        network.SendMoveRequest(network.LocalUserID, Player.GlobalPosition, Player.InputVector, Player.Velocity);
     }
 
+    public override PlayerState CheckTransitions(ControlContext controlContext)
+    {
+        if (Player.IsLocal)
+        {
+            if (IsAnimationDone())
+                return new IdleState(Player);
+            
+            if (Player.Velocity.Y > 0)
+                return new FallState(Player);
+            
+        }
+
+        return null;
+    }
 }

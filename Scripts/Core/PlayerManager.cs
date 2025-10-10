@@ -58,8 +58,8 @@ public partial class PlayerManager : Node
         if (!_players.TryGetValue(playerId, out var player)) 
             return;
 
-        if (Enum.TryParse<PlayerStateType>(state, out var parsedState))
-            player.StateMachine.ChangeState(parsedState);
+        // if (Enum.TryParse<PlayerStateType>(state, out var parsedState))
+        //     player.StateMachine.ChangeState(parsedState);
     }
 
     public void OnPlayerLeave(string playerId)

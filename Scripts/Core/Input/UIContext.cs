@@ -2,7 +2,7 @@
 
 namespace GunRitualExorcistEdition.Scripts.Core;
 
-public class InventoryInput : InputContext
+public class UIContext : InputContext
 {
     
 }

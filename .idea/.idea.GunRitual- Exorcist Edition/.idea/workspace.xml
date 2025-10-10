@@ -7,15 +7,17 @@
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/InputContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/InputContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/InputContext.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/GameScene.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/GameManager.cs.uid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/InventoryInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/InventoryInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/PlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/InventoryInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/UIContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/InventoryInput.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/UIContext.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/ControlContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/PlayerInput.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/ControlContext.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" afterDir="false" />
@@ -25,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/ShootState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/ShootState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,27 +53,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Executable.Player (1).executor": "Run",
-    ".NET Executable.Player (2).executor": "Run",
-    ".NET Executable.Player 1.executor": "Run",
-    ".NET Executable.Player 2.executor": "Run",
-    ".NET Executable.Player 3.executor": "Run",
-    ".NET Executable.Player.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "debugger.stepping",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Executable.Player (1).executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player (2).executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 1.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 2.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 3.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;debugger.stepping&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Compound.1 Player">
     <configuration name="1 Player" type="CompoundRunConfigurationType">
       <toRun name="Player" type="RunExe" />
@@ -98,9 +101,9 @@
       <method v="2" />
     </configuration>
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Programs/Godot_v4.4-stable_mono_win64/Godot_v4.4-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
-      <option name="WORKING_DIRECTORY" value="D:\Develop\GunRitual-Exorcist-Edition" />
+      <option name="WORKING_DIRECTORY" value="D:\GodotProject\gunritual--exorcist-edition" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
@@ -170,9 +173,9 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Programs/Godot_v4.4-stable_mono_win64/Godot_v4.4-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
-      <option name="WORKING_DIRECTORY" value="D:\Develop\GunRitual-Exorcist-Edition" />
+      <option name="WORKING_DIRECTORY" value="D:\GodotProject\gunritual--exorcist-edition" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
@@ -247,6 +250,9 @@
       <workItem from="1758737250980" duration="7119000" />
       <workItem from="1758811604300" duration="1986000" />
       <workItem from="1760013276198" duration="12215000" />
+      <workItem from="1760062707811" duration="1896000" />
+      <workItem from="1760084590358" duration="16933000" />
+      <workItem from="1760112188748" duration="11711000" />
     </task>
     <task id="LOCAL-00001" summary="Added Movement States">
       <option name="closed" value="true" />

@@ -1,39 +1,51 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class FallState : PlayerState
 {
     public FallState(Player player) : base(player) => AnimationName = "Fall";
-    
+
     public override void Enter()
     {
-        _player.Animator.SetAnimation(AnimationName);
-    }   
+        
+        Player.Animator.SetAnimation(AnimationName);
+    }
 
-    public override void Exit() { }
+    public override void Exit()
+    {
+    }
 
     public override void Update(double delta)
     {
-        if (_player.IsLocal)
-        {
-            if (_player.IsOnFloor())
-                _player.StateMachine.ChangeState(PlayerStateType.Land);
-            
-            if (Input.IsActionJustPressed("input_fire"))
-            {
-                var weapon = _player.Inventory.CurrentWeapon;
-                if (weapon != null && weapon.CurrentAmmo > 0)
-                    _player.StateMachine.ChangeState(PlayerStateType.Shoot);
-            }
-        }
+        
     }
 
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;
-        _player.Movement.ApplyGravity(delta);
-        _player.Movement.HandleHorizontalMovement();
-        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
+        Player.Movement.ApplyGravity(delta);
+        Player.Movement.HandleHorizontalMovement();
+        network.SendMoveRequest(network.LocalUserID, Player.GlobalPosition, Player.InputVector, Player.Velocity);
+    }
+
+    public override PlayerState CheckTransitions(ControlContext controlContext)
+    {
+        if (Player.IsLocal)
+        {
+            if (Player.IsOnFloor())
+                return new LandState(Player);
+
+            if (controlContext.IsFirePressed)
+            {
+                var weapon = Player.Inventory.CurrentWeapon;
+
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                    return new ShootState(Player);
+            }
+        }
+
+        return null;
     }
 }

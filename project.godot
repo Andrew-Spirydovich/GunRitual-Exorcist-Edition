@@ -20,8 +20,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-NetworkClient="*res://Scripts/Core/NetworkClient.cs"
-AudioManager="*res://Scenes/audio_manager.tscn"
+NetworkClient="res://Scripts/Core/NetworkClient.cs"
+AudioManager="res://Scenes/audio_manager.tscn"
 
 [display]
 

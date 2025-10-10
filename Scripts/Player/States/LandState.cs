@@ -1,50 +1,59 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class LandState : PlayerState
 {
-    public LandState(Player player) : base(player) => AnimationName = "Land";
-
-    public override void Enter()
+    public LandState(Player player) : base(player)
     {
-        _player.Animator.SetAnimation(AnimationName);
-        _player.Animator.ConnectAnimationFinished(OnAnimationFinished); 
+        AnimationName = "Land";
+        WaitsForAnimationEnd = true;
     }
 
     public override void Exit()
     {
-        _player.Animator.DisconnectAnimationFinished(OnAnimationFinished); 
     }
 
     public override void Update(double delta)
     {
-        if (_player.IsLocal)
-        {
-            if (_player.InputVector != Vector2.Zero)
-                _player.StateMachine.ChangeState(PlayerStateType.Run);
-            
-            if (Input.IsActionJustPressed("input_roll"))
-                _player.StateMachine.ChangeState(PlayerStateType.Roll);
-            
-            if (WantsToSlide() && _player.Movement.IsOnFloor())
-                _player.StateMachine.ChangeState(PlayerStateType.Slide);
-            
-            if (Input.IsActionJustPressed("input_fire"))
-            {
-                var weapon = _player.Inventory.CurrentWeapon;
-                
-                if (weapon != null && weapon.CurrentAmmo > 0)
-                    _player.StateMachine.ChangeState(PlayerStateType.Shoot);
-            }
-        }
+        
     }
 
     public override void PhysicsUpdate(double delta)
     {
         var network = NetworkClient.Instance;
-        _player.Movement.ApplyGravity(delta);
-        
-        network.SendMoveRequest(network.LocalUserID, _player.GlobalPosition, _player.InputVector, _player.Velocity);
+        Player.Movement.ApplyGravity(delta);
+
+        network.SendMoveRequest(network.LocalUserID, Player.GlobalPosition, Player.InputVector, Player.Velocity);
+    }
+
+    public override PlayerState CheckTransitions(ControlContext controlContext)
+    {
+        if (Player.IsLocal)
+        {
+                        
+            if (IsAnimationDone())
+                return new IdleState(Player);
+            
+            if (Player.InputVector != Vector2.Zero)
+                return new RunState(Player);
+
+            if (controlContext.IsRollPressed)
+                return new RollState(Player);
+
+            if (controlContext.IsSlidePressed && Player.Movement.IsOnFloor())
+                return new SlideState(Player);
+
+            if (controlContext.IsFirePressed)
+            {
+                var weapon = Player.Inventory.CurrentWeapon;
+
+                if (weapon != null && weapon.CurrentAmmo > 0)
+                    return new ShootState(Player);
+            }
+        }
+
+        return null;
     }
 }

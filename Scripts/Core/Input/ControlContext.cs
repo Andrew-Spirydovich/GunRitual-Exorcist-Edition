@@ -2,12 +2,12 @@
 
 namespace GunRitualExorcistEdition.Scripts.Core;
 
-public class PlayerInput : InputContext
+public class ControlContext : InputContext
 {
-    public bool FirePressed => Input.IsActionJustPressed("input_fire");
-    public bool JumpPressed => Input.IsActionJustPressed("input_jump");
-    public bool RollPressed => Input.IsActionJustPressed("input_roll");
-    public bool SlidePressed =>
+    public bool IsFirePressed => Input.IsActionJustPressed("input_fire");
+    public bool IsJumpPressed => Input.IsActionJustPressed("input_jump");
+    public bool IsRollPressed => Input.IsActionJustPressed("input_roll");
+    public bool IsSlidePressed =>
         Input.IsActionPressed("input_down") &&
         (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
         Input.IsActionJustPressed("input_down");

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameScene : Node2D
+public partial class GameManager : Node2D
 {
     [Export] private PlayerManager _playerManager;
 

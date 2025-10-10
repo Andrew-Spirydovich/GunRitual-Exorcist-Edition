@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class StateMachine
@@ -13,22 +14,10 @@ public class StateMachine
         _player = player;
     }
     
-    public void ChangeState(PlayerStateType stateType)
+    public void ChangeState(PlayerState nextState)
     {
         CurrentState?.Exit();
-        
-        CurrentState = stateType switch
-        {
-            PlayerStateType.Idle => new IdleState(_player),
-            PlayerStateType.Run => new RunState(_player),
-            PlayerStateType.Jump => new JumpState(_player),
-            PlayerStateType.Fall => new FallState(_player),
-            PlayerStateType.Roll => new RollState(_player),
-            PlayerStateType.Slide => new SlideState(_player),
-            PlayerStateType.Land => new LandState(_player),
-            PlayerStateType.Shoot => new ShootState(_player),
-            _ => CurrentState
-        };
+        CurrentState = nextState;
 
         if (!_player.IsLocal)
             GD.Print("Поставили состояние не локальному игроку {}", CurrentState);
@@ -41,13 +30,18 @@ public class StateMachine
                 return;
             
             var network = NetworkClient.Instance;
-            network.SendStateRequest(network.LocalUserID, stateType.ToString());
+            network.SendStateRequest(network.LocalUserID, CurrentState.ToString());
         }
     }
 
     public void Update(double delta)
     {
         CurrentState?.Update(delta);
+        
+        var nextState = CurrentState?.CheckTransitions(InputManager.GetContext<ControlContext>());
+        
+        if(nextState != null)
+            ChangeState(nextState);
     }
 
     public void PhysicsUpdate(double delta)
