@@ -19,11 +19,6 @@ public class SlideState : PlayerState
         Player.Velocity = Vector2.Zero;
     }
 
-    public override void Update(double delta)
-    {
-        
-    }
-
     public override void PhysicsUpdate(double delta)
     {
         Player.Movement.ApplyGravity(delta);
@@ -56,10 +51,7 @@ public class SlideState : PlayerState
 
             if (controlContext.IsFirePressed)
             {
-                var weapon = Player.Inventory.CurrentWeapon;
-
-                if (weapon != null && weapon.CurrentAmmo > 0)
-                    return new ShootState(Player);
+                return Player.Attack();
             }
         }
 

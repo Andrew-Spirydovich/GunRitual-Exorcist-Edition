@@ -12,6 +12,8 @@ public class ControlContext : InputContext
         (Input.IsActionPressed("input_left") || Input.IsActionPressed("input_right")) &&
         Input.IsActionJustPressed("input_down");
 
+    public bool IsReloadPressed => Input.IsActionJustPressed("input_reload");
+    
     public Vector2 MoveDirection =>
         new Vector2(
             Input.GetActionStrength("input_right") - Input.GetActionStrength("input_left"),

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://dvvorevsmwuic"]
 
-[ext_resource type="Script" uid="uid://dw6ioke5vryij" path="res://Scripts/Core/GameScene.cs" id="1_kilg5"]
+[ext_resource type="Script" uid="uid://dw6ioke5vryij" path="res://Scripts/Core/GameManager.cs" id="1_kilg5"]
 [ext_resource type="Texture2D" uid="uid://c6glx4jyjyp54" path="res://Assets/Sprites/Environment/tileWall.png" id="2_kilg5"]
 [ext_resource type="Script" uid="uid://buyuyvxjyh3i6" path="res://Scripts/Core/PlayerManager.cs" id="3_lg2j6"]
 [ext_resource type="Texture2D" uid="uid://b0v5sr55a0gdd" path="res://Assets/Sprites/UI/revolver UI.png" id="4_lg2j6"]
@@ -137,7 +137,7 @@ scale = Vector2(1, 13.9417)
 shape = SubResource("RectangleShape2D_lg2j6")
 
 [node name="WeaponLoot" parent="." instance=ExtResource("7_x6js8")]
-position = Vector2(-128, 79)
+position = Vector2(-288, -64)
 _weaponType = 2
 
 [node name="WeaponLoot2" parent="." instance=ExtResource("7_x6js8")]

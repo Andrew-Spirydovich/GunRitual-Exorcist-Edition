@@ -10,17 +10,6 @@ public class RollState : PlayerState
         AnimationName = "Roll";
         WaitsForAnimationEnd = true;
     }
-    
-
-    public override void Exit()
-    {
-        
-    }
-
-    public override void Update(double delta)
-    {
-        GD.Print(IsAnimationDone());
-    }
 
     public override void PhysicsUpdate(double delta)
     {

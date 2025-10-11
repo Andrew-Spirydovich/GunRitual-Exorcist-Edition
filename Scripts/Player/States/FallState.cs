@@ -9,25 +9,7 @@ public class FallState : PlayerState
 
     public override void Enter()
     {
-        
         Player.Animator.SetAnimation(AnimationName);
-    }
-
-    public override void Exit()
-    {
-    }
-
-    public override void Update(double delta)
-    {
-        
-    }
-
-    public override void PhysicsUpdate(double delta)
-    {
-        var network = NetworkClient.Instance;
-        Player.Movement.ApplyGravity(delta);
-        Player.Movement.HandleHorizontalMovement();
-        network.SendMoveRequest(network.LocalUserID, Player.GlobalPosition, Player.InputVector, Player.Velocity);
     }
 
     public override PlayerState CheckTransitions(ControlContext controlContext)
@@ -39,10 +21,7 @@ public class FallState : PlayerState
 
             if (controlContext.IsFirePressed)
             {
-                var weapon = Player.Inventory.CurrentWeapon;
-
-                if (weapon != null && weapon.CurrentAmmo > 0)
-                    return new ShootState(Player);
+                return Player.Attack();
             }
         }
 

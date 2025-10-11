@@ -4,15 +4,15 @@ using GunRitualExorcistEdition.Scripts.Items.Wepons;
 
 public partial class Ithaca37 : Weapon
 {
-    public Ithaca37() : base(WeaponType.Ithaca37, 5, 0.5f, 30f)
+    public Ithaca37() : base(WeaponType.Ithaca37, 5, 0.5f,1,  30f)
     {
         ShootSound = GD.Load<AudioStreamMP3>("res://Assets/Audio/winchester fire.mp3");
     }
 
-    public override void Attack(Node world, Vector2 position, Vector2 direction)
+    public override bool TryAttack(Node world, Vector2 position, Vector2 direction)
     {
         if (CurrentAmmo <= 0) 
-            return;
+            return false;
 
         UseAmmo();
         
@@ -26,5 +26,7 @@ public partial class Ithaca37 : Weapon
             AudioManager.Instance.PlaySFX(ShootSound);
             world.AddChild(bullet);
         }
+        
+        return true;
     }
 }

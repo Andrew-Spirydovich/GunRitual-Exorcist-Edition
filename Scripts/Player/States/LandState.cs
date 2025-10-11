@@ -1,7 +1,5 @@
 using Godot;
-using System;
 using GunRitualExorcistEdition.Scripts.Core;
-using GunRitualExorcistEdition.Scripts.Player.States;
 
 public class LandState : PlayerState
 {
@@ -13,11 +11,7 @@ public class LandState : PlayerState
 
     public override void Exit()
     {
-    }
-
-    public override void Update(double delta)
-    {
-        
+        Player.Velocity = Vector2.Zero;
     }
 
     public override void PhysicsUpdate(double delta)
@@ -36,21 +30,21 @@ public class LandState : PlayerState
             if (IsAnimationDone())
                 return new IdleState(Player);
             
+            if (controlContext.IsJumpPressed && Player.IsOnFloor())
+                return new JumpState(Player);
+            
             if (Player.InputVector != Vector2.Zero)
                 return new RunState(Player);
 
-            if (controlContext.IsRollPressed)
+            if (controlContext.IsRollPressed && Player.IsOnFloor())
                 return new RollState(Player);
 
-            if (controlContext.IsSlidePressed && Player.Movement.IsOnFloor())
+            if (controlContext.IsSlidePressed && Player.IsOnFloor())
                 return new SlideState(Player);
 
             if (controlContext.IsFirePressed)
             {
-                var weapon = Player.Inventory.CurrentWeapon;
-
-                if (weapon != null && weapon.CurrentAmmo > 0)
-                    return new ShootState(Player);
+                return Player.Attack();
             }
         }
 

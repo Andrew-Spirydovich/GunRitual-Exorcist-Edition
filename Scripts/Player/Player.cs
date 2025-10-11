@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using GunRitualExorcistEdition.Scripts.Core;
-using GunRitualExorcistEdition.Scripts.Player.States;
 
 public partial class Player : CharacterBody2D
 {
@@ -22,10 +21,10 @@ public partial class Player : CharacterBody2D
     
     public override void _Ready()
     {
-        Movement = new PlayerMovement(this);
-        Animator = new PlayerAnimator(_sprite);
+        Movement = new PlayerMovement(this, InputManager.GetContext<ControlContext>());
+        Animator = new PlayerAnimator(_sprite, _weaponMarker);
         StateMachine = new StateMachine(this);
-        Inventory = new InventoryManager(_weaponMarker);
+        Inventory = new InventoryManager();
         StateMachine.ChangeState(new IdleState(this));
         SetProcess(true);
 
@@ -46,8 +45,8 @@ public partial class Player : CharacterBody2D
             InputVector = Movement.GetInputDirection();
             StateMachine.Update(delta);
         }
-        
-        GD.Print($"{StateMachine.CurrentState}, {Velocity.Y}");
+        //GD.Print(Velocity.Y);
+        //GD.Print($"{StateMachine.CurrentState}, {Velocity.Y}");
         Movement.UpdateDirection(InputVector);
         Animator.UpdateSpriteDirection(Movement.FacingDirection);
     }
@@ -73,6 +72,8 @@ public partial class Player : CharacterBody2D
     public void PickUpWeapon(Weapon weapon)
     {
         Inventory.AddWeapon(weapon);
+
+        Animator.SetDefaultMarker(weapon.MarkerPosition);
         
         weapon.AmmoChanged += (current, max) =>
         {
@@ -82,8 +83,19 @@ public partial class Player : CharacterBody2D
         OnAmmoChanged?.Invoke(weapon.CurrentAmmo, weapon.MaxAmmo);
     }
 
-    public void Attack()
+    public PlayerState Attack()
     {
-        Inventory.CurrentWeapon?.Attack(GetTree().CurrentScene, _weaponMarker.GlobalPosition, Movement.FacingDirection);
+        var currentWeapon = Inventory.CurrentWeapon;
+        
+        if(currentWeapon?.TryAttack(GetTree().CurrentScene, _weaponMarker.GlobalPosition, Movement.FacingDirection) == true)
+            return new ShootState(this);
+        
+        return null;
+    }
+
+    public void Reload()
+    {
+        var currentWeapon = Inventory.CurrentWeapon;
+        currentWeapon?.Reload(this);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace GunRitualExorcistEdition.Scripts.Core;
+﻿using GunRitualExorcistEdition.Scripts.Core;
 
 public static class InputManager
 {

@@ -1,19 +1,22 @@
 using Godot;
+using GunRitualExorcistEdition.Scripts.Core;
 
 public class PlayerMovement
 {
     private const float RUN_SPEED = 200f;
     private const float GRAVITY = 900f;
-    private const float ROLL_SPEED = 300f;
+    private const float ROLL_FORCE = 250f;
     private const float SLIDE_SPEED = 400f;
-    
+    private const float JUMP_FORCE = 400f;
     public Vector2 FacingDirection { get; private set; } = Vector2.Right;
     
     private readonly Player _player;
-            
-    public PlayerMovement(Player player)
+    private readonly ControlContext _controlContext;
+    
+    public PlayerMovement(Player player, ControlContext context)
     {
         _player = player;
+        _controlContext = context;
     }
     
     public bool IsOnFloor() => _player.IsOnFloor();
@@ -30,13 +33,20 @@ public class PlayerMovement
 
     public void HandleRoll()
     {
-        var velocity = FacingDirection * ROLL_SPEED;
+        var velocity = FacingDirection * ROLL_FORCE;
         _player.Velocity = new Vector2(velocity.X, _player.Velocity.Y);
     }
 
     public void HandeSlide()
     {
         _player.Velocity = FacingDirection * SLIDE_SPEED;
+    }
+
+    public void HandeJump()
+    {
+        var vel = _player.Velocity;
+        vel.Y = -JUMP_FORCE;
+        _player.Velocity = vel;
     }
     
     public void ApplyGravity(double delta)
@@ -48,9 +58,7 @@ public class PlayerMovement
     
     public Vector2 GetInputDirection()
     {
-        var x = Input.GetActionStrength("input_right") - Input.GetActionStrength("input_left");
-        var y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-        var direction = new Vector2(x, y);
+        var direction = _controlContext.MoveDirection;
         
         return direction.Length() > 1 ? direction.Normalized() : direction;
     }

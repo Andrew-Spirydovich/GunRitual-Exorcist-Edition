@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c47onjn5e7xj"]
+[gd_scene load_steps=6 format=3 uid="uid://c47onjn5e7xj"]
 
 [ext_resource type="Script" uid="uid://buklqb3b7wuxn" path="res://Scripts/Items/Wepons/Bullet.cs" id="1_14k46"]
 [ext_resource type="Texture2D" uid="uid://go30m2rbbvlw" path="res://Assets/Sprites/Items/bullet.png" id="2_qvus8"]
@@ -6,8 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oduel"]
 size = Vector2(4, 2)
 
-[node name="Bullet" type="Area2D"]
+[sub_resource type="Curve" id="Curve_14k46"]
+_data = [Vector2(0, 0), 0.0, -0.131579, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_14k46"]
+colors = PackedColorArray(1, 0.966667, 0, 1, 0.04, 0.0386667, 0, 0)
+
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("Trail")]
 script = ExtResource("1_14k46")
+Trail = NodePath("Line2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_qvus8")
@@ -15,3 +23,11 @@ texture = ExtResource("2_qvus8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.76, 0.48)
 shape = SubResource("RectangleShape2D_oduel")
+
+[node name="Line2D" type="Line2D" parent="."]
+show_behind_parent = true
+top_level = true
+width = 3.0
+width_curve = SubResource("Curve_14k46")
+default_color = Color(0.644288, 0.622193, 3.85046e-07, 1)
+gradient = SubResource("Gradient_14k46")

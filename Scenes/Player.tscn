@@ -557,7 +557,6 @@ shape = SubResource("RectangleShape2D_sasra")
 
 [node name="Camera2D" parent="." instance=ExtResource("4_ude3g")]
 enabled = false
-position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
 [node name="Marker2D" type="Marker2D" parent="."]

@@ -1,7 +1,5 @@
 using Godot;
-using System;
 using GunRitualExorcistEdition.Scripts.Core;
-using GunRitualExorcistEdition.Scripts.Player.States;
 
 public abstract class PlayerState
 {
@@ -26,13 +24,27 @@ public abstract class PlayerState
         }
     }
 
+    public virtual void Update(double delta) { }
 
-    public abstract void Update(double delta);
-    public abstract void PhysicsUpdate(double delta);
+    public virtual void PhysicsUpdate(double delta)
+    {
+        Player.Movement.ApplyGravity(delta);
+        Player.Movement.HandleHorizontalMovement();
+        
+        var network = NetworkClient.Instance;
+        network.SendMoveRequest(network.LocalUserID, Player.GlobalPosition, Vector2.Zero, Vector2.Zero);
+    }
     public abstract PlayerState CheckTransitions(ControlContext controlContext);
 
     private void OnAnimationFinished()
     {
+        _animationFinished = true;
+    }
+
+    protected void AnimationForceFinish()
+    {
+        Player.Animator.SetAnimation("Idle");
+        Player.Animator.DisconnectAnimationFinished(OnAnimationFinished);
         _animationFinished = true;
     }
     
