@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bd1l65gh4acp6"]
+[gd_scene load_steps=89 format=3 uid="uid://bd1l65gh4acp6"]
 
 [ext_resource type="Script" uid="uid://buewks1srp3qn" path="res://Scripts/Player/Player.cs" id="1_h54ih"]
 [ext_resource type="Material" uid="uid://cfp4nk1b8eri0" path="res://Assets/Materials & Shaders/Player.material" id="2_jmcll"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://vgxfnbklohai" path="res://Scenes/Camera2D.tscn" id="4_ude3g"]
 [ext_resource type="Texture2D" uid="uid://bos0ubjkasumj" path="res://Assets/Sprites/Player/Player Roll 48x48.png" id="6_fk5o5"]
 [ext_resource type="Texture2D" uid="uid://dscc370dmbved" path="res://Assets/Sprites/Player/player shoot 2H 48x48.png" id="6_yoq75"]
+[ext_resource type="Texture2D" uid="uid://cex2aaueso0l6" path="res://Assets/Sprites/Player/run.png" id="7_glx4g"]
 [ext_resource type="Texture2D" uid="uid://dfd0hxtrjxvg2" path="res://Assets/Sprites/Player/Player Slide 48x48.png" id="8_825xp"]
 [ext_resource type="Texture2D" uid="uid://c562vlnrghhyr" path="res://Assets/Sprites/Player/Player Running Aiming 48x48.png" id="8_ksbbd"]
 
@@ -170,6 +171,38 @@ region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6m80x"]
 atlas = ExtResource("3_jmcll")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kih0c"]
+atlas = ExtResource("7_glx4g")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyrkg"]
+atlas = ExtResource("7_glx4g")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c43xd"]
+atlas = ExtResource("7_glx4g")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avx33"]
+atlas = ExtResource("7_glx4g")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxg2u"]
+atlas = ExtResource("7_glx4g")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xixlo"]
+atlas = ExtResource("7_glx4g")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfbt0"]
+atlas = ExtResource("7_glx4g")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wosd6"]
+atlas = ExtResource("7_glx4g")
 region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5v66d"]
@@ -430,6 +463,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_kih0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c43xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avx33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxg2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xixlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfbt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wosd6")
+}],
+"loop": true,
+"name": &"Run2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5v66d")
 }, {
 "duration": 1.0,
@@ -536,9 +598,7 @@ _weaponMarker = NodePath("Marker2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hiucn")
-animation = &"ShootPistol"
-frame = 9
-frame_progress = 1.0
+animation = &"Run"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -12.0

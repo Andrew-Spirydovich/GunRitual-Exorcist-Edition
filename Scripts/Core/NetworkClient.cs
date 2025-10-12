@@ -54,7 +54,7 @@ public partial class NetworkClient : Node
         if (OfflineMode && _playerManager != null)
         {
             // Сразу создаём локального игрока без сервера
-            _playerManager.SpawnLocalPlayer(LocalUserID, new Vector2(100, 100));
+            _playerManager.SpawnLocalPlayer(LocalUserID, new Vector2(0, 0));
         }
     }
 

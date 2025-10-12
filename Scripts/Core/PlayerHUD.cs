@@ -11,6 +11,7 @@ public partial class PlayerHUD : CanvasLayer
 
     public override void _Ready()
     {
+        Visible = true;
         UpdateWeapon(new Unarmed());
     }
     

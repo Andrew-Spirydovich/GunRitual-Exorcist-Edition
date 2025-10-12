@@ -4,7 +4,7 @@ using GunRitualExorcistEdition.Scripts.Items.Wepons;
 
 public class InventoryManager
 {
-    public Weapon CurrentWeapon { get; private set; }
+    public Weapon CurrentWeapon { get; private set; } = new Unarmed();
     public event Action<Weapon> OnWeaponChanged;
 
     public InventoryManager()

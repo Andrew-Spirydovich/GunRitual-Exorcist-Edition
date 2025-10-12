@@ -6,6 +6,7 @@ using GunRitualExorcistEdition.Scripts.Player.States;
 public partial class PlayerManager : Node
 {
     [Export] private PackedScene _playerScene;
+    [Export] private Marker2D _spawnPoint;
     private Godot.Collections.Dictionary<string, Player> _players = new();    
     
     public Player SpawnLocalPlayer(string playerId, Vector2 position)
@@ -13,7 +14,7 @@ public partial class PlayerManager : Node
         if(_players.TryGetValue(playerId, out var existingPlayer))
             return existingPlayer;
 
-        var player = CreatePlayerInstance(playerId, position, isLocal: true);
+        var player = CreatePlayerInstance(playerId, _spawnPoint.Position, isLocal: true);
         _players.Add(playerId, player);
         
         return player;

@@ -3,8 +3,7 @@ using System;
 
 public partial class CameraController : Camera2D
 {
-    [Export] 
-    private Node2D _target;
+    [Export] private Node2D _target;
 
     public override void _Process(double delta)
     {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bstvebua4ljnk"
-path="res://.godot/imported/Без названия.png-91c50622e94934165cbc6926e67a34ce.ctex"
+uid="uid://buald3flfl0bn"
+path="res://.godot/imported/background_4.png-4bdd55162ca4bbe225a06d176dbcc636.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Без названия.png"
-dest_files=["res://.godot/imported/Без названия.png-91c50622e94934165cbc6926e67a34ce.ctex"]
+source_file="res://Assets/Haunted Forest Parallaxing Background/background_4.png"
+dest_files=["res://.godot/imported/background_4.png-4bdd55162ca4bbe225a06d176dbcc636.ctex"]
 
 [params]
 

@@ -1,5 +1,6 @@
 using Godot;
 using GunRitualExorcistEdition.Scripts.Core;
+using GunRitualExorcistEdition.Scripts.Items.Wepons;
 
 public class RunState : PlayerState
 {
@@ -7,7 +8,19 @@ public class RunState : PlayerState
 
     public override void Enter()
     {
-        Player.Animator.SetAnimation(AnimationName);
+        UpdateAnimation();
+    }
+
+    private void UpdateAnimation()
+    {
+        var weaponSuffix = Player.Inventory.CurrentWeapon.Type switch
+        {
+            WeaponType.Revolver => "Pistol",
+            WeaponType.Ithaca37 => "Pistol",
+            _ => ""
+        };
+        
+        Player.Animator.SetAnimation(AnimationName+weaponSuffix);
     }
 
     public override PlayerState CheckTransitions(ControlContext controlContext)
