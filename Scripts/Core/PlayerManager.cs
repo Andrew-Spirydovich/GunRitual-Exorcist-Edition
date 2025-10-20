@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
-using GunRitualExorcistEdition.Scripts.Player.States;
+using GunRitualExorcistEdition.Scripts.Characters;
 
 public partial class PlayerManager : Node
 {
@@ -14,19 +14,19 @@ public partial class PlayerManager : Node
         if(_players.TryGetValue(playerId, out var existingPlayer))
             return existingPlayer;
 
-        var player = CreatePlayerInstance(playerId, _spawnPoint.Position, isLocal: true);
+        var player = CreatePlayerInstance(playerId, _spawnPoint.Position, ControlMode.Local);
         _players.Add(playerId, player);
         
         return player;
     }
     
-    private Player CreatePlayerInstance(string playerId, Vector2 position, bool isLocal)
+    private Player CreatePlayerInstance(string playerId, Vector2 position, ControlMode mode)
     {
         var localPlayer = _playerScene.Instantiate<Player>();
         localPlayer.Name = $"Player_{playerId}";
         localPlayer.Position = position;
-        localPlayer.IsLocal = isLocal;
         localPlayer.SetDisplayName(playerId);
+        localPlayer.SetControlMode(mode);
         AddChild(localPlayer);
         
         return localPlayer;
@@ -40,8 +40,8 @@ public partial class PlayerManager : Node
         var joinedPlayer = _playerScene.Instantiate<Player>();
         joinedPlayer.Name = $"Player_{playerId}";
         joinedPlayer.Position = position;
-        joinedPlayer.IsLocal = false;
         joinedPlayer.SetDisplayName(playerId);
+        joinedPlayer.SetControlMode(ControlMode.Remote);
         AddChild(joinedPlayer);
         _players[playerId] = joinedPlayer;
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Godot;
+using GunRitualExorcistEdition.Scripts.Characters;
 
 namespace GunRitualExorcistEdition.Scripts.Items.Wepons;
 
@@ -11,6 +12,11 @@ public partial class Bullet : Area2D
     private int _maxPoints = 10;
     private Queue<Vector2> _points = new Queue<Vector2>();
     public Vector2 Direction { get; set; } = Vector2.Right;
+
+    public override void _Ready()
+    {
+        BodyEntered += OnBodyEntered;
+    }
     
     public override void _PhysicsProcess(double delta)
     {
@@ -28,11 +34,10 @@ public partial class Bullet : Area2D
 
     private void OnBodyEntered(Node2D body)
     {
-        // if (body is Player player)
-        // {
-        //     player.TakeDamage(10);
-        // }
-        
-        QueueFree();
+        if (body is Character target)
+        {
+            target.TakeDamage(10);
+            QueueFree();
+        }
     }
 }

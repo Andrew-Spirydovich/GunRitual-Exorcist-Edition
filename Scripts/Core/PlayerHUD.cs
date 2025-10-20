@@ -18,11 +18,13 @@ public partial class PlayerHUD : CanvasLayer
     public void ConnectToPlayer(Player player)
     {
         var inventory = player.Inventory;
-        if (inventory != null)
-        {
-            inventory.OnWeaponChanged += UpdateWeapon;
-            player.OnAmmoChanged += UpdateAmmo;
-        }
+        
+         if (inventory != null)
+         {
+             inventory.OnWeaponChanged += UpdateWeapon;
+             player.OnAmmoChanged += UpdateAmmo;
+         }
+        
     }
 
     public void UpdateHealth(float health)

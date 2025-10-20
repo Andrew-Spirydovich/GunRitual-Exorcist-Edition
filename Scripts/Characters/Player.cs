@@ -1,36 +1,26 @@
 using System;
 using Godot;
-using GunRitualExorcistEdition.Scripts.Core;
+using GunRitualExorcistEdition.Scripts.Characters;
+using GunRitualExorcistEdition.Scripts.Player;
+using Character = GunRitualExorcistEdition.Scripts.Characters.Character;
 
-public partial class Player : CharacterBody2D
+public partial class Player : Character, IAttacker
 {
-    [Export] private CollisionShape2D _collider;
-    [Export] private AnimatedSprite2D _sprite;
     [Export] private Camera2D _camera;
-    [Export] private Material _material;
     [Export] private Label _playerLabel;
-    [Export] private Marker2D _weaponMarker;
-    
-    public bool IsLocal { get; set; }
-    private StateMachine StateMachine { get; set; }
-    public PlayerAnimator Animator { get; private set; }
-    public PlayerMovement Movement { get; private set; }
+
     public InventoryManager Inventory { get; private set; }
-    public Vector2 InputVector { get; private set; }
+    public Weapon CurrentWeapon => Inventory.CurrentWeapon;
+    
     public event Action<int, int> OnAmmoChanged;
     
     public override void _Ready()
     {
-        Movement = new PlayerMovement(this, InputManager.GetContext<ControlContext>());
-        Animator = new PlayerAnimator(_sprite, _weaponMarker);
-        StateMachine = new StateMachine(this);
+        base._Ready();
         Inventory = new InventoryManager();
-        StateMachine.ChangeState(new IdleState(this));
-        SetProcess(true);
-
-        if (IsLocal)
+        
+        if (ControlMode == ControlMode.Local)
         {
-            _sprite.Material = _material;
             _camera.Enabled = true;
             
             var ui = GetTree().Root.GetNode<PlayerHUD>("GameScene/PlayerUI");
@@ -40,21 +30,13 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        if (IsLocal)
+        if (ControlMode == ControlMode.Local)
         {
-            InputVector = Movement.GetInputDirection();
+            InputVector = MovementController.GetInputDirection();
             StateMachine.Update(delta);
         }
-        //GD.Print(Velocity.Y);
-        //GD.Print($"{StateMachine.CurrentState}, {Velocity.Y}");
-        Movement.UpdateDirection(InputVector);
-        Animator.UpdateSpriteDirection(Movement.FacingDirection);
-    }
-    
-    public override void _PhysicsProcess(double delta)
-    {
-        if (IsLocal)
-            StateMachine.PhysicsUpdate(delta);
+        
+        base._Process(delta);
     }
 
     public void SetDisplayName(string name)
@@ -83,11 +65,11 @@ public partial class Player : CharacterBody2D
         OnAmmoChanged?.Invoke(weapon.CurrentAmmo, weapon.MaxAmmo);
     }
 
-    public PlayerState Attack()
+    public State<Character> Attack()
     {
         var currentWeapon = Inventory.CurrentWeapon;
         
-        if(currentWeapon?.TryAttack(GetTree().CurrentScene, _weaponMarker.GlobalPosition, Movement.FacingDirection) == true)
+        if(currentWeapon?.TryAttack(GetTree().CurrentScene, AttackMarker.GlobalPosition, MovementController.FacingDirection) == true)
             return new ShootState(this);
         
         return null;
@@ -98,4 +80,5 @@ public partial class Player : CharacterBody2D
         var currentWeapon = Inventory.CurrentWeapon;
         currentWeapon?.Reload(this);
     }
+    
 }

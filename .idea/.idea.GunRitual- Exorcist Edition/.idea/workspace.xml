@@ -5,23 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Scripts/BloodEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/Behavior/IAttacker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/Character.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/Enemy/Enemy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/Player.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/IdleState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/LandState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/RollState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/RunState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/SlideState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/State.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/StateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials &amp; Shaders/Player.material" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials &amp; Shaders/Player.material" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Без названия.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Без названия.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Themes/MainMenu.tres" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Themes/MainMenu.tres" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/GameScene.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/InventoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/bullet.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/bullet.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerHUD.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/Player.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/Player.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/Animations/Animator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerAnimator.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/Animations/Animator.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/MovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/PlayerMovement.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/MovementController.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/StateMachine.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/StateMachine.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/FallState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/FallState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/FallState.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/IdleState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/IdleState.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/JumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/JumpState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/JumpState.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/LandState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/LandState.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/PlayerState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/PlayerState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/State.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/PlayerStateType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/PlayerStateType.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RollState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RollState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/RollState.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/RunState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/RunState.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/ShootState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/ShootState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/ShootState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/ShootState.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player/States/SlideState.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/SlideState.cs.uid" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +67,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bba0bbd7a98ee58286e9484fbe86e01afff6232283f6efd3556eb7116453/CharacterBody2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df73a4db74df89d59655c5fb6326406f47fbfa9af1fa81518fe0a07c49d34133/Node.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -249,7 +281,12 @@
       <workItem from="1760084590358" duration="16933000" />
       <workItem from="1760112188748" duration="11711000" />
       <workItem from="1760162143712" duration="27257000" />
-      <workItem from="1760242977365" duration="12972000" />
+      <workItem from="1760242977365" duration="27371000" />
+      <workItem from="1760333492684" duration="24988000" />
+      <workItem from="1760522706667" duration="7081000" />
+      <workItem from="1760702365166" duration="5511000" />
+      <workItem from="1760962847425" duration="18610000" />
+      <workItem from="1760990698872" duration="11342000" />
     </task>
     <task id="LOCAL-00001" summary="Added Movement States">
       <option name="closed" value="true" />
