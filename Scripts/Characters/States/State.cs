@@ -10,7 +10,7 @@ public abstract class State<T> where T : Character
     private readonly Animator _animator;
     private readonly MovementController _movementController;
     
-    protected string AnimationName;
+    public string AnimationName;
     protected bool WaitsForAnimationEnd;
     private bool _animationFinished;
     
@@ -35,12 +35,16 @@ public abstract class State<T> where T : Character
 
     public virtual void PhysicsUpdate(double delta)
     { 
-        if (Entity.ControlMode == ControlMode.Local)
-        {
-            _movementController.HandleHorizontalMovement();
-            var network = NetworkClient.Instance;
-            network.SendMoveRequest(network.LocalUserID, _movementController.GlobalPosition, Vector2.Zero, Vector2.Zero);
-        }
+        // if (Entity.ControlMode == ControlMode.Local)
+        // {
+        //     _movementController.HandleHorizontalMovement();
+        //     var network = NetworkClient.Instance;
+        //     var playerDto = new PlayerMoveDto
+        //     {
+        //
+        //     };
+        //     network.SendMoveRequest(playerDto);
+        // }
         
         _movementController.ApplyGravity(delta);
     }

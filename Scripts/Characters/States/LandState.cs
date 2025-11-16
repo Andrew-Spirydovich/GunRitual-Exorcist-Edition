@@ -19,10 +19,7 @@ public class LandState : State<Character>
 
     public override void PhysicsUpdate(double delta)
     {
-        var network = NetworkClient.Instance;
         Entity.UpdateGravity(delta);
-
-        network.SendMoveRequest(network.LocalUserID, Entity.GlobalPosition, Entity.InputVector, Entity.Velocity);
     }
 
     public override State<Character> CheckTransitions(InputContext context)

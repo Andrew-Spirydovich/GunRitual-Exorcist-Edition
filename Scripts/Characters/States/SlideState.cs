@@ -28,9 +28,6 @@ public class SlideState : State<Character>
         _timer -= delta;
         Entity.Velocity *= 0.95f;
         Entity.MoveAndSlide();
-
-        var network = NetworkClient.Instance;
-        network.SendMoveRequest(network.LocalUserID, Entity.GlobalPosition, Entity.InputVector, Entity.Velocity);
     }
 
     public override State<Character> CheckTransitions(InputContext context)

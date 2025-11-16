@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using GunRitualExorcistEdition.Scripts.Characters;
+using GunRitualExorcistEdition.Scripts.Characters.States;
 
 public partial class PlayerManager : Node
 {
@@ -15,6 +16,7 @@ public partial class PlayerManager : Node
             return existingPlayer;
 
         var player = CreatePlayerInstance(playerId, _spawnPoint.Position, ControlMode.Local);
+        player.InitializeStateMap();
         _players.Add(playerId, player);
         
         return player;
@@ -42,8 +44,10 @@ public partial class PlayerManager : Node
         joinedPlayer.Position = position;
         joinedPlayer.SetDisplayName(playerId);
         joinedPlayer.SetControlMode(ControlMode.Remote);
-        AddChild(joinedPlayer);
+        AddChild(joinedPlayer); 
+        joinedPlayer.InitializeStateMap();
         _players[playerId] = joinedPlayer;
+        
     }
 
     public void OnPlayerMoved(string playerId, Vector2 position, Vector2 dir, Vector2 velocity)
@@ -59,9 +63,14 @@ public partial class PlayerManager : Node
         if (!_players.TryGetValue(playerId, out var player)) 
             return;
 
-        // if (Enum.TryParse<PlayerStateType>(state, out var parsedState))
-        //     player.StateMachine.ChangeState(parsedState);
+        if (Enum.TryParse<PlayerStateType>(state, out var parsedState))
+        {
+            var newState = player.MapEnumToState(parsedState);
+            if (newState != null)
+                player.StateMachine.ChangeState(newState);
+        }
     }
+
 
     public void OnPlayerLeave(string playerId)
     {

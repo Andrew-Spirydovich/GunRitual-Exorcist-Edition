@@ -1,5 +1,9 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
+
+using GunRitualExorcistEdition.Scripts.Characters.States;
 using GunRitualExorcistEdition.Scripts.Core;
+using GunRitualExorcistEdition.Scripts.Core.Network;
 
 namespace GunRitualExorcistEdition.Scripts.Characters;
 
@@ -17,14 +21,42 @@ public abstract partial class Character : CharacterBody2D
     public Animator Animator { get; private set; }
     public StateMachine<Character> StateMachine { get; private set; }
     public MovementController MovementController { get; private set; }
-
-    protected float Health = 100f;
+    public float Health { get; private set; } = 100f;
     public Vector2 InputVector { get; protected set; }
+
+    private CharacterNetworkSync _networkSync;
+    
+    private Dictionary<PlayerStateType, State<Character>> _stateMap;
+
+    public void InitializeStateMap()
+    {
+        _stateMap = new Dictionary<PlayerStateType, State<Character>>
+        {
+            { PlayerStateType.Idle, new IdleState(this) },
+            { PlayerStateType.Run, new RunState(this) },
+            { PlayerStateType.Jump, new JumpState(this) },
+            { PlayerStateType.Fall, new FallState(this) },
+            { PlayerStateType.Land, new LandState(this) },
+            { PlayerStateType.Roll, new RollState(this) },
+            { PlayerStateType.Shoot, new ShootState(this) },
+            { PlayerStateType.Slide, new SlideState(this) }
+        };
+    }
+
+    public State<Character>? MapEnumToState(PlayerStateType stateType)
+        => _stateMap.TryGetValue(stateType, out var state) ? state : null;
     
     public override void _Ready()
     {
+        _networkSync = new CharacterNetworkSync();
+        _networkSync.Initialize(this);
+        
         Animator = new Animator(_sprite, _bloodEffects, AttackMarker);
-        MovementController = new MovementController(this, InputManager.GetContext<ControlContext>());
+        
+        MovementController = ControlMode == ControlMode.Local ? 
+            new MovementController(this, InputManager.GetContext<ControlContext>()) : 
+            new MovementController(this, null);
+        
         StateMachine = new StateMachine<Character>(this);
         StateMachine.ChangeState(new IdleState(this));
         
@@ -33,6 +65,9 @@ public abstract partial class Character : CharacterBody2D
     
     public override void _Process(double delta)
     {
+        if(ControlMode != ControlMode.Remote)
+            StateMachine.Update(delta);
+        
         MovementController.UpdateDirection(InputVector);
         Animator.UpdateSpriteDirection(MovementController.FacingDirection);
     }
@@ -40,6 +75,10 @@ public abstract partial class Character : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         StateMachine.PhysicsUpdate(delta);
+        
+        MovementController.HandleHorizontalMovement();
+            
+        _networkSync.Tick(delta);
     }
     
     public void UpdateGravity(double delta)
@@ -63,6 +102,17 @@ public abstract partial class Character : CharacterBody2D
         if (effectsLayer != null)
             Animator.PlayBloodEffect(effectsLayer, Position);
     }
+
+    public void Jump()
+    {
+        MovementController.HandeJump();
+        
+        if (ControlMode == ControlMode.Local)
+            _networkSync.SendImmediate();
+    }
     
-    public void Jump() => MovementController.HandeJump();
+    public void OnLocalStateChanged(string state)
+    {
+        _networkSync.SendStateImmediate();
+    }
 }

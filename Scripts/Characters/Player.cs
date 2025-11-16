@@ -2,9 +2,9 @@ using System;
 using Godot;
 using GunRitualExorcistEdition.Scripts.Characters;
 using GunRitualExorcistEdition.Scripts.Player;
-using Character = GunRitualExorcistEdition.Scripts.Characters.Character;
 
-public partial class Player : Character, IAttacker
+
+public partial class Player : Character, IArmedAttacker
 {
     [Export] private Camera2D _camera;
     [Export] private Label _playerLabel;
@@ -33,7 +33,6 @@ public partial class Player : Character, IAttacker
         if (ControlMode == ControlMode.Local)
         {
             InputVector = MovementController.GetInputDirection();
-            StateMachine.Update(delta);
         }
         
         base._Process(delta);

@@ -19,9 +19,6 @@ public class RollState : State<Character>
         Entity.MovementController.HandleRoll();
 
         Entity.MoveAndSlide();
-
-        var network = NetworkClient.Instance;
-        network.SendMoveRequest(network.LocalUserID, Entity.GlobalPosition, Entity.InputVector, Entity.Velocity);
     }
 
     public override State<Character> CheckTransitions(InputContext context)

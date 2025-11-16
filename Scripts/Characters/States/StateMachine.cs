@@ -10,6 +10,7 @@ public class StateMachine<T> where T : Character
     private State<T> _currentState;
     private readonly T _entity;
 
+    public string CurrentStateName => _currentState.AnimationName;
     public StateMachine(T entity)
     {
         _entity = entity;
@@ -30,8 +31,7 @@ public class StateMachine<T> where T : Character
             if(_entity.ControlMode != ControlMode.Local)
                 return;
             
-            var network = NetworkClient.Instance;
-            network.SendStateRequest(network.LocalUserID, _currentState.ToString());
+            _entity.OnLocalStateChanged(_currentState.AnimationName);
         }
     }
 

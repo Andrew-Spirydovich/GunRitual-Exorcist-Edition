@@ -59,6 +59,9 @@ public class MovementController
     
     public Vector2 GetInputDirection()
     {
+        if (_controlContext == null)
+            return Vector2.Zero;
+        
         var direction = _controlContext.MoveDirection;
         
         return direction.Length() > 1 ? direction.Normalized() : direction;

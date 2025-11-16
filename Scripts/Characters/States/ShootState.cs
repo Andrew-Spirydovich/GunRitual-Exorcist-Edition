@@ -26,9 +26,6 @@ public class ShootState : State<Character>
     public override void PhysicsUpdate(double delta)
     {
         Entity.MovementController.ApplyGravity(delta);
-        Entity.MoveAndSlide();
-        var network = NetworkClient.Instance;
-        network.SendMoveRequest(network.LocalUserID, Entity.GlobalPosition, Vector2.Zero, Vector2.Zero);
     }
     
     public override State<Character>  CheckTransitions(InputContext context)
@@ -50,11 +47,28 @@ public class ShootState : State<Character>
                 return null;
             
             if (control.IsFirePressed)
+            { 
                 return attacker.Attack();
+            }
             
-            if(control.IsReloadPressed)
-                attacker.Reload();
+            if (Entity is not IArmedAttacker armedAttacker) 
+                return null;
 
+            if (control.IsReloadPressed)
+            {
+                armedAttacker.Reload();
+            }
+
+        }
+        else if (Entity.ControlMode == ControlMode.AI)
+        {
+            if (IsAnimationDone())
+            {
+                if (Entity.InputVector != Vector2.Zero)
+                    return new RunState(Entity);
+                else
+                    return new IdleState(Entity);
+            }
         }
         return null;
     }

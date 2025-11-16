@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 using GunRitualExorcistEdition.Scripts.Items.Wepons;
 
 public partial class Unarmed : Weapon
@@ -7,6 +8,7 @@ public partial class Unarmed : Weapon
 
     public override bool TryAttack(Node world, Vector2 position, Vector2 direction)
     {
-        throw new System.NotImplementedException();
+        Console.WriteLine("1");
+        return true;
     }
 }

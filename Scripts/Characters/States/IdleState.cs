@@ -32,7 +32,7 @@ public class IdleState : State<Character>
             if (control.IsSlidePressed && Entity.IsOnFloor())
                 return new SlideState(Entity);
 
-            if (Entity is not IAttacker attacker) 
+            if (Entity is not IArmedAttacker attacker) 
                 return null;
             
             if (control.IsFirePressed)
@@ -44,6 +44,23 @@ public class IdleState : State<Character>
             {
                 attacker.Reload();
             }
+        }
+        else if (Entity.ControlMode == ControlMode.AI)
+        {
+            var ai = context as AIContext;
+            
+            if (ai == null)
+                return null;
+            
+            if(ai.MoveDirection != Vector2.Zero)
+                return new RunState(Entity);
+
+            if (ai.ShouldFire && Entity is IAttacker attacker)
+                return attacker.Attack();
+                    
+            if (ai.ShouldJump && Entity.IsOnFloor())
+                return new JumpState(Entity);
+
         }
         
         return null;

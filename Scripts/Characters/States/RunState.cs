@@ -16,7 +16,7 @@ public class RunState : State<Character>
     
     private void UpdateAnimation()
     {
-        if (Entity is not IAttacker attacker)
+        if (Entity is not IArmedAttacker attacker)
             return;
         
         var weaponSuffix = attacker.CurrentWeapon.Type switch
@@ -60,11 +60,28 @@ public class RunState : State<Character>
             { 
                 return attacker.Attack();
             }
+            
+            if (Entity is not IArmedAttacker armedAttacker) 
+                return null;
 
             if (control.IsReloadPressed)
             {
-                attacker.Reload();
+                armedAttacker.Reload();
             }
+        }
+        else if (Entity.ControlMode == ControlMode.AI)
+        {
+            var ai = context as AIContext;
+            if (ai == null) return null;
+            
+            if (ai.MoveDirection == Vector2.Zero)
+                return new IdleState(Entity);
+            
+            if (ai.ShouldFire && Entity is IAttacker attacker)
+                return attacker.Attack();
+            
+            if (ai.ShouldJump && Entity.IsOnFloor())
+                return new JumpState(Entity);
         }
 
 

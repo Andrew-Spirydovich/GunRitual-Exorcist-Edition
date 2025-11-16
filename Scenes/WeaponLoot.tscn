@@ -8,6 +8,8 @@
 size = Vector2(32, 16)
 
 [node name="WeaponLoot" type="Area2D" node_paths=PackedStringArray("_sprite")]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_44mhq")
 _sprite = NodePath("Sprite2D")
 _pickupSound = ExtResource("2_t2f5g")

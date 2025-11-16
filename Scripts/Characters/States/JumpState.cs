@@ -37,9 +37,14 @@ public class JumpState : State<Character>
                 return null;
             
             if (control.IsFirePressed)
-            {
+            { 
                 return attacker.Attack();
             }
+        }
+        else if (Entity.ControlMode == ControlMode.AI)
+        {
+            if (Entity.IsOnFloor() && Entity.Velocity.Y >= 0)
+                return new IdleState(Entity);
         }
 
         return null;
