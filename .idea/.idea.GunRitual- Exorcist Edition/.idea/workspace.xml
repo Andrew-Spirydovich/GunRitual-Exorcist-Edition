@@ -5,37 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff631b16-d561-4c7c-94cb-139b7a557d83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Characters/Behavior/IArmedAttacker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Characters/Enemy/EnemyAI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Characters/States/PlayerStateType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Core/Input/AIContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Core/Network/CharacterNetworkSync.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Core/Network/PlayerJoinDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Core/Network/PlayerMoveDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/BulletManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/ExitMenu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/Network/BullletMoveDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/PlayerInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/RecordHUD.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/RecordPanel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/RespawnHUD.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/SettingsHUD.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Core/UIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GunRitual- Exorcist Edition/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/GunRitual- Exorcist Edition.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/GameScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/GameScene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/WeaponLoot.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/WeaponLoot.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/bullet.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/bullet.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/Behavior/IAttacker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/Behavior/IAttacker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Characters/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/Enemy/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/MovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/MovementController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Characters/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/IdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/JumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/LandState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/LandState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/RollState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/RollState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/RunState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/RunState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/PlayerStateType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/PlayerStateType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/ShootState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/ShootState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/SlideState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/SlideState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/State.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Characters/States/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Characters/States/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Network/NetworkClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Core/NetworkClient.cs.uid" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Network/NetworkClient.cs.uid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Input/ControlContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Input/ControlContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Network/CharacterNetworkSync.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Network/CharacterNetworkSync.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Network/NetworkClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Network/NetworkClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerHUD.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Unarmed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Unarmed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Ithaca37.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Items/Wepons/Revolver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/MainMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,13 +60,16 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/SourceGeneratedDocuments/FB82D9610D3D9A844C3EC4E2/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/GunRitualExorcistEdition.Scripts.Core.RecordHUD_ScriptMethods.generated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4cff0a608e114644b749bd11413a95c6583e00/76/687d6f39/CSharpInstanceBridge.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/69e3acf0074a4ef8afaea275d4055b96522800/dd/8f3f40c0/Dictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f834866b72954434fdc34eef9ad575adbdba23f099116c58d38ee03b6cb851/WebSocketPeer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/690e9f2148b5749d9ec30f3c8ddd8d46743c2d5d7fcd6b9b61279423f2cdb0/NativeCalls.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ef7fcc0a17ae82dc3bdd08c20e6b2f5c283ab99/Godot.NativeInterop.NativeFuncs.generated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bba0bbd7a98ee58286e9484fbe86e01afff6232283f6efd3556eb7116453/CharacterBody2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df73a4db74df89d59655c5fb6326406f47fbfa9af1fa81518fe0a07c49d34133/Node.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ef7b819b226fab796d1dfe66d415dd7510bcac87675020ddb8f03a828e763/CanvasItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -80,29 +81,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Executable.Player (1).executor": "Run",
-    ".NET Executable.Player (2).executor": "Run",
-    ".NET Executable.Player 1.executor": "Run",
-    ".NET Executable.Player 2.executor": "Run",
-    ".NET Executable.Player 3.executor": "Run",
-    ".NET Executable.Player.executor": "Run",
-    "Compound.2 Players.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "1.1423358",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Executable.Player (1).executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player (2).executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 1.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 2.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player 3.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Executable.Player.executor&quot;: &quot;Run&quot;,
+    &quot;Compound.2 Players.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;1.1423358&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Compound.2 Players">
     <configuration name="1 Player" type="CompoundRunConfigurationType">
       <toRun name="Player" type="RunExe" />
@@ -299,6 +300,17 @@
       <workItem from="1762882955651" duration="922000" />
       <workItem from="1763056875035" duration="612000" />
       <workItem from="1763291850187" duration="25058000" />
+      <workItem from="1763411828184" duration="1565000" />
+      <workItem from="1763503628260" duration="1288000" />
+      <workItem from="1763586431861" duration="894000" />
+      <workItem from="1763828161054" duration="305000" />
+      <workItem from="1763908575694" duration="15151000" />
+      <workItem from="1764412848091" duration="924000" />
+      <workItem from="1765108188434" duration="25031000" />
+      <workItem from="1765229354999" duration="2972000" />
+      <workItem from="1765303557661" duration="13814000" />
+      <workItem from="1765391621172" duration="10066000" />
+      <workItem from="1765490823900" duration="7920000" />
     </task>
     <task id="LOCAL-00001" summary="Added Movement States">
       <option name="closed" value="true" />
@@ -356,19 +368,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Scripts/Core/PlayerManager.cs</url>
-          <line>65</line>
-          <properties documentPath="D:\GodotProject\gunritual--exorcist-edition\Scripts\Core\PlayerManager.cs" containingFunctionPresentation="Method 'OnPlayerStateChanged'">
-            <startOffsets>
-              <option value="2152" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2215" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

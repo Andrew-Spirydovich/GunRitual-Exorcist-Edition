@@ -17,7 +17,6 @@ public abstract partial class Character : CharacterBody2D
     [Export] private Material _materialOutline;
     [Export] protected Marker2D AttackMarker;
     public ControlMode ControlMode { get; private set; } = ControlMode.Local;
-    
     public Animator Animator { get; private set; }
     public StateMachine<Character> StateMachine { get; private set; }
     public MovementController MovementController { get; private set; }
@@ -27,19 +26,19 @@ public abstract partial class Character : CharacterBody2D
     private CharacterNetworkSync _networkSync;
     
     private Dictionary<PlayerStateType, State<Character>> _stateMap;
-
+    
     public void InitializeStateMap()
     {
         _stateMap = new Dictionary<PlayerStateType, State<Character>>
         {
-            { PlayerStateType.Idle, new IdleState(this) },
-            { PlayerStateType.Run, new RunState(this) },
-            { PlayerStateType.Jump, new JumpState(this) },
-            { PlayerStateType.Fall, new FallState(this) },
-            { PlayerStateType.Land, new LandState(this) },
-            { PlayerStateType.Roll, new RollState(this) },
-            { PlayerStateType.Shoot, new ShootState(this) },
-            { PlayerStateType.Slide, new SlideState(this) }
+            { PlayerStateType.IdleState, new IdleState(this) },
+            { PlayerStateType.RunState, new RunState(this) },
+            { PlayerStateType.JumpState, new JumpState(this) },
+            { PlayerStateType.FallState, new FallState(this) },
+            { PlayerStateType.LandState, new LandState(this) },
+            { PlayerStateType.RollState, new RollState(this) },
+            { PlayerStateType.ShootState, new ShootState(this) },
+            { PlayerStateType.SlideState, new SlideState(this) }
         };
     }
 
@@ -98,7 +97,6 @@ public abstract partial class Character : CharacterBody2D
         var effectsLayer = GetTree().CurrentScene.GetNodeOrNull<Node>("Level/EffectsLayer");
         
         GD.Print(effectsLayer);
-        
         if (effectsLayer != null)
             Animator.PlayBloodEffect(effectsLayer, Position);
     }

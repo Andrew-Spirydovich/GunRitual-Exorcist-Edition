@@ -10,7 +10,7 @@ public class StateMachine<T> where T : Character
     private State<T> _currentState;
     private readonly T _entity;
 
-    public string CurrentStateName => _currentState.AnimationName;
+    public string CurrentStateName => _currentState?.GetType().Name;
     public StateMachine(T entity)
     {
         _entity = entity;
@@ -21,8 +21,8 @@ public class StateMachine<T> where T : Character
         _currentState?.Exit();
         _currentState = nextState;
 
-        if (_entity.ControlMode != ControlMode.Local)
-            GD.Print("Поставили состояние не локальному игроку {}", _currentState);
+        // if (_entity.ControlMode != ControlMode.Local)
+        //     GD.Print("Поставили состояние не локальному игроку {}", _currentState);
         
         if (_currentState != null)
         {

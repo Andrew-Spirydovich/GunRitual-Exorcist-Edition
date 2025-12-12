@@ -1,8 +1,8 @@
 using System;
 using Godot;
 using GunRitualExorcistEdition.Scripts.Characters;
+using GunRitualExorcistEdition.Scripts.Items.Wepons;
 using GunRitualExorcistEdition.Scripts.Player;
-
 
 public partial class Player : Character, IArmedAttacker
 {
@@ -11,8 +11,9 @@ public partial class Player : Character, IArmedAttacker
 
     public InventoryManager Inventory { get; private set; }
     public Weapon CurrentWeapon => Inventory.CurrentWeapon;
-    
+    public string NetworkId { get; set; }
     public event Action<int, int> OnAmmoChanged;
+    public event Action<float> OnHealthChanged;
     
     public override void _Ready()
     {
@@ -41,7 +42,10 @@ public partial class Player : Character, IArmedAttacker
     public void SetDisplayName(string name)
     {
         _playerLabel.Text = name;
+        NetworkId = name;
     }
+    
+    public string GetDisplayName() => _playerLabel.Text;
 
     public void SetRemoteInput(Vector2 direction, Vector2 position, Vector2 velocity)
     {
@@ -63,13 +67,27 @@ public partial class Player : Character, IArmedAttacker
 
         OnAmmoChanged?.Invoke(weapon.CurrentAmmo, weapon.MaxAmmo);
     }
+    
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        OnHealthChanged?.Invoke(Health);
+    }
+
 
     public State<Character> Attack()
     {
         var currentWeapon = Inventory.CurrentWeapon;
+
+        if (currentWeapon.Type == WeaponType.Unarmed) 
+            return new IdleState(this);
         
-        if(currentWeapon?.TryAttack(GetTree().CurrentScene, AttackMarker.GlobalPosition, MovementController.FacingDirection) == true)
+        if(currentWeapon.TryAttack(GetTree().CurrentScene, 
+               AttackMarker.GlobalPosition, 
+               MovementController.FacingDirection) == true)
             return new ShootState(this);
+        
+        
         
         return null;
     }

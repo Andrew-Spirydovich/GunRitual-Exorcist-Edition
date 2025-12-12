@@ -33,17 +33,28 @@ public partial class Ithaca37 : Weapon
 
         UseAmmo();
         
+        AudioManager.Instance.PlaySFX(ShootSound);
+        
         for (var i = 0; i < 3; i++)
         {
             var spreadDegrees = GD.RandRange(-5, 5);
             var spreadRadians = Mathf.DegToRad(spreadDegrees);
             var rotatedDirection = direction.Rotated(spreadRadians);
         
-            var bullet = BulletScene.Instantiate<Bullet>();
-            bullet.GlobalPosition = position;
-            bullet.Direction = rotatedDirection.Normalized();
-            AudioManager.Instance.PlaySFX(ShootSound);
-            world.AddChild(bullet);
+            var bulletDto = new BullletMoveDto
+            {
+                X = position.X,
+                Y = position.Y,
+                DirX = rotatedDirection.X,
+                DirY = rotatedDirection.Y
+            };
+        
+            NetworkClient.Instance.SendShootRequest(bulletDto);
+            
+            // var bullet = BulletScene.Instantiate<Bullet>();
+            // bullet.GlobalPosition = position;
+            // bullet.Direction = rotatedDirection.Normalized();
+            // world.AddChild(bullet);
         }
         
         return true;

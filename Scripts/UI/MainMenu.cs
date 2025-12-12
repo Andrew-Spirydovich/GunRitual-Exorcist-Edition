@@ -8,6 +8,7 @@ public partial class MainMenu : Control
     [Export] private Button _localButton;
     [Export] private Button _settingsButton;
     [Export] private Button _exitButton;
+    [Export] private SettingsHUD _settingsHUD;
     
     [Export] private AudioStream _mainMenuMusic;
     
@@ -41,7 +42,7 @@ public partial class MainMenu : Control
 
     private void OnSettingsPressed()
     {
-        GD.Print("Settings");
+        _settingsHUD.Show();
     }
 
     private void OnExitPressed()

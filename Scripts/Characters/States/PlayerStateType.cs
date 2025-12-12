@@ -2,13 +2,13 @@
 
 public enum PlayerStateType
 {
-    Idle,
-    Run,
-    Jump,
-    Fall,
-    Land,
-    Roll,
-    Shoot,
-    Slide
+    IdleState,
+    RunState,
+    JumpState,
+    FallState,
+    LandState,
+    RollState,
+    ShootState,
+    SlideState
 }
 

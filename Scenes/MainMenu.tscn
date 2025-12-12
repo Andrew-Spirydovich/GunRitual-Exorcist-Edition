@@ -1,18 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfau0a0ol3ufc"]
+[gd_scene load_steps=8 format=3 uid="uid://bfau0a0ol3ufc"]
 
 [ext_resource type="Script" uid="uid://cia7lui2ste3d" path="res://Scripts/UI/MainMenu.cs" id="1_8saeu"]
 [ext_resource type="AudioStream" uid="uid://4jofo6a1v67m" path="res://Assets/Audio/main_menu.mp3" id="2_df05h"]
 [ext_resource type="Theme" uid="uid://f6epcktwphj7" path="res://Assets/Themes/MainMenu.tres" id="2_ghw46"]
 [ext_resource type="PackedScene" uid="uid://4e70hhrg6gg5" path="res://Scenes/button_example.tscn" id="3_df05h"]
+[ext_resource type="PackedScene" uid="uid://huenc3roufce" path="res://Scripts/UI/Settings.tscn" id="5_df05h"]
 
-[sub_resource type="Gradient" id="Gradient_ghw46"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_df05h"]
+colors = PackedColorArray(0, 0, 0.0705882, 1, 0.417548, 0.0483397, 0.13445, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_df05h"]
-gradient = SubResource("Gradient_ghw46")
-fill_from = Vector2(1, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8um5k"]
+gradient = SubResource("Gradient_df05h")
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("_connectButton", "_localButton", "_settingsButton", "_exitButton")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_connectButton", "_localButton", "_settingsButton", "_exitButton", "_settingsHUD")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +24,7 @@ _connectButton = NodePath("VBoxContainer/ConnectButton")
 _localButton = NodePath("VBoxContainer/LocalButton")
 _settingsButton = NodePath("VBoxContainer/SettingsButton")
 _exitButton = NodePath("VBoxContainer/ExitButton")
+_settingsHUD = NodePath("Settings")
 _mainMenuMusic = ExtResource("2_df05h")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -33,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_df05h")
+texture = SubResource("GradientTexture2D_8um5k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -63,3 +64,7 @@ text = "Settings
 [node name="ExitButton" parent="VBoxContainer" instance=ExtResource("3_df05h")]
 layout_mode = 2
 text = "Exit"
+
+[node name="Settings" parent="." instance=ExtResource("5_df05h")]
+visible = false
+layout_mode = 1

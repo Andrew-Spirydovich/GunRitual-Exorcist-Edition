@@ -28,7 +28,7 @@ public class ShootState : State<Character>
         Entity.MovementController.ApplyGravity(delta);
     }
     
-    public override State<Character>  CheckTransitions(InputContext context)
+    public override State<Character> CheckTransitions(InputContext context)
     {
         if (Entity.ControlMode == ControlMode.Local)
         {

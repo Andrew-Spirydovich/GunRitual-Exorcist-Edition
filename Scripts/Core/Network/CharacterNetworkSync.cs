@@ -6,7 +6,7 @@ public class CharacterNetworkSync
 {
     private Character _character;
     private float _sendTimer;
-    private const float SEND_INTERVAL = 0.01f; // 20 Hz
+    private const float SEND_INTERVAL = 0.01f;
 
     public void Initialize(Character character)
     {
@@ -46,7 +46,7 @@ public class CharacterNetworkSync
 
         NetworkClient.Instance.SendStateRequest(
             NetworkClient.Instance.LocalUserID,
-            _character.StateMachine?.CurrentStateName ?? "Idle"
+            _character.StateMachine?.CurrentStateName ?? "IdleState"
         );
     }
 

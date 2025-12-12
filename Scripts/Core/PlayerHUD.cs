@@ -23,17 +23,18 @@ public partial class PlayerHUD : CanvasLayer
          {
              inventory.OnWeaponChanged += UpdateWeapon;
              player.OnAmmoChanged += UpdateAmmo;
+             player.OnHealthChanged += UpdateHealth;
          }
         
     }
 
-    public void UpdateHealth(float health)
+    private void UpdateHealth(float health)
     {
         var tween = CreateTween();
         tween.TweenProperty(_healthBar, "value", health, 0.3f);
     }
-    
-    public void UpdateWeapon(Weapon weapon)
+
+    private void UpdateWeapon(Weapon weapon)
     {
         if (weapon.Type == WeaponType.Unarmed)
         {
@@ -51,8 +52,8 @@ public partial class PlayerHUD : CanvasLayer
             _weaponName.Text = $"{weapon.Type}";
         }
     }
-    
-    public void UpdateAmmo(int currentAmmo, int maxAmmo)
+
+    private void UpdateAmmo(int currentAmmo, int maxAmmo)
     {
         _weaponAmmo.Text = $"{currentAmmo}/{maxAmmo}";
     }

@@ -19,4 +19,7 @@ public class ControlContext : InputContext
             Input.GetActionStrength("input_right") - Input.GetActionStrength("input_left"),
             0
         );
+    
+    public bool IsEscapePressed => Input.IsActionJustPressed("input_escape");
+    public bool IsRecordPressed => Input.IsActionJustReleased("input_record");
 }

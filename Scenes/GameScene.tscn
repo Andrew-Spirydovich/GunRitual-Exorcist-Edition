@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dvvorevsmwuic"]
+[gd_scene load_steps=24 format=4 uid="uid://dvvorevsmwuic"]
 
 [ext_resource type="Script" uid="uid://dw6ioke5vryij" path="res://Scripts/Core/GameManager.cs" id="1_kilg5"]
 [ext_resource type="Script" uid="uid://buyuyvxjyh3i6" path="res://Scripts/Core/PlayerManager.cs" id="3_lg2j6"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dv0wp0thopwbg" path="res://Scenes/WeaponLoot.tscn" id="7_x6js8"]
 [ext_resource type="Texture2D" uid="uid://sh7cqhwrofnf" path="res://Assets/Sprites/Environment/The Sidescroller's Dungeon Tiles 32x32.png" id="8_lg2j6"]
 [ext_resource type="TileSet" uid="uid://dcmaqmyfvobg5" path="res://Scenes/GameScene.tres" id="9_7rq2r"]
+[ext_resource type="Script" uid="uid://d0c3ikvpj8n0c" path="res://Scripts/Core/BulletManager.cs" id="15_qolck"]
+[ext_resource type="PackedScene" uid="uid://c47onjn5e7xj" path="res://Scenes/Bullet.tscn" id="16_ry528"]
+[ext_resource type="PackedScene" uid="uid://cgob8swwka4p7" path="res://Scripts/UI/UI_Manager.tscn" id="17_ry528"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_124qp"]
 texture = ExtResource("8_lg2j6")
@@ -1849,9 +1852,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7rq2r")
 sources/1 = SubResource("TileSetAtlasSource_ry528")
 
-[node name="GameScene" type="Node2D" node_paths=PackedStringArray("_playerManager")]
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("_playerManager", "_bulletManager")]
 script = ExtResource("1_kilg5")
 _playerManager = NodePath("PlayerManager")
+_bulletManager = NodePath("BullerManager")
 
 [node name="WeaponLoot2" parent="." instance=ExtResource("7_x6js8")]
 position = Vector2(544, 568)
@@ -1938,6 +1942,8 @@ _weaponSprites = Dictionary[int, CompressedTexture2D]({
 2: ExtResource("5_y30xb")
 })
 
+[node name="UIManager" parent="PlayerUI" instance=ExtResource("17_ry528")]
+
 [node name="PlayerManager" type="Node" parent="." node_paths=PackedStringArray("_spawnPoint")]
 script = ExtResource("3_lg2j6")
 _playerScene = ExtResource("6_6vvcf")
@@ -1945,3 +1951,7 @@ _spawnPoint = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerManager"]
 position = Vector2(440, 544)
+
+[node name="BullerManager" type="Node" parent="."]
+script = ExtResource("15_qolck")
+_bulletScene = ExtResource("16_ry528")

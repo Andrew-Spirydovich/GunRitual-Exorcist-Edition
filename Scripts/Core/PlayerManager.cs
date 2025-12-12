@@ -15,26 +15,26 @@ public partial class PlayerManager : Node
         if(_players.TryGetValue(playerId, out var existingPlayer))
             return existingPlayer;
 
-        var player = CreatePlayerInstance(playerId, _spawnPoint.Position, ControlMode.Local);
+        var player = CreatePlayerInstance(playerId, _spawnPoint.Position, ControlMode.Local, NetworkClient.Instance.UserName);
         player.InitializeStateMap();
         _players.Add(playerId, player);
         
         return player;
     }
     
-    private Player CreatePlayerInstance(string playerId, Vector2 position, ControlMode mode)
+    private Player CreatePlayerInstance(string playerId, Vector2 position, ControlMode mode, String nickname)
     {
         var localPlayer = _playerScene.Instantiate<Player>();
         localPlayer.Name = $"Player_{playerId}";
         localPlayer.Position = position;
-        localPlayer.SetDisplayName(playerId);
+        localPlayer.SetDisplayName(nickname);
         localPlayer.SetControlMode(mode);
         AddChild(localPlayer);
         
         return localPlayer;
     }
     
-    public void OnPlayerJoined(string playerId, Vector2 position)
+    public void OnPlayerJoined(string playerId, Vector2 position, string nickname)
     {
         if (_players.ContainsKey(playerId))
             return;
@@ -42,7 +42,7 @@ public partial class PlayerManager : Node
         var joinedPlayer = _playerScene.Instantiate<Player>();
         joinedPlayer.Name = $"Player_{playerId}";
         joinedPlayer.Position = position;
-        joinedPlayer.SetDisplayName(playerId);
+        joinedPlayer.SetDisplayName(nickname);
         joinedPlayer.SetControlMode(ControlMode.Remote);
         AddChild(joinedPlayer); 
         joinedPlayer.InitializeStateMap();
@@ -71,7 +71,6 @@ public partial class PlayerManager : Node
         }
     }
 
-
     public void OnPlayerLeave(string playerId)
     {
         if (!_players.TryGetValue(playerId, out var player))
@@ -79,5 +78,12 @@ public partial class PlayerManager : Node
         
         player.QueueFree();
         _players.Remove(playerId);
+    }
+    
+    public Godot.Collections.Dictionary<string, Player> GetPlayers() => _players;
+    
+    public Player GetPlayer(string playerId)
+    {
+        return _players.GetValueOrDefault(playerId);
     }
 }
