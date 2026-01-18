@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using GunRitualExorcistEdition.Scripts.Characters;
+using GunRitualExorcistEdition.Scripts.Core;
 using GunRitualExorcistEdition.Scripts.Items.Wepons;
 using GunRitualExorcistEdition.Scripts.Player;
 
@@ -39,10 +40,14 @@ public partial class Player : Character, IArmedAttacker
         base._Process(delta);
     }
 
+    public void SetNetworkId(string id)
+    {
+        NetworkId = id;
+    }
+
     public void SetDisplayName(string name)
     {
         _playerLabel.Text = name;
-        NetworkId = name;
     }
     
     public string GetDisplayName() => _playerLabel.Text;
@@ -68,13 +73,27 @@ public partial class Player : Character, IArmedAttacker
         OnAmmoChanged?.Invoke(weapon.CurrentAmmo, weapon.MaxAmmo);
     }
     
+    protected override void Die()
+    {
+        base.Die();
+
+        if (IsLocalPlayer)
+            UIManager.Instance.ShowRespawn();
+    }
+    
+    public void RespawnPlayer(Vector2 position, float health)
+    {
+        Respawn(position, health);
+        OnHealthChanged?.Invoke(Health);
+    }
+
+    
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
         OnHealthChanged?.Invoke(Health);
     }
-
-
+    
     public State<Character> Attack()
     {
         var currentWeapon = Inventory.CurrentWeapon;
@@ -86,9 +105,7 @@ public partial class Player : Character, IArmedAttacker
                AttackMarker.GlobalPosition, 
                MovementController.FacingDirection) == true)
             return new ShootState(this);
-        
-        
-        
+
         return null;
     }
 
@@ -97,5 +114,9 @@ public partial class Player : Character, IArmedAttacker
         var currentWeapon = Inventory.CurrentWeapon;
         currentWeapon?.Reload(this);
     }
+    
+    public bool IsLocalPlayer =>
+        NetworkClient.Instance != null &&
+        NetworkClient.Instance.LocalUserID == NetworkId;
     
 }

@@ -26,6 +26,7 @@ public abstract partial class Character : CharacterBody2D
     private CharacterNetworkSync _networkSync;
     
     private Dictionary<PlayerStateType, State<Character>> _stateMap;
+    public bool IsDead { get; private set; }
     
     public void InitializeStateMap()
     {
@@ -92,13 +93,62 @@ public abstract partial class Character : CharacterBody2D
 
     public virtual void TakeDamage(float damage)
     {
+        if (IsDead)
+            return;
+
         Health -= damage;
 
-        var effectsLayer = GetTree().CurrentScene.GetNodeOrNull<Node>("Level/EffectsLayer");
-        
-        GD.Print(effectsLayer);
+        var effectsLayer = GetTree().CurrentScene
+            .GetNodeOrNull<Node>("Level/EffectsLayer");
+
         if (effectsLayer != null)
             Animator.PlayBloodEffect(effectsLayer, Position);
+
+        if (Health <= 0)
+            Die();
+    }
+    
+    public void Respawn(Vector2 position, float health)
+    {
+        IsDead = false;
+        Health = health;
+
+        Position = position;
+        Velocity = Vector2.Zero;
+
+        Show();
+
+        // Включаем физику
+        SetProcess(true);
+        SetPhysicsProcess(true);
+
+        // Включаем коллайдер, чтобы пули регались
+        if (_collider != null)
+            _collider.Disabled = false;
+
+        // Если есть Area2D для выстрелов
+        var area = GetNodeOrNull<Area2D>("CollisionShape2D");
+        if (area != null)
+            area.Monitoring = true;
+    }
+    
+    protected virtual void Die()
+    {
+        IsDead = true;
+        Health = 0;
+
+        SetProcess(false);
+        SetPhysicsProcess(false);
+
+        // Отключаем коллайдер / Area2D
+        if (_collider != null)
+            _collider.Disabled = true;
+
+        var area = GetNodeOrNull<Area2D>("CollisionShape2D");
+        if (area != null)
+            area.Monitoring = false;
+
+        Hide();
     }
 
     public void Jump()

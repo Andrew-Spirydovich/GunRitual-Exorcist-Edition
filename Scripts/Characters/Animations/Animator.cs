@@ -49,8 +49,6 @@ public class Animator
         var isFacingLeft = playerDirection != Vector2.Right;
         _sprite.FlipH = isFacingLeft;
         
-        //GD.Print(_weaponMarker.Position);
-        
         _attackMarker.Position = isFacingLeft
             ? new Vector2(-_defaultMarkerPos.X, _defaultMarkerPos.Y)
             : _defaultMarkerPos;

@@ -20,9 +20,6 @@ public class StateMachine<T> where T : Character
     {
         _currentState?.Exit();
         _currentState = nextState;
-
-        // if (_entity.ControlMode != ControlMode.Local)
-        //     GD.Print("Поставили состояние не локальному игроку {}", _currentState);
         
         if (_currentState != null)
         {

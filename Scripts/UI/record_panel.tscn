@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxnu25cov08sc"]
+
+[ext_resource type="Texture2D" uid="uid://4p3pocndk0bp" path="res://Assets/Sprites/UI/panel.png" id="1_854gr"]
+[ext_resource type="Script" uid="uid://bh416mmj2d6ta" path="res://Scripts/Core/RecordPanel.cs" id="2_kobpc"]
+[ext_resource type="FontFile" uid="uid://boj4povremt4p" path="res://Assets/Fonts/Greenscr.ttf" id="2_lg0sw"]
+
+[node name="RecordPanel" type="TextureRect" node_paths=PackedStringArray("_nickName", "_score")]
+offset_right = 1277.0
+offset_bottom = 100.0
+texture = ExtResource("1_854gr")
+script = ExtResource("2_kobpc")
+_nickName = NodePath("PlayerNameLabel")
+_score = NodePath("ScoreLabel")
+
+[node name="PlayerNameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 4.0
+offset_right = 428.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_lg0sw")
+theme_override_font_sizes/font_size = 30
+text = "Sicknezz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NicknameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 216.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_lg0sw")
+theme_override_font_sizes/font_size = 30
+text = "NickName:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 877.0
+offset_top = 3.0
+offset_right = 1040.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("2_lg0sw")
+theme_override_font_sizes/font_size = 30
+text = "Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1011.0
+offset_top = 4.0
+offset_right = 1277.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_lg0sw")
+theme_override_font_sizes/font_size = 30
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1

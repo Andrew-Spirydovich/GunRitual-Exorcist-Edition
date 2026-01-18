@@ -24,7 +24,7 @@ public partial class Enemy : Character, IArmedAttacker
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
-        GD.Print("Enemy hit! HP left: " + Health);
+        // GD.Print("Enemy hit! HP left: " + Health);
     }
 
     public Weapon CurrentWeapon { get; }

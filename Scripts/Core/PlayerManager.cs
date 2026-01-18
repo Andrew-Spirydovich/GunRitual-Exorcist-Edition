@@ -14,8 +14,15 @@ public partial class PlayerManager : Node
     {
         if(_players.TryGetValue(playerId, out var existingPlayer))
             return existingPlayer;
-
-        var player = CreatePlayerInstance(playerId, _spawnPoint.Position, ControlMode.Local, NetworkClient.Instance.UserName);
+        
+        var player = CreatePlayerInstance(
+            playerId,
+            position,
+            ControlMode.Local,
+            NetworkClient.Instance.UserName
+        );
+        // var player = CreatePlayerInstance(playerId, _spawnPoint.Position, ControlMode.Local, nickname);
+        player.SetNetworkId(playerId);
         player.InitializeStateMap();
         _players.Add(playerId, player);
         
@@ -43,6 +50,7 @@ public partial class PlayerManager : Node
         joinedPlayer.Name = $"Player_{playerId}";
         joinedPlayer.Position = position;
         joinedPlayer.SetDisplayName(nickname);
+        joinedPlayer.SetNetworkId(playerId);
         joinedPlayer.SetControlMode(ControlMode.Remote);
         AddChild(joinedPlayer); 
         joinedPlayer.InitializeStateMap();

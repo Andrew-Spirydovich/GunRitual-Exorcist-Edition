@@ -12,8 +12,6 @@ public partial class NetworkClient : Node
     public string UserName { get; set; }
     public bool OfflineMode { get; private set; }
     
-    // public List<PlayerInfo> P
-    
     private WebSocketPeer _webSocket = new WebSocketPeer();
     public PlayerManager PlayerManager { get; private set; }
     private BulletManager _bulletManager;
@@ -25,7 +23,7 @@ public partial class NetworkClient : Node
     
     public override void _Ready()
     {
-        GD.Print("NetworkClient готов.");
+        // GD.Print("NetworkClient готов.");
         Instance = this;
     }
     
@@ -45,13 +43,14 @@ public partial class NetworkClient : Node
                 if (!_wasOpen)
                 {
                     _wasOpen = true;
-                    Connected?.Invoke("andrew" + Random.Shared.Next());  
+                    //Connected?.Invoke("andrew" + Random.Shared.Next());  
+                    SendJoinRequest(UserName);
                 }
                 break;
             case WebSocketPeer.State.Closed:
                 if (_wasOpen)
                 {
-                    GD.PrintErr("WebSocket connection closed or errored.");
+                    // GD.PrintErr("WebSocket connection closed or errored.");
                     _wasOpen = false;
                 }
                 break;
@@ -79,7 +78,7 @@ public partial class NetworkClient : Node
     {
         if (OfflineMode)
         {
-            GD.Print("Игра запущена в оффлайн-режиме.");
+            // GD.Print("Игра запущена в оффлайн-режиме.");
             return true;
         }
         
@@ -198,6 +197,16 @@ public partial class NetworkClient : Node
             { "bullet", bulletDict }
         });
     }
+    
+    public void SendRespawnRequest()
+    {
+        SendMessage(new Godot.Collections.Dictionary<string, Variant>
+        {
+            { "type", "RESPAWN_REQUEST" },
+            { "roomId", CurrectRoomId },
+            { "playerId", LocalUserID }
+        });
+    }
 
     public void SendBulletHitRequest(string bulletId, string ownerId, string targetPlayerId)
     {
@@ -224,27 +233,49 @@ public partial class NetworkClient : Node
 
         var message = parsed.AsGodotDictionary();
         var type = message.GetValueOrDefault("type", "").AsString();
-        
-        Godot.Collections.Dictionary playerDict = null;
-        if (message.ContainsKey("player"))
-            playerDict = message["player"].AsGodotDictionary();
 
-        var playerId = playerDict.GetValueOrDefault("id", "").AsString();
-        var position = new Vector2(
-            (float)playerDict.GetValueOrDefault("x", 0).AsDouble(),
-            (float)playerDict.GetValueOrDefault("y", 0).AsDouble()
-        );
-        var direction = new Vector2(
-            (float)playerDict.GetValueOrDefault("dirX", 0).AsDouble(),
-            (float)playerDict.GetValueOrDefault("dirY", 0).AsDouble()
-        );
-        var velocity = new Vector2(
-            (float)playerDict.GetValueOrDefault("velX", 0).AsDouble(),
-            (float)playerDict.GetValueOrDefault("velY", 0).AsDouble()
-        );
-        var state = playerDict.GetValueOrDefault("currentState", "Idle").AsStringName().ToString();
-    
-        var nickname = playerDict.GetValueOrDefault("nickname", "").AsString();
+        string playerId = "";
+
+        Godot.Collections.Dictionary playerDict = null;
+
+        if (message.TryGetValue("player", out var playerVar) &&
+            playerVar.VariantType == Variant.Type.Dictionary)
+        {
+            playerDict = playerVar.AsGodotDictionary();
+            playerId = playerDict.GetValueOrDefault("id", "").AsString();
+        }
+        else if (message.ContainsKey("playerId"))
+        {
+            playerId = message["playerId"].AsString();
+        }
+        
+        Vector2 position = Vector2.Zero;
+        Vector2 direction = Vector2.Zero;
+        Vector2 velocity = Vector2.Zero;
+        string state = "";
+        string nickname = "";
+
+        if (playerDict != null)
+        {
+            position = new Vector2(
+                (float)playerDict.GetValueOrDefault("x", 0).AsDouble(),
+                (float)playerDict.GetValueOrDefault("y", 0).AsDouble()
+            );
+
+            direction = new Vector2(
+                (float)playerDict.GetValueOrDefault("dirX", 0).AsDouble(),
+                (float)playerDict.GetValueOrDefault("dirY", 0).AsDouble()
+            );
+
+            velocity = new Vector2(
+                (float)playerDict.GetValueOrDefault("velX", 0).AsDouble(),
+                (float)playerDict.GetValueOrDefault("velY", 0).AsDouble()
+            );
+
+            state = playerDict.GetValueOrDefault("currentState", "Idle").AsString();
+            nickname = playerDict.GetValueOrDefault("nickname", "").AsString();
+        }
+
         switch (type)
         {
             case "JOIN_ACK":
@@ -258,11 +289,11 @@ public partial class NetworkClient : Node
                 PlayerManager?.OnPlayerMoved(playerId, position, direction, velocity);
                 break;
             case "LEAVE":
-                GD.Print("Пакет LEAVE:", json);
+                // GD.Print("Пакет LEAVE:", json);
                 PlayerManager?.OnPlayerLeave(playerId);
                 break;
             case "STATE_CHANGED":
-                GD.Print("Пакет STATE:", json);
+                // GD.Print("Пакет STATE:", json);
                 PlayerManager?.OnPlayerStateChanged(playerId, state);
                 break;
             case "BULLET_SPAWN":
@@ -272,24 +303,52 @@ public partial class NetworkClient : Node
                 HandleBulletRemove(message);
                 break;
             case "DAMAGE":
+                // GD.Print("Пакет DAMAGE:", json);
                 HandleDamage(message);
+                break;
+            case "PLAYER_RESPAWN":
+                GD.Print("Пакет RESPAWN:", json);
+                HandleRespawn(message);
                 break;
         }
     }
+    
+    private void HandleRespawn(Godot.Collections.Dictionary msg)
+    {
+        var playerDict = msg["player"].AsGodotDictionary();
 
+        var id = playerDict["id"].AsString();
+        var x = (float)playerDict["x"].AsDouble();
+        var y = (float)playerDict["y"].AsDouble();
+        var hp = (float)playerDict["health"].AsDouble();
+
+        var player = PlayerManager.GetPlayer(id);
+        player?.RespawnPlayer(new Vector2(x, y), hp);
+    }
+
+    // private void HandleDamage(Godot.Collections.Dictionary msg)
+    // {
+    //     var dmg = (int)msg["dmg"];
+    //     
+    //     var bullet = msg["bullet"].AsGodotDictionary();
+    //     
+    //     var targetId = bullet["targetId"].AsString();
+    //
+    //     var player = PlayerManager.GetPlayer(targetId);
+    //     if (player == null)
+    //         return;
+    //
+    //     player.TakeDamage(dmg);
+    // }
+    
     private void HandleDamage(Godot.Collections.Dictionary msg)
     {
-        var dmg = (int)msg["dmg"];
-        
         var bullet = msg["bullet"].AsGodotDictionary();
-        
         var targetId = bullet["targetId"].AsString();
 
+        var dmg = (int)msg["dmg"];
         var player = PlayerManager.GetPlayer(targetId);
-        if (player == null)
-            return;
-
-        player.TakeDamage(dmg);
+        player?.TakeDamage(dmg);
     }
     
     private void HandleBulletSpawn(Godot.Collections.Dictionary msg)
@@ -345,7 +404,7 @@ public partial class NetworkClient : Node
 
         LocalUserID = msg["playerId"].AsString();
 
-        Vector2 pos = Vector2.Zero;
+        var pos = Vector2.Zero;
 
         var playerDict = msg.GetValueOrDefault("player", "").AsGodotDictionary();
         if (playerDict != null)
@@ -356,10 +415,10 @@ public partial class NetworkClient : Node
 
         PlayerManager.SpawnLocalPlayer(LocalUserID, pos);
 
-        if (!msg.ContainsKey("existingPlayers")) 
+        if (!msg.TryGetValue("existingPlayers", out var value)) 
             return;
 
-        foreach (Variant entry in (Godot.Collections.Array)msg["existingPlayers"])
+        foreach (var entry in (Godot.Collections.Array)value)
         {
             var dict = entry.AsGodotDictionary();
             var otherId = dict.GetValueOrDefault("id", "").AsString();
@@ -370,7 +429,7 @@ public partial class NetworkClient : Node
             
             var nickname = dict.GetValueOrDefault("nickname", "").AsString();
             
-            GD.Print(nickname);
+            // GD.Print(nickname);
             PlayerManager.OnPlayerJoined(otherId, otherPos, nickname);
         }
     }
@@ -378,11 +437,18 @@ public partial class NetworkClient : Node
     
     public override void _Notification(int what)
     {
-        if (what == NotificationWMCloseRequest) 
+        if (what != NotificationWMCloseRequest)
+            return;
+
+        if (!OfflineMode && IsOpen)
         {
             SendLeaveRequest(LocalUserID);
-            OS.DelayMsec(50);
-            GetTree().Quit();
+
+            // Даем шанс отправить пакет
+            _webSocket.Poll();
+            _webSocket.Close();
         }
+
+        GetTree().Quit();
     }
 }

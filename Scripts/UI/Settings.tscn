@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://huenc3roufce"]
+
+[ext_resource type="Script" uid="uid://blvrycrku80di" path="res://Scripts/Core/SettingsHUD.cs" id="1_7a4vp"]
+[ext_resource type="FontFile" uid="uid://boj4povremt4p" path="res://Assets/Fonts/Greenscr.ttf" id="1_icuur"]
+[ext_resource type="PackedScene" uid="uid://4e70hhrg6gg5" path="res://Scenes/button_example.tscn" id="2_7a4vp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a4vp"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.000693898, 0.000693898, 0.000693898, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_ecorb"]
+Panel/styles/panel = SubResource("StyleBoxFlat_7a4vp")
+
+[node name="Settings" type="Control" node_paths=PackedStringArray("_saveButton", "_leaveButton", "_lineEdit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7a4vp")
+_saveButton = NodePath("Panel/Save")
+_leaveButton = NodePath("Panel/Cancel")
+_lineEdit = NodePath("Panel/LineEdit")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ecorb")
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 304.0
+offset_right = 864.0
+offset_bottom = 432.0
+theme_override_fonts/font = ExtResource("1_icuur")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Enter your name"
+alignment = 1
+
+[node name="Save" parent="Panel" instance=ExtResource("2_7a4vp")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = 512.0
+offset_bottom = -32.0
+grow_vertical = 0
+text = "Save"
+alignment = 1
+
+[node name="Cancel" parent="Panel" instance=ExtResource("2_7a4vp")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 768.0
+offset_top = -160.0
+offset_right = 1280.0
+offset_bottom = -32.0
+grow_vertical = 0
+text = "Cancel"
+alignment = 1

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfxdjxucv2h24"]
+
+[ext_resource type="Theme" uid="uid://f6epcktwphj7" path="res://Assets/Themes/MainMenu.tres" id="1_ag4n2"]
+[ext_resource type="Script" uid="uid://ucfc3upai2qt" path="res://Scripts/Core/ExitMenu.cs" id="1_x3rrc"]
+[ext_resource type="PackedScene" uid="uid://4e70hhrg6gg5" path="res://Scenes/button_example.tscn" id="2_x3rrc"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_continueButton", "_leaveButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x3rrc")
+_continueButton = NodePath("Panel/VBoxContainer/ContinueButton")
+_leaveButton = NodePath("Panel/VBoxContainer/LeaveButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -229.0
+offset_right = 377.0
+offset_bottom = -57.0
+grow_vertical = 0
+theme = ExtResource("1_ag4n2")
+theme_override_constants/separation = 50
+
+[node name="ContinueButton" parent="Panel/VBoxContainer" instance=ExtResource("2_x3rrc")]
+layout_mode = 2
+text = "Continue"
+
+[node name="LeaveButton" parent="Panel/VBoxContainer" instance=ExtResource("2_x3rrc")]
+layout_mode = 2
+text = "Leave"

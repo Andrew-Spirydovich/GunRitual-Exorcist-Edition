@@ -4,25 +4,30 @@ namespace GunRitualExorcistEdition.Scripts.Core;
 
 public partial class UIManager : Node
 {
+    public static UIManager Instance { get; private set; }
+
     [Export] private RespawnHUD _respawnHud;
     [Export] private ExitMenu _exitMenu;
     [Export] private RecordHUD _recordHud;
     [Export] private Label _timeLabel;
+
     public override void _Ready()
     {
+        Instance = this;
+
         _respawnHud.HideUI();
         _exitMenu.HideUI();
         _recordHud.HideUI();
     }
-    
+
     public override void _Process(double delta)
     {
         var context = InputManager.GetContext<ControlContext>();
-        
-        if(context.IsEscapePressed)
+
+        if (context.IsEscapePressed)
             ShowExitMenu();
-        
-        if(context.IsRecordPressed)
+
+        if (context.IsRecordPressed)
             ShowRecordHud();
     }
 
@@ -46,7 +51,7 @@ public partial class UIManager : Node
             _exitMenu.HideUI();
             return;
         }
-        
+
         HideAll();
         _exitMenu.ShowUI();
     }
@@ -58,7 +63,7 @@ public partial class UIManager : Node
             _recordHud.HideUI();
             return;
         }
-        
+
         HideAll();
         _recordHud.ShowUI();
     }

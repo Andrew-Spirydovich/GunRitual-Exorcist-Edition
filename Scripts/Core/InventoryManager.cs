@@ -15,7 +15,7 @@ public class InventoryManager
     {
 
         CurrentWeapon = weapon;
-        GD.Print($"Подобрали {weapon}");
+        // GD.Print($"Подобрали {weapon}");
         OnWeaponChanged?.Invoke(CurrentWeapon); 
     }
 }
