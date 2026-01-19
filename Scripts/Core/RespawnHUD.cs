@@ -9,7 +9,6 @@ public partial class RespawnHUD : Control
     public override void _Ready()
     {
         Visible = false;
-
         _respawnButton.Pressed += OnRespawnPressed;
     }
 

@@ -1,4 +1,6 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
+
 
 namespace GunRitualExorcistEdition.Scripts.Core;
 
@@ -67,4 +69,39 @@ public partial class UIManager : Node
         HideAll();
         _recordHud.ShowUI();
     }
-}
+    
+    public void SetTime(int seconds)
+    {
+        var min = seconds / 60;
+        var sec = seconds % 60;
+        _timeLabel.Text = $"{min:00}:{sec:00}";
+    }
+
+    public void ShowGameOver()
+    {
+        _timeLabel.Text = "GAME OVER";
+    }
+
+    public void UpdateScores(Dictionary<string, int> scores)
+    {
+        _recordHud.UpdateScores(scores);
+    }
+    
+    private void HandleGameFinished(Godot.Collections.Dictionary msg)
+    {
+        UIManager.Instance.ShowGameOver();
+
+        if (msg.ContainsKey("scores"))
+        {
+            var scoresDict = msg["scores"].AsGodotDictionary();
+            var scores = new Dictionary<string, int>();
+
+            foreach (var key in scoresDict.Keys)
+                scores[key.ToString()] = (int)scoresDict[key].AsInt32();
+
+            // Показываем RecordHUD с финальными очками
+            UIManager.Instance.ShowRecordHud();
+            _recordHud.UpdateScores(scores);
+        }
+    }
+}   

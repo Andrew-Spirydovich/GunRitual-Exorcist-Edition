@@ -68,5 +68,19 @@ namespace GunRitualExorcistEdition.Scripts.Core
         {
             Visible = true;
         }
+        
+        public void UpdateScores(Dictionary<string, int> scores)
+        {
+            foreach (var kvp in scores)
+            {
+                var playerId = kvp.Key;
+                var score = kvp.Value;
+
+                if (_records.ContainsKey(playerId))
+                {
+                    _records[playerId].UpdateScore(score);
+                }
+            }
+        }
     }
 }

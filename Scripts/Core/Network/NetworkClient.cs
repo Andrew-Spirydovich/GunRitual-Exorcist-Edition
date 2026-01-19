@@ -20,6 +20,7 @@ public partial class NetworkClient : Node
     private bool _wasOpen;
     public bool IsOpen => _webSocket?.GetReadyState() == WebSocketPeer.State.Open;
     public void SetLocalUserId(string localUserId) => LocalUserID = localUserId;
+    private int _serverTimeLeft;
     
     public override void _Ready()
     {
@@ -225,6 +226,36 @@ public partial class NetworkClient : Node
         });
     }
 
+    private void HandleGameTime(Godot.Collections.Dictionary msg)
+    {
+        if (!msg.ContainsKey("time"))
+            return;
+
+        _serverTimeLeft = (int)msg["time"];
+        UIManager.Instance.SetTime(_serverTimeLeft);
+    }
+
+    private void HandleGameFinished()
+    {
+        UIManager.Instance.ShowGameOver();
+    }
+    
+    public void HandleScoreUpdate(Godot.Collections.Dictionary msg)
+    {
+        if (!msg.ContainsKey("scores"))
+            return;
+
+        var scoresDict = msg["scores"].AsGodotDictionary();
+        var scores = new Dictionary<string, int>();
+
+        foreach (var key in scoresDict.Keys)
+            scores[key.ToString()] = (int)scoresDict[key].AsInt32();
+
+        // Обновляем RecordHUD
+        UIManager.Instance.UpdateScores(scores);
+    }
+
+    
     public void HandleServerMessage(string json)
     {
         var parsed = Json.ParseString(json);
@@ -307,9 +338,21 @@ public partial class NetworkClient : Node
                 HandleDamage(message);
                 break;
             case "PLAYER_RESPAWN":
-                GD.Print("Пакет RESPAWN:", json);
+                // GD.Print("Пакет RESPAWN:", json);
                 HandleRespawn(message);
                 break;
+            case "GAME_TIME":
+                GD.Print("Пакет GAME_TIME:", json);
+                HandleGameTime(message);
+                break;
+            case "GAME_FINISHED":
+                GD.Print("Пакет GAME_FINISHED:", json);
+                HandleGameFinished();
+                break;
+            case "SCORE_UPDATE":
+                HandleScoreUpdate(message);
+                break;
+
         }
     }
     

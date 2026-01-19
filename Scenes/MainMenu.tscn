@@ -12,7 +12,7 @@ colors = PackedColorArray(0, 0, 0.0705882, 1, 0.417548, 0.0483397, 0.13445, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8um5k"]
 gradient = SubResource("Gradient_df05h")
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("_connectButton", "_localButton", "_settingsButton", "_exitButton", "_settingsHUD")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_connectButton", "_settingsButton", "_exitButton", "_settingsHUD")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,8 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8saeu")
-_connectButton = NodePath("VBoxContainer/ConnectButton")
-_localButton = NodePath("VBoxContainer/LocalButton")
+_connectButton = NodePath("")
 _settingsButton = NodePath("VBoxContainer/SettingsButton")
 _exitButton = NodePath("VBoxContainer/ExitButton")
 _settingsHUD = NodePath("Settings")
@@ -48,17 +47,9 @@ offset_bottom = -52.0
 grow_vertical = 0
 theme = ExtResource("2_ghw46")
 
-[node name="ConnectButton" parent="VBoxContainer" instance=ExtResource("3_df05h")]
-layout_mode = 2
-text = "Connect"
-
-[node name="LocalButton" parent="VBoxContainer" instance=ExtResource("3_df05h")]
-layout_mode = 2
-text = "Local Connect"
-
 [node name="SettingsButton" parent="VBoxContainer" instance=ExtResource("3_df05h")]
 layout_mode = 2
-text = "Settings
+text = "Connect
 "
 
 [node name="ExitButton" parent="VBoxContainer" instance=ExtResource("3_df05h")]

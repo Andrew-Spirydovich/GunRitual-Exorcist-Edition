@@ -3,15 +3,16 @@
 [ext_resource type="Script" uid="uid://bu203ykrhmaoi" path="res://Scripts/Core/UIManager.cs" id="1_ma4gq"]
 [ext_resource type="PackedScene" uid="uid://dfxdjxucv2h24" path="res://Scripts/UI/ExitMenu.tscn" id="2_aaxft"]
 [ext_resource type="Theme" uid="uid://f6epcktwphj7" path="res://Assets/Themes/MainMenu.tres" id="2_cnx6r"]
-[ext_resource type="FontFile" uid="uid://boj4povremt4p" path="res://Assets/Fonts/Greenscr.ttf" id="3_agofs"]
+[ext_resource type="FontFile" uid="uid://cjvav8h2sylta" path="res://Assets/Fonts/Pixelzone.ttf" id="3_agofs"]
 [ext_resource type="PackedScene" uid="uid://cw0ko3xdeph8t" path="res://Scripts/UI/Record_HUD.tscn" id="3_cnx6r"]
 [ext_resource type="PackedScene" uid="uid://2yf35vtug1vh" path="res://Scripts/UI/Respawn HUD.tscn" id="4_agofs"]
 
-[node name="UIManager" type="Node" node_paths=PackedStringArray("_respawnHud", "_exitMenu", "_recordHud")]
+[node name="UIManager" type="Node" node_paths=PackedStringArray("_respawnHud", "_exitMenu", "_recordHud", "_timeLabel")]
 script = ExtResource("1_ma4gq")
 _respawnHud = NodePath("Respawn")
 _exitMenu = NodePath("ExitMenu")
 _recordHud = NodePath("Record")
+_timeLabel = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
@@ -25,7 +26,7 @@ size_flags_horizontal = 4
 theme = ExtResource("2_cnx6r")
 theme_override_fonts/font = ExtResource("3_agofs")
 theme_override_font_sizes/font_size = 80
-text = "90"
+text = "0:00"
 vertical_alignment = 1
 
 [node name="ExitMenu" parent="." instance=ExtResource("2_aaxft")]

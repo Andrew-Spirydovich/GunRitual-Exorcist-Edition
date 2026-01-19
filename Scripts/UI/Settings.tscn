@@ -19,7 +19,7 @@ corner_detail = 5
 [sub_resource type="Theme" id="Theme_ecorb"]
 Panel/styles/panel = SubResource("StyleBoxFlat_7a4vp")
 
-[node name="Settings" type="Control" node_paths=PackedStringArray("_saveButton", "_leaveButton", "_lineEdit")]
+[node name="Settings" type="Control" node_paths=PackedStringArray("_saveButton", "_leaveButton", "_nameInput", "_ipInput", "_errorLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,9 @@ grow_vertical = 2
 script = ExtResource("1_7a4vp")
 _saveButton = NodePath("Panel/Save")
 _leaveButton = NodePath("Panel/Cancel")
-_lineEdit = NodePath("Panel/LineEdit")
+_nameInput = NodePath("Panel/name")
+_ipInput = NodePath("Panel/ip")
+_errorLabel = NodePath("Panel/Label")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -40,15 +42,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ecorb")
 
-[node name="LineEdit" type="LineEdit" parent="Panel"]
+[node name="name" type="LineEdit" parent="Panel"]
 layout_mode = 0
 offset_left = 384.0
-offset_top = 304.0
+offset_top = 208.0
 offset_right = 864.0
-offset_bottom = 432.0
+offset_bottom = 336.0
 theme_override_fonts/font = ExtResource("1_icuur")
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Enter your name"
+alignment = 1
+
+[node name="ip" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 368.0
+offset_right = 864.0
+offset_bottom = 496.0
+theme_override_fonts/font = ExtResource("1_icuur")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Enter IP"
 alignment = 1
 
 [node name="Save" parent="Panel" instance=ExtResource("2_7a4vp")]
@@ -60,7 +73,7 @@ offset_top = -160.0
 offset_right = 512.0
 offset_bottom = -32.0
 grow_vertical = 0
-text = "Save"
+text = "Connect"
 alignment = 1
 
 [node name="Cancel" parent="Panel" instance=ExtResource("2_7a4vp")]
@@ -75,3 +88,11 @@ offset_bottom = -32.0
 grow_vertical = 0
 text = "Cancel"
 alignment = 1
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 55
+horizontal_alignment = 1
+vertical_alignment = 1
